@@ -1,0 +1,160 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Khalob Cognata</title>
+		<link rel="shortcut icon"	 href="images/favicon.ico"	 type="image/x-icon" />
+		<meta charset="utf-8" />
+		<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+			
+			<!-- Title -->
+			<div class="outer"> 
+				<div class="inner" id="titleDiv"> Home </div>
+			</div>
+
+				<!-- Project Buttons -->
+					<div id="projWrapper" class="rotated" onmouseover="updateTitle()">
+							<ul class="icons2">
+								<div id="main3">
+									<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" title="SuperAsteroid" href="projects/SuperAsteroid.html"></a></li>
+								</div>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 2"></a></li>
+								</section>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 3"></a></li>
+								</section>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 4"></a></li>
+								</section>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 5"></a></li>
+								</section>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 6"></a></li>
+								</section>
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 7"></a></li>
+								</section>
+							</ul>
+					</div>	
+
+				<!-- Main -->
+  				<section id="main">
+						<header>
+							<h1>Khalob Cognata</h1>
+						</header>
+
+						<footer>
+							<ul class="icons">
+								<li onmouseover="updateTitle(this);"><a href="https://github.com/Khalob" class="fa-github" title="Github">Github</a></li>
+								<li onmouseover="updateTitle(this);" id="projectButton"><a class="fa-folder" title="Projects">Projects</a></li>
+								<li onmouseover="updateTitle(this);"><a href="./html/resume.pdf" class="fa-file-pdf-o" title="Resume">Resume</a></li>
+								<li onmouseover="updateTitle(this);" id="contactButton"><a class="fa fa-envelope" title="Contact Me">Contact Me</a></li>
+							</ul>
+						</footer>
+										<!-- Email Text Bubble -->			
+				
+					<div class="bubbleWrapper closed">
+						<div class="pinched" id="emailBubble">
+							Feel free to contact me at <p id="js-copytextarea" style="padding:0px; margin:0px;" >KhalobCognata@gmail.com </p>
+							<hr style="margin:auto; width:84%; padding:0px; margin-bottom: 10px">
+								<button id="js-textareacopybtn"> Clipboard </button>
+									 &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp;
+								<button><a href="mailto:KhalobCognata@gmail.com"> Outlook </a></button>
+						</div>
+					</div>
+					
+				</section>
+					
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright">
+							<li>Khalob Cognata</li>
+							<li>&copy; 2016</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					//document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+				
+				
+				
+				var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
+				var projects = document.getElementById('projWrapper')
+				projects.style.visibility = 'hidden'; //Default invisible
+				
+				projectButton.onclick = function() {
+					var div = document.getElementById('projWrapper');
+					if (div.style.visibility !== 'hidden') {
+						div.style.visibility = 'hidden';
+						projects.setAttribute("class", "rotated");
+					}
+					else {
+						div.style.visibility = 'visible';
+						projects.setAttribute("class", "but");
+					}
+					
+					
+					
+					
+				};
+				
+				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
+				//document.getElementById('emailBubble').style.display = 'none'; //Default invisible
+				
+				bubble.onclick = function() {
+					var div = document.getElementsByClassName('bubbleWrapper')[0];
+					div.classList.toggle("closed");
+					
+				};
+				
+				var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
+				copyTextareaBtn.onclick = function() {
+				  var range = document.createRange();
+				  var selection = window.getSelection();
+				  range.selectNodeContents(document.getElementById('js-copytextarea'));
+
+				  selection.removeAllRanges();
+				  selection.addRange(range);
+				  try {
+					var successful = document.execCommand('copy');
+					var msg = successful ? 'successful' : 'unsuccessful';
+					//alert('Copying text command was ' + msg);
+				  } catch (err) {
+					//alert('Oops, unable to copy');
+				  }
+				};
+				
+				
+				function updateTitle(obj){
+					var title = document.getElementById('titleDiv');
+					title.innerHTML = obj.children[0].getAttribute("title");
+				}
+				
+				function highlight(obj){
+					obj.children[0].setAttribute("style", "background-color: #2098d1; color: white;");
+				}
+				
+			</script>
+	</body>
+</html>
