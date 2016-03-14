@@ -1088,7 +1088,7 @@
 	  border-radius:10px;
 	  
 	}
-
+	
 	/* creates a rectangle of the colour wanted for the pointy bit */
 	.pinched:before {
 	  content:"";
@@ -1130,6 +1130,24 @@
 	  -moz-border-radius-bottomleft:15px;
 	  border-bottom-left-radius:15px;
 	}
+	
+	@media screen and (max-width: 1680px) {
+		.pinched {
+			margin-left: 50px;
+			width:300px;
+		}
+		
+		.pinched:after {
+			top:-20px;
+			left:90px;
+		}
+		
+		.pinched > :first-child:before {
+			top:-20px;
+			right:90px;
+		}
+	}
+
 
 	/* Holds the whole speech bubble */
 	.bubbleWrapper {
@@ -1139,7 +1157,7 @@
 
 		max-height: 1000px;
 		overflow: hidden;
-		
+		max-width: 400px;
 		-moz-transition: max-height 2s ease;
 		-webkit-transition: max-height 2s ease;
 		-ms-transition: max-height 2s ease;
