@@ -885,7 +885,7 @@
 		transform: rotateX(45deg);
 		--margin-top: 10em;
 		top: 0;
-		margin-top: 40em;
+		margin-top: 10em;
 		transition: all 1s ease;
 	}
 	
@@ -903,9 +903,9 @@
 		--width: 100%;
 		--left: 40em;
 		--top: 12.5em;
-		top: 25%;
+		top: -70%;
 		left: 50%;
-		transform: translate(-50%, -25%);
+		transform: translate(-50%, 70%);
 		padding: 1.5em 0 0 0;
 		color: rgba(255, 255, 255, 0.75);
 		cursor: default;
@@ -915,8 +915,9 @@
 	
 	@media screen and (max-width: 1680px) {
 		#projWrapper {
-			top: 12.5em;
-			left:37.5em;
+		top: -70%;
+		left: 50%;
+		transform: translate(-50%, 70%);
 		}
 	}
 	
@@ -931,7 +932,7 @@
 		cursor: default;
 		text-align: center;
 		position:absolute;
-		top:6em;
+		top:-10em;
 	}
 
 	
@@ -1179,3 +1180,32 @@
 		background-repeat: no-repeat;
 
 	}
+	
+	#navWrapper {
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	-moz-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-ms-justify-content: space-between;
+	justify-content: space-between;
+	-moz-flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-moz-perspective: 1000px;
+	-webkit-perspective: 1000px;
+	-ms-perspective: 1000px;
+	perspective: 1000px;
+	position: relative;
+	min-height: 100%;
+	min-width: 100%;
+	z-index: 2;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
