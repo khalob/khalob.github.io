@@ -596,7 +596,6 @@
 					--text-align: center;
 					text-indent: 2.75em;
 					white-space: nowrap;
-
 				}
 
 					ul.icons2 li a:before {
@@ -636,7 +635,11 @@
 				ul.icons2 li a:before {
 					font-size: 1rem;
 				}
-
+				
+				ul.icons2  {
+					top: 75%;
+					transform: translateY(-75%);
+				}
 			}
 
 		ul.actions {
@@ -769,7 +772,7 @@
 	#main {
 		position: relative;
 		max-width: 100%;
-		min-width: 27em;
+		min-width: 400px;
 		padding: 4.5em 3em 3em 3em ;
 		background: #ffffff;
 		--border-radius: 4px;
@@ -819,8 +822,8 @@
 		@media screen and (max-width: 480px) {
 
 			#main {
-				min-width: 0;
-				width: 100%;
+				min-width: 25em;
+				--width: 100%;
 				padding: 4em 2em 2.5em 2em ;
 			}
 
@@ -903,6 +906,7 @@
 		--width: 100%;
 		--left: 40em;
 		--top: 12.5em;
+		min-width: 350px;
 		top: -70%;
 		left: 50%;
 		transform: translate(-50%, 70%);
