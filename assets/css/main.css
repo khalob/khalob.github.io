@@ -1167,7 +1167,7 @@
 	.bubbleWrapper {
 		position:absolute;
 		top:12em;
-		left:10.5em;
+		left:10.2em;
 
 		max-height: 1000px;
 		overflow: hidden;
@@ -1181,7 +1181,14 @@
 		@media screen and (max-width: 1680px) {
 			.bubbleWrapper {
 				top:12em;
-				left:7.62em;
+				left:7.8em;
+			}
+		}
+		
+		@media screen and (max-width: 480px) {
+			.bubbleWrapper {
+				top:11.2em;
+				left:-3.7em;
 			}
 		}
 		
