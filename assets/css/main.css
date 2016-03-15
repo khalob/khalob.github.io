@@ -572,10 +572,8 @@
 			cursor: default;
 			list-style: none;
 			padding: 0;
-			--margin-top: -2em;
 			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
+			min-width: 350px;
 		}
 
 			ul.icons2 li {
@@ -593,7 +591,7 @@
 					border: solid 1px #c8cccf;
 					line-height: 1.9em;
 					overflow: hidden;
-					--text-align: center;
+					text-align: center;
 					text-indent: 2.75em;
 					white-space: nowrap;
 				}
@@ -637,8 +635,7 @@
 				}
 				
 				ul.icons2  {
-					top: 75%;
-					transform: translateY(-75%);
+					min-width: 315px;
 				}
 			}
 
@@ -775,7 +772,6 @@
 		min-width: 400px;
 		padding: 4.5em 3em 3em 3em ;
 		background: #ffffff;
-		--border-radius: 4px;
 		border-radius:.5in;
 		cursor: default;
 		opacity: 1;
@@ -822,9 +818,9 @@
 		@media screen and (max-width: 480px) {
 
 			#main {
-				min-width: 25em;
-				--width: 100%;
-				padding: 4em 2em 2.5em 2em ;
+				min-width: 300px;
+				max-width: 80%;
+				padding: 2em 1em 1.5em 1em ;
 			}
 
 				#main .avatar:before {
@@ -863,33 +859,39 @@
 		-ms-transform-origin: 50% 50%;
 		transform-origin: 50% 50%;
 
+		-moz-transform: rotateX(45deg);
+		-webkit-transform: rotateX(45deg);
+		-ms-transform: rotateX(45deg);
+		transform: rotateX(45deg);	
+	
+		
+		-moz-transition: transform 1.5s ease;
+		-webkit-transition: transform 1.5s ease;
+		-ms-transition: transform 1.5s ease;
+		transition: transform 1.5s ease;
+
+	}
+	
+	@media screen and (max-width: 480px) {
+
+		#main3 {
+			min-width: .25em;
+			max-width: 100%;
+			margin: 0;
+		}
+
+	}
+		
+	div.closed #main3 {
+		position: relative;
 		-moz-transform: rotateX(0deg);
 		-webkit-transform: rotateX(0deg);
 		-ms-transform: rotateX(0deg);
 		transition: rotateX(0deg);
-
-				
-		margin-top: 18%;
-				
-		-moz-transition: transform 1.5s ease, margin-top .5s ease;
-		-webkit-transition: transform 1.5s ease, margin-top .5s ease;
-		-ms-transition: transform 1.5s ease, margin-top .5s ease;
-		transition: transform 1.5s ease, margin-top .5s ease;
-
-	}
-		
-	div.rotated #main3 {
-		position: relative;
-		--transition-delay:0s;
-		--opacity: 0;
-		-moz-transform: rotateX(45deg);
-		-webkit-transform: rotateX(45deg);
-		-ms-transform: rotateX(45deg);
-		transform: rotateX(45deg);
-		--margin-top: 10em;
-		top: 0;
-		margin-top: 10em;
-		transition: all 1s ease;
+		top: 0%;
+		margin-top: 0%;
+		 transition-delay: 1s;
+		transition: transform 1.5s ease;
 	}
 	
 	div #main3:hover{
@@ -903,25 +905,24 @@
 		-webkit-align-self: -webkit-flex-end;
 		-ms-align-self: -ms-flex-end;
 		align-self: flex-end;
-		--width: 100%;
-		--left: 40em;
-		--top: 12.5em;
-		min-width: 350px;
-		top: -70%;
+		opacity: 1;
 		left: 50%;
-		transform: translate(-50%, 70%);
+		transform: translate(-50%, 0%);
 		padding: 1.5em 0 0 0;
-		color: rgba(255, 255, 255, 0.75);
 		cursor: default;
 		text-align: center;
 		position: absolute;
+		top: -10%;
+		transition: top 1s ease;
 	}
 	
-	@media screen and (max-width: 1680px) {
-		#projWrapper {
-		top: -70%;
-		left: 50%;
-		transform: translate(-50%, 70%);
+	 #projWrapper.closed  {
+		top: -30%;
+	}
+	
+	@media screen and (max-width: 480px) {
+		#projWrapper.closed {
+			margin-top: -2%;
 		}
 	}
 	
@@ -930,7 +931,6 @@
 		-webkit-align-self: -webkit-flex-end;
 		-ms-align-self: -ms-flex-end;
 		align-self: flex-end;
-		--left: 50em;
 		padding: 1.5em 0 0 0;
 		color: rgba(255, 255, 255, 0.75);
 		cursor: default;
@@ -945,20 +945,19 @@
 	.outer {
 	  position: absolute;
 	  left: 50%;
-	  --width: 40%;
-	  top: -5%;
+	  top: 10%;
+	  top: 10%;
 	  height: 120px;
 	  margin: 20px auto;
 	}
 
 	.inner {
 	  position: absolute;
-	  width: 400px;
-	  height: 100px;
+	  width: 200px;
+	  height: 50px;
 	  top: 10px;
 	  left: 50%;
-	  margin-left: -200px;
-	 -- background-color: #00c;
+	  margin-left: -100px;
 	}
 		
 /* Footer */
@@ -1020,6 +1019,7 @@
 		perspective: 1000px;
 		position: relative;
 		min-height: 100%;
+		max-width:100%;
 		padding: 1.5em;
 		z-index: 2;
 	}

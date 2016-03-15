@@ -27,7 +27,7 @@
 			</div>
 
 				<!-- Project Buttons -->
-					<div id="projWrapper" class="rotated" onmouseover="updateTitle()">
+					<div id="projWrapper" class="" onmouseover="updateTitle()">
 							<ul class="icons2">
 								<div id="main3">
 									<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" title="SuperAsteroid" href="projects/SuperAsteroid.html"></a></li>
@@ -108,18 +108,8 @@
 				
 				projectButton.onclick = function() {
 					var div = document.getElementById('projWrapper');
-					if (div.style.visibility !== 'hidden') {
-						div.style.visibility = 'hidden';
-						projects.setAttribute("class", "rotated");
-					}
-					else {
-						div.style.visibility = 'visible';
-						projects.setAttribute("class", "but");
-					}
-					
-					
-					
-					
+					div.style.visibility = 'visible'; 
+					div.classList.toggle("closed");
 				};
 				
 				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
