@@ -166,17 +166,24 @@ body.is-loading #main2 {
 	transition: transform 1s ease;
 }
 
-		body.is-loading .mainBody {
+		--[body.is-loading .mainBody {
 			opacity: 0;
 			-moz-transform: rotateX(15deg);
 			-webkit-transform: rotateX(15deg);
 			-ms-transform: rotateX(15deg);
 			transform: rotateX(15deg);
-		}
+		}]--
 		
 		.mainBody p{
 			text-align:left;
 			text-indent: 2em;
+		}
+		
+		@media screen and (max-width: 640px) {
+			.mainBody {
+				max-width: 100%;
+				min-width: 90%;
+			}
 		}
 			
 ul.icons3 {
