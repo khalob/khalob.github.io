@@ -1254,6 +1254,6 @@
 		--max-height: 100%;
 		--min-height: 100%;
 		max-width: 100%;
-		padding: 6em 0em 0 0;
+		padding: 6em 0 6em 0;
 		z-index: 2;
 }
