@@ -145,7 +145,7 @@ body.is-loading #main2 {
 	max-width: 100%;
 	min-width: 40em;
 	width: 50%;
-	padding: .25em 2em 1em 2em;
+	padding: 1em 2em 1em 2em;
 	margin: 0 auto;
 	background: #ffffff;
 	border-radius:.25in;
@@ -293,3 +293,15 @@ ul.icons3 li a:before {
 				#footer1 .copyright li:first-child {
 					border-left: 0;
 				}
+
+	.image{
+		overflow: hidden;
+        background-size: contain;
+		background-origin: content-box;
+        background-position: center;
+		background-repeat: no-repeat;
+		height: auto; 
+		width: auto; 
+		max-width: 80%; 
+		max-height: 80%;
+	}
