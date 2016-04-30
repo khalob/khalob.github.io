@@ -1,0 +1,136 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Khalob Cognata</title>
+		<link rel="shortcut icon"	 href="../images/favicon.ico"	 type="image/x-icon" />
+		<meta charset="utf-8" />
+		<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../assets/css/pages.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+		<div id="wrapper1">
+			<!-- navWrapper -->
+			<div id="navWrapper">
+			
+			<!-- Display Title -->
+			<div class="outer"> 
+				<div class="inner" id="pagesTitleDiv"> Flesh Flood </div>
+			</div>
+
+			<!-- Main -->
+			<section id="main2">
+					<header>
+						<h1>Flesh Flood</h1>
+					</header>
+
+					
+					<ul class="icons3">
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(../images/icon2.png);" href="https://khalob.github.io/projects/FleshFlood.html" title="Flesh Flood"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(../images/icon1.png);" href="https://khalob.github.io/projects/SuperAsteroid.html" title="SuperAsteroid"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="https://github.com/Khalob" class="fa fa-envelope" title="Project 3"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="https://github.com/Khalob" class="fa fa-envelope" title="Project 4"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="https://github.com/Khalob" class="fa fa-envelope" title="Project 5"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="https://github.com/Khalob" class="fa fa-envelope" title="Project 6"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="https://github.com/Khalob" class="fa fa-envelope" title="Project 7"></a></li>
+					</ul>
+					
+					
+				<!-- Home Button -->			
+				<ul class="icons3">
+					<li onmouseover="updateTitle(this);" class="main3"><a href="../index.html" class="fa fa-home" title="Home"></a></li>
+				</ul>
+				
+			</section>
+			
+		</div> <!-- End of navWrapper -->
+		
+				<div class="mainBody">
+				<h2>Second Generation of Flesh Flood</h2>
+					<p>
+						<object style="display:block;margin:auto;" width="640px" height="480" data="../misc/Flesh Flood Current.swf"></object>
+						
+						<div style="float: center;">This version was made in 2014 using <a href="http://www.stencyl.com/">Stencyl</a> (a code-block based program).</div>
+					</p>
+				</div>
+
+		
+		<!-- Footer -->
+		<footer id="footer1">
+			<ul class="copyright">
+				<li>Khalob Cognata</li>
+				<li>&copy; 2016</li>
+			</ul>
+		</footer>
+		</div><!-- End of Wrapper -->
+		
+		
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+				}
+				
+				
+				
+				var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
+				var projects = document.getElementById('projWrapper')
+				projects.style.visibility = 'hidden'; //Default invisible
+				
+				projectButton.onclick = function() {
+					var div = document.getElementById('projWrapper');
+					if (div.style.visibility !== 'hidden') {
+						div.style.visibility = 'hidden';
+						projects.setAttribute("class", "rotated");
+					}
+					else {
+						div.style.visibility = 'visible';
+						projects.setAttribute("class", "but");
+					}
+					
+					
+					
+					
+				};
+				
+				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
+				
+				bubble.onclick = function() {
+					var div = document.getElementsByClassName('bubbleWrapper')[0];
+					div.classList.toggle("closed");
+				};
+				
+				var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
+				copyTextareaBtn.onclick = function() {
+				  var range = document.createRange();
+				  var selection = window.getSelection();
+				  range.selectNodeContents(document.getElementById('js-copytextarea'));
+
+				  selection.removeAllRanges();
+				  selection.addRange(range);
+				  try {
+					var successful = document.execCommand('copy');
+					var msg = successful ? 'successful' : 'unsuccessful';
+					//alert('Copying text command was ' + msg);
+				  } catch (err) {
+					//alert('Oops, unable to copy');
+				  }
+				};
+				
+				
+				function updateTitle(obj){
+					var title = document.getElementById('pagesTitleDiv');
+					title.innerHTML = obj.children[0].getAttribute("title");
+				}
+				
+				function highlight(obj){
+					obj.children[0].setAttribute("style", "background-color: #2098d1; color: white;");
+				}
+				
+			</script>
+	</body>
+</html>

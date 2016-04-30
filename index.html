@@ -29,12 +29,12 @@
 				<!-- Project Buttons -->
 					<div id="projWrapper" class="" onmouseover="updateTitle()">
 							<ul class="icons2">
+								<section style="" id="main3">
+									<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon2.png);" href="projects/FleshFlood.html" title="Flesh Flood"></a></li>
+								</section>
 								<div id="main3">
 									<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" title="SuperAsteroid" href="projects/SuperAsteroid.html"></a></li>
 								</div>
-								<section style="" id="main3">
-									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 2"></a></li>
-								</section>
 								<section style="" id="main3">
 									<li onmouseover="updateTitle(this);"><a class="fa fa-envelope" title="Project 3"></a></li>
 								</section>
@@ -116,12 +116,13 @@
 				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
 				//document.getElementById('emailBubble').style.display = 'none'; //Default invisible
 				
-				bubble.onclick = function() {
+				bubble.onclick = closeDiv;
+				
+				function closeDiv() {
 					var div = document.getElementsByClassName('bubbleWrapper')[0];
 					div.classList.toggle("closed");
 					
-				};
-				
+				}
 				var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
 				copyTextareaBtn.onclick = function() {
 				  var range = document.createRange();
