@@ -9,9 +9,14 @@
 		text-decoration: underline;
 	}
 	
+	a:hover{
+		color:#ffd27f;
+		text-decoration: underline;
+	}
+	
 	/* visited link */
 	a:visited {
-		color: orange;
+		color:#b27300;
 		text-decoration: underline;
 	}
 

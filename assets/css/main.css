@@ -163,7 +163,7 @@
 		}
 
 		a:hover {
-			color: #ff7496;
+			color: #ff6666;
 		}
 
 	strong, b {
@@ -297,7 +297,7 @@
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #ff7496;
+			border-color: #7f0000;
 		}
 
 	.select-wrapper {
@@ -398,13 +398,13 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			color: #ff7496;
+			color: #7f0000;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #ff7496;
+			border-color: #7f0000;
 		}
 
 	input[type="checkbox"] + label:before {
@@ -541,7 +541,7 @@
 
 					ul.icons li a:hover:before {
 						cursor: pointer;
-						text-shadow: 1.25px 0px 0px #ff7496, -1.25px 0px 0px #ff7496, 0px 1.25px 0px #ff7496, 0px -1.25px 0px #ff7496;
+						text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
 					}
 
 					ul.icons li a:before {
@@ -557,7 +557,7 @@
 					}
 
 					ul.icons li a:hover {
-						border-color: #ff7496;
+						border-color: #7f0000;
 					}
 
 			@media screen and (max-width: 480px) {
@@ -612,7 +612,7 @@
 					}
 
 					ul.icons2 li a:hover:before {
-						text-shadow: 1.25px 0px 0px #ff7496, -1.25px 0px 0px #ff7496, 0px 1.25px 0px #ff7496, 0px -1.25px 0px #ff7496;
+						text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
 					}
 
 					ul.icons2 li a:before {
@@ -626,7 +626,7 @@
 					}
 
 					ul.icons2 li a:hover {
-						border-color: #ff7496;
+						border-color: #7f0000;
 					}
 
 			@media screen and (max-width: 480px) {
@@ -688,10 +688,6 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		-moz-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-ms-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		display: inline-block;
 		height: 2.75em;
 		line-height: 2.75em;
@@ -711,8 +707,8 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			border-color: #ff7496;
-			color: #ff7496 !important;
+			border-color: #ff6666;
+			color: #ff6666 !important;
 		}
 
 		input[type="submit"].icon,
