@@ -248,7 +248,7 @@ body.is-loading #main2 {
 	}
 
 	ul.icons3 li a:hover:before {
-		text-shadow: 1.25px 0px 0px #ff7496, -1.25px 0px 0px #ff7496, 0px 1.25px 0px #ff7496, 0px -1.25px 0px #ff7496;
+		text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
 	}
 
 	ul.icons3 li a:before {
@@ -263,7 +263,7 @@ body.is-loading #main2 {
 	}
 
 	ul.icons3 li a:hover {
-		border-color: #ff7496;
+		border-color: #7f0000;
 		box-shadow: 2px 3px 5px white;
 		top: .05em;
 		left: .05em;
