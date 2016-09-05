@@ -1,0 +1,348 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Khalob Cognata</title>
+		<link rel="shortcut icon"	 href="images/favicon.ico"	 type="image/x-icon" />
+		<meta charset="utf-8" />
+		<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="http://khalob.github.io/assets/css/pages.css" />
+		<noscript><link rel="stylesheet" href="http://khalob.github.io/assets/css/noscript.css" /></noscript>
+		
+		
+  <style> 
+    div{
+	   position: absolute;
+       margin: 0 auto;
+	   overflow: hidden;
+       background-size: cover;
+       background-position: center;
+    }
+	#scoreBoard{
+	  position: relative;
+	  width: 400px;
+	  margin: 0 auto;
+	  text-align: center;
+	  border: 0px;
+	}
+	#crib{
+	  position: relative;
+	  background-color: tan;
+	  background-image: url(http://khalob.github.io/images/arsho/playpen.png); /* Source: http://ecx.images-amazon.com/images/I/71E9%2BVYwobL._SL1004_.jpg */
+	  width: 500px;
+      height: 500px;
+      border: 20px solid #4d1a00;
+	}
+	#marshmallow{
+	  background-color: black;
+	  background-image: url(http://khalob.github.io/images/arsho/marshmallow.jph); 
+	  width: 25px;
+      height: 25px;
+	}
+	#cheerio{
+	  background-image: url(http://khalob.github.io/images/arsho/cheerio.png); 
+	  width: 25px;
+      height: 25px;
+	}
+	#arsho{
+	  background-color: blue;
+	  background-image: url(http://khalob.github.io/images/arsho/arsho.png); 
+	  width: 25px;
+      height: 25px;
+      top:  0px;
+      left:  0px;
+	}
+	h1{
+	  text-align: center;
+	  width: 400px;
+	  position: relative;
+      margin: 0 auto;
+	}
+ </style>
+ <script>
+	//Spawn timers
+	var Mtimer = window.setInterval(spawnMarshmellow, 5000);
+	var Ctimer = window.setInterval(spawnCheerio, 3000);
+	
+	//Gameover after 30 seconds.
+	var GGtimer = window.setInterval(gameOver, 30000);
+	
+	//Take positions for Marshmellows
+ 	var MtakenX = [];
+	var MtakenY = [];
+	
+	//Take positions for Cheerios
+	var CtakenX = [];
+	var CtakenY = [];
+	
+	var score = 0;
+
+	var computedStyle = function (el,style) {
+		var cs;
+		if (typeof el.currentStyle != 'undefined'){
+			cs = el.currentStyle;
+		}else{
+			cs = document.defaultView.getComputedStyle(el,null);
+		}
+		return  cs[style];
+	} 
+ 
+	document.onkeydown = function(e) {
+	var arsho = document.getElementById("arsho");
+	var top = parseInt(computedStyle(arsho,'top'));
+	var left = parseInt(computedStyle(arsho,'left'));
+    switch (e.keyCode) {
+        case 37: //Left
+			if (left > 0){
+				arsho.style.left = left - 25 + "px";
+				checkGround(top, left - 25 + "px");
+			}
+			break;
+        case 38: //Up
+			if (top > 0){
+				arsho.style.top = top - 25 + "px";
+				checkGround(top - 25 + "px", left);
+			}
+			break;
+        case 39: //Right
+			if (left < 475){
+				arsho.style.left = left + 25 + "px";
+				checkGround(top, left + 25 + "px");
+			}
+			break;
+        case 40: //Down
+			if (top < 475){
+				arsho.style.top = top + 25 + "px";
+				checkGround(top + 25 + "px", left);
+			}
+			break;
+    }
+	};
+	
+	function getRandomPos(){
+		var arsho = document.getElementById("arsho");
+		var top = parseInt(computedStyle(arsho,'top'));
+		var left = parseInt(computedStyle(arsho,'left'));
+
+		var x = Math.floor((Math.random() * 20) + 0) * 25;
+		var y = Math.floor((Math.random() * 20) + 0) * 25;
+		var spotAlreadyTaken = false;
+		for(i=0; i<MtakenX.length; i++){
+			if(x == parseInt(MtakenX[i]) && y == parseInt(MtakenY[i])){
+				spotAlreadyTaken = true;
+				break;
+			}
+		}
+		for(i=0; i<CtakenX.length; i++){
+			if(x == parseInt(CtakenX[i]) && y == parseInt(CtakenY[i])){
+				spotAlreadyTaken = true;
+				break;
+			}
+		}
+		if((x !== top || y !== left) && spotAlreadyTaken == false){ //Wont land on arsho's or another objects position
+			return [x, y];
+		}
+		return getRandomPos();
+	}
+	
+	function updateScore(){
+		var scoreBoard = document.getElementById("scoreBoard");
+		scoreBoard.innerHTML = "Score " + score;
+	}
+	
+	function checkGround(x, y){
+		//Checks if we are going to be on a marshmallow
+		var crib = document.getElementById("crib");
+		for(i=0; i<MtakenX.length; i++){
+			if(parseInt(x) == parseInt(MtakenX[i]) && parseInt(y) == parseInt(MtakenY[i])){
+				MtakenX.splice(i, 1);
+				MtakenY.splice(i, 1);
+				crib.removeChild(crib.getElementsByClassName("marshmallow")[i]);
+				score+=100;
+				updateScore();
+				break;
+			}
+		}
+		//Checks if we are going to be on a cheerio
+		for(i=0; i<CtakenX.length; i++){
+			if(parseInt(x) == parseInt(CtakenX[i]) && parseInt(y) == parseInt(CtakenY[i])){
+				CtakenX.splice(i, 1);
+				CtakenY.splice(i, 1);
+				crib.removeChild(crib.getElementsByClassName("cheerio")[i]);
+				score++;
+				updateScore();
+				break;
+			}
+		}
+	}
+
+	function spawnMarshmellow(){		 
+		 var m = document.createElement("DIV");
+		 var crib = document.getElementById("crib");
+		 m.id = "marshmallow";
+		 m.className = "marshmallow";
+		 var pos = getRandomPos();
+		 pos[0] = pos[0] + "px";
+		 pos[1] = pos[1] + "px";
+		 m.style.top = pos[0];
+		 m.style.left = pos[1];
+		 //Add pos to taken positions
+		 MtakenX.push(pos[0]);
+		 MtakenY.push(pos[1]);
+		 // This next line will just add it to the crib div
+		 crib.appendChild(m); 
+	} 
+	
+	function spawnCheerio(){		 
+		 var c = document.createElement("DIV");
+		 var crib = document.getElementById("crib");
+		 c.id = "cheerio";
+		 c.className = "cheerio";
+		 var pos = getRandomPos();
+		 pos[0] = pos[0] + "px";
+		 pos[1] = pos[1] + "px";
+		 c.style.top = pos[0];
+		 c.style.left = pos[1];
+		 //Add pos to taken positions
+		 CtakenX.push(pos[0]);
+		 CtakenY.push(pos[1]);
+		 // This next line will just add it to the crib div
+		 crib.appendChild(c); 
+	}   
+	
+	function gameOver(){
+		clearTimeout(Mtimer);
+		clearTimeout(Ctimer);
+		clearTimeout(GGtimer);
+		var scoreBoard = document.getElementById("scoreBoard");
+		scoreBoard.innerHTML = "Gameover: Total Score " + score;
+		document.onkeydown = null; //stop movement
+	}
+ </script>
+
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+		<div id="wrapper1">
+			<!-- navWrapper -->
+			<div id="navWrapper">
+			
+			<!-- Display Title -->
+			<div class="outer"> 
+				<div class="inner" id="pagesTitleDiv"> Arsho Hunts </div>
+			</div>
+
+			<!-- Main -->
+			<section id="main2">
+					<header>
+						<h1>Return Home</h1>
+					</header>
+
+					<ul class="icons3">
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon2.png);" href="http://khalob.github.io/projects/FleshFlood.html" title="Flesh Flood"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon1.png);" href="http://khalob.github.io/projects/SuperAsteroid.html" title="SuperAsteroid"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/javascript.png);" href="http://khalob.github.io/projects/cosc231.html" title="Small Class Assignments"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 4"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 5"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 6"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 7"></a></li>
+					</ul>
+					
+					
+					
+				<!-- Home Button -->			
+				<ul class="icons3">
+					<li onmouseover="updateTitle(this);" class="main3"><a href="http://khalob.github.io" class="fa fa-home" title="Home"></a></li>
+				</ul>
+				
+			</section>
+			
+		</div> <!-- End of navWrapper -->
+		
+				<div class="mainBody">
+					<h2 id = "scoreBoard">Score 0</h2>
+					<br>
+					<div id = "crib">
+						<div id = "arsho" class= "player"></div>
+					</div>
+					<br>
+				</div>
+
+		
+		<!-- Footer -->
+		<footer id="footer1">
+			<ul class="copyright">
+				<li>Khalob Cognata</li>
+				<li>&copy; 2016</li>
+			</ul>
+		</footer>
+		</div><!-- End of Wrapper -->
+		
+		
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+				}
+				
+				
+				
+				var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
+				var projects = document.getElementById('projWrapper')
+				projects.style.visibility = 'hidden'; //Default invisible
+				
+				projectButton.onclick = function() {
+					var div = document.getElementById('projWrapper');
+					if (div.style.visibility !== 'hidden') {
+						div.style.visibility = 'hidden';
+						projects.setAttribute("class", "rotated");
+					}
+					else {
+						div.style.visibility = 'visible';
+						projects.setAttribute("class", "but");
+					}
+					
+					
+					
+					
+				};
+				
+				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
+				
+				bubble.onclick = function() {
+					var div = document.getElementsByClassName('bubbleWrapper')[0];
+					div.classList.toggle("closed");
+				};
+				
+				var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
+				copyTextareaBtn.onclick = function() {
+				  var range = document.createRange();
+				  var selection = window.getSelection();
+				  range.selectNodeContents(document.getElementById('js-copytextarea'));
+
+				  selection.removeAllRanges();
+				  selection.addRange(range);
+				  try {
+					var successful = document.execCommand('copy');
+					var msg = successful ? 'successful' : 'unsuccessful';
+					//alert('Copying text command was ' + msg);
+				  } catch (err) {
+					//alert('Oops, unable to copy');
+				  }
+				};
+				
+				
+				function updateTitle(obj){
+					var title = document.getElementById('pagesTitleDiv');
+					title.innerHTML = obj.children[0].getAttribute("title");
+				}
+				
+				function highlight(obj){
+					obj.children[0].setAttribute("style", "background-color: #2098d1; color: white;");
+				}
+				
+			</script>
+	</body>
+</html>

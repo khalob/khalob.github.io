@@ -1,0 +1,281 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Khalob Cognata</title>
+		<link rel="shortcut icon"	 href="images/favicon.ico"	 type="image/x-icon" />
+		<meta charset="utf-8" />
+		<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="http://khalob.github.io/assets/css/pages.css" />
+		<noscript><link rel="stylesheet" href="http://khalob.github.io/assets/css/noscript.css" /></noscript>
+		  <style>
+			#image{
+			  position: relative;
+			  margin: 0 auto;
+			  width: 300px;
+			  height: 300px;
+			  border: 2px solid black;
+			}
+			.thumbnail{
+			  display: inline-block;
+			  position: relative;
+			  width: 50px;
+			  height: 50px;
+			  margin: 0 auto;
+			  padding: 2px;
+			}
+			#imageHolder{
+			  position: relative;
+			  margin: 0 auto;
+			  width: 460px;
+			}
+			#buttons{
+			  text-align: center;
+			}
+		</style>
+		<script>
+		   var imageURL = [
+			"https://upload.wikimedia.org/wikipedia/commons/7/7c/Cima_da_Conegliano,_God_the_Father.jpg", //<!-- God -->
+			"http://cdn.playbuzz.com/cdn/d5b63c56-7a1b-4f2c-8a0a-6e7ebc53f6c1/a5aeafb6-4e2e-4b6d-bef0-dd4495b5be0c.jpg", //<!-- Angel -->
+			"http://img04.deviantart.net/f0b3/i/2012/265/4/5/the_commoner_by_speculumhistoriae-d5fiftn.jpg", //<!-- Human -->
+			"https://s-media-cache-ak0.pinimg.com/736x/3e/9c/5a/3e9c5ad3af07e573b0e74bdb0a1dce3e.jpg", //<!-- Dog -->
+			"http://animalwonder.com/wp-content/uploads/2014/09/grasshopper.jpg", //<!-- Grasshopper -->
+			"https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/24/1411574454561/03085543-87de-47ab-a4eb-58e7e39d022e-620x372.jpeg", //<!-- Potato -->
+			"http://vignette3.wikia.nocookie.net/reddeadredemption/images/f/f6/Diamond!.jpg/revision/latest?cb=20131226165754", //<!-- Diamond -->
+			"http://i.ebayimg.com/00/s/NTY2WDg0OQ==/z/0z8AAOSwirZTtqWL/$_32.JPG" //<!-- Gold -->
+			];
+		  var imageTitle = ["God", "Angel", "Human", "Dog", "Grasshopper", "Potato", "Diamond", "Gold"];            
+		  var currentImage = 0;
+
+		  function dispCurImage() {
+			 alert(currentImage);
+			 }
+		  
+		  function prev() {
+				var id0 = document.getElementById("im0");
+				remHighlight();
+				if(currentImage>0){
+				  id0.src = imageURL[currentImage = currentImage - 1];  
+				}else{
+				  id0.src = imageURL[currentImage = 7];  
+				}
+				id0.title = imageTitle[currentImage];
+				addHighlight();
+			 }
+			 
+		  function addHighlight(){
+				var id = document.getElementById("im" + (currentImage + 1));
+				id.style = "width: 50px; height: 50px;";
+		  }
+		  
+		  function remHighlight(){
+				var id = document.getElementById("im" + (currentImage + 1));
+				id.style = "width: 50px; height: 50px; opacity: .5;";
+		  
+		  }
+			 
+		  function next() {
+			  var id0 = document.getElementById("im0");
+			  remHighlight();
+				if(currentImage<7){
+				  id0.src = imageURL[currentImage = currentImage + 1];  
+				}else{
+				  id0.src = imageURL[currentImage = 0];  
+				}
+				id0.title = imageTitle[currentImage];
+				addHighlight();
+			  }     
+	  </script>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+		<div id="wrapper1">
+			<!-- navWrapper -->
+			<div id="navWrapper">
+			
+			<!-- Display Title -->
+			<div class="outer"> 
+				<div class="inner" id="pagesTitleDiv"> Picture Gallery </div>
+			</div>
+
+			<!-- Main -->
+			<section id="main2">
+					<header>
+						<h1>Return Home</h1>
+					</header>
+
+					<ul class="icons3">
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon2.png);" href="http://khalob.github.io/projects/FleshFlood.html" title="Flesh Flood"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon1.png);" href="http://khalob.github.io/projects/SuperAsteroid.html" title="SuperAsteroid"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(http://khalob.github.io/images/javascript.png);" href="http://khalob.github.io/projects/cosc231.html" title="Small Class Assignments"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 4"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 5"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 6"></a></li>
+						<li onmouseover="updateTitle(this);"><a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 7"></a></li>
+					</ul>
+					
+					
+					
+				<!-- Home Button -->			
+				<ul class="icons3">
+					<li onmouseover="updateTitle(this);" class="main3"><a href="http://khalob.github.io" class="fa fa-home" title="Home"></a></li>
+				</ul>
+				
+			</section>
+			
+		</div> <!-- End of navWrapper -->
+		
+				<div class="mainBody">
+					<div id="imageHolder">
+					   <div id="image">
+						  <img id="im0" 
+							   src="http://khalob.github.io/images/gallery/god.jpg"
+							   style="width: 300px; height: 300px;"
+							   alt="main picture"
+							   title="God">
+					   </div>
+					   <br>
+					   <div class="thumbnail">
+						  <img id="im1" 
+							   src="http://khalob.github.io/images/gallery/god.jpg"
+							   style="width: 50px; height: 50px;"
+							   alt="a painting of god"
+							   title="God">
+					   </div> 
+					   <div class="thumbnail">
+						  <img id="im2" 
+							   src="http://khalob.github.io/images/gallery/angel.jpg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="a drawing of an angel"
+							   title="Angel">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im3" 
+							   src="http://khalob.github.io/images/gallery/pleb.jpg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="thumbnail"
+							   title="Human">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im4" 
+							   src="http://khalob.github.io/images/gallery/dog.jpg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="a small dog"
+							   title="Dog">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im5" 
+							   src="http://khalob.github.io/images/gallery/grasshopper.jpg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="a lively grasshopper"
+							   title="Grasshopper">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im6" 
+							   src="http://khalob.github.io/images/gallery/potato.jpeg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="a single potato"
+							   title="Potato">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im7" 
+							   src="http://khalob.github.io/images/gallery/diamond.jpg"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="a diamond gem."
+							   title="Diamond">
+					   </div>
+					   <div class="thumbnail">
+						  <img id="im8" 
+							   src="http://khalob.github.io/images/gallery/gold.JPG"
+							   style="width: 50px; height: 50px; opacity: .5;"
+							   alt="chunks of gold ore."
+							   title="Gold">
+					   </div>
+					</div>  
+					<br> 
+					   <div id="buttons">
+						 <button onClick="prev();"> Previous </button>
+						 <button onClick="dispCurImage();"> Current Image Number </button>
+						 <button onClick="next();"> Next </button>
+					   </div>
+					</body>
+				</div>
+
+		
+		<!-- Footer -->
+		<footer id="footer1">
+			<ul class="copyright">
+				<li>Khalob Cognata</li>
+				<li>&copy; 2016</li>
+			</ul>
+		</footer>
+		</div><!-- End of Wrapper -->
+		
+		
+		<!-- Scripts -->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+				}
+				
+				
+				
+				var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
+				var projects = document.getElementById('projWrapper')
+				projects.style.visibility = 'hidden'; //Default invisible
+				
+				projectButton.onclick = function() {
+					var div = document.getElementById('projWrapper');
+					if (div.style.visibility !== 'hidden') {
+						div.style.visibility = 'hidden';
+						projects.setAttribute("class", "rotated");
+					}
+					else {
+						div.style.visibility = 'visible';
+						projects.setAttribute("class", "but");
+					}
+					
+					
+					
+					
+				};
+				
+				var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
+				
+				bubble.onclick = function() {
+					var div = document.getElementsByClassName('bubbleWrapper')[0];
+					div.classList.toggle("closed");
+				};
+				
+				var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
+				copyTextareaBtn.onclick = function() {
+				  var range = document.createRange();
+				  var selection = window.getSelection();
+				  range.selectNodeContents(document.getElementById('js-copytextarea'));
+
+				  selection.removeAllRanges();
+				  selection.addRange(range);
+				  try {
+					var successful = document.execCommand('copy');
+					var msg = successful ? 'successful' : 'unsuccessful';
+					//alert('Copying text command was ' + msg);
+				  } catch (err) {
+					//alert('Oops, unable to copy');
+				  }
+				};
+				
+				
+				function updateTitle(obj){
+					var title = document.getElementById('pagesTitleDiv');
+					title.innerHTML = obj.children[0].getAttribute("title");
+				}
+				
+				function highlight(obj){
+					obj.children[0].setAttribute("style", "background-color: #2098d1; color: white;");
+				}
+				
+			</script>
+	</body>
+</html>
