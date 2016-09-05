@@ -353,6 +353,6 @@ body.is-loading #main2 {
 	
 	
 	.darkButton {
-		color: grey;
-		background-color: transparent;
+		color: grey !important;
+		border: solid 1px #667179;
 	}
