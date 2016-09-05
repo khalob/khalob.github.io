@@ -43,7 +43,7 @@
       height: 25px;
 	}
 	#cheerio{
-	  background-image: url(http://khalob.github.io/images/arsho/cheerio.png); 
+	  background-image: url(http://khalob.github.io/images/arsho/cheerio.jpg); 
 	  width: 25px;
       height: 25px;
 	}
@@ -160,7 +160,7 @@
 			if(parseInt(x) == parseInt(MtakenX[i]) && parseInt(y) == parseInt(MtakenY[i])){
 				MtakenX.splice(i, 1);
 				MtakenY.splice(i, 1);
-				crib.removeChild(crib.getElementsByClassName("marshmallow")[i]);
+				crib.removeChild(crib.getElementsByClassName("marshmallow myDiv")[i]);
 				score+=100;
 				updateScore();
 				break;
@@ -171,7 +171,7 @@
 			if(parseInt(x) == parseInt(CtakenX[i]) && parseInt(y) == parseInt(CtakenY[i])){
 				CtakenX.splice(i, 1);
 				CtakenY.splice(i, 1);
-				crib.removeChild(crib.getElementsByClassName("cheerio")[i]);
+				crib.removeChild(crib.getElementsByClassName("cheerio myDiv")[i]);
 				score++;
 				updateScore();
 				break;
