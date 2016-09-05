@@ -350,3 +350,9 @@ body.is-loading #main2 {
 	.right{
 		float: right;
 	}
+	
+	
+	.darkButton {
+		color: grey;
+		background-color: transparent;
+	}

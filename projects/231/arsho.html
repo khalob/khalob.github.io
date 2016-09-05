@@ -12,7 +12,7 @@
 		
 		
   <style> 
-    div{
+    .myDiv{
 	   position: absolute;
        margin: 0 auto;
 	   overflow: hidden;
@@ -30,13 +30,15 @@
 	  position: relative;
 	  background-color: tan;
 	  background-image: url(http://khalob.github.io/images/arsho/playpen.png); /* Source: http://ecx.images-amazon.com/images/I/71E9%2BVYwobL._SL1004_.jpg */
-	  width: 500px;
-      height: 500px;
+	  width: 540px;
+      height: 540px;
       border: 20px solid #4d1a00;
 	}
 	#marshmallow{
 	  background-color: black;
 	  background-image: url(http://khalob.github.io/images/arsho/marshmallow.jph); 
+	  background-size: cover;
+      background-position: center;
 	  width: 25px;
       height: 25px;
 	}
@@ -181,7 +183,7 @@
 		 var m = document.createElement("DIV");
 		 var crib = document.getElementById("crib");
 		 m.id = "marshmallow";
-		 m.className = "marshmallow";
+		 m.className = "marshmallow myDiv";
 		 var pos = getRandomPos();
 		 pos[0] = pos[0] + "px";
 		 pos[1] = pos[1] + "px";
@@ -198,7 +200,7 @@
 		 var c = document.createElement("DIV");
 		 var crib = document.getElementById("crib");
 		 c.id = "cheerio";
-		 c.className = "cheerio";
+		 c.className = "cheerio myDiv";
 		 var pos = getRandomPos();
 		 pos[0] = pos[0] + "px";
 		 pos[1] = pos[1] + "px";
@@ -263,11 +265,10 @@
 		
 				<div class="mainBody">
 					<h2 id = "scoreBoard">Score 0</h2>
-					<br>
-					<div id = "crib">
-						<div id = "arsho" class= "player"></div>
+					
+					<div id = "crib" class="myDiv">
+						<div id = "arsho" class="player myDiv"></div>
 					</div>
-					<br>
 				</div>
 
 		
