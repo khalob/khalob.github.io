@@ -356,3 +356,7 @@ body.is-loading #main2 {
 		color: grey !important;
 		border: solid 1px #667179;
 	}
+	
+	#small.input[type="radio"], #medium.input[type="radio"], #big.input[type="radio"]{
+		z-index: -1;
+	}
