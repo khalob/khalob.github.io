@@ -1,22 +1,26 @@
   var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
   var projects = document.getElementById('projWrapper')
   projects.style.visibility = 'hidden'; //Default invisible
+  var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
+  bubble.onclick = closeDiv;
+  var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
+  
+  if ('addEventListener' in window) {
+	window.addEventListener('load', function() {
+	  document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+	});
+  }
 
   projectButton.onclick = function() {
 	var div = document.getElementById('projWrapper');
 	div.style.visibility = 'visible';
 	div.classList.toggle("closed");
   };
-
-  var bubble = document.getElementById('contactButton'); // Assumes element with id='contactButton'
-  bubble.onclick = closeDiv;
-
+  
   function closeDiv() {
 	var div = document.getElementsByClassName('bubbleWrapper')[0];
 	div.classList.toggle("closed");
   }
-  
-  var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
   
   copyTextareaBtn.onclick = function() {
 	var range = document.createRange();
