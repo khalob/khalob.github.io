@@ -5,12 +5,6 @@
   bubble.onclick = closeDiv;
   var copyTextareaBtn = document.getElementById('js-textareacopybtn'); // Assumes element with id='js-textareacopybtn'
   
-  if ('addEventListener' in window) {
-	window.addEventListener('load', function() {
-	  document.body.className = document.body.className.replace(/\bis-loading\b/, '');
-	});
-  }
-
   projectButton.onclick = function() {
 	var div = document.getElementById('projWrapper');
 	div.style.visibility = 'visible';
