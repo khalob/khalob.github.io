@@ -201,11 +201,11 @@ body.is-loading .mainBody {
   }
   
   .right{
-	  float: none;
+	  float: none !important;
   }
   
   .left{
-	  float: none;
+	  float: none !important;
   }
 }
 
