@@ -34,3 +34,14 @@
   function highlight(obj) {
 	obj.children[0].setAttribute("style", "background-color: #2098d1; color: white;");
   }
+  
+  if ('addEventListener' in window) {
+	window.addEventListener('load', function() {
+	  document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+	});
+  }
+  
+   function updateTitle(obj) {
+	var title = document.getElementById('titleDiv');
+	title.innerHTML = obj.children[0].getAttribute("title");
+  }

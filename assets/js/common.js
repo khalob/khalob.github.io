@@ -5,6 +5,6 @@
   }
   
  function updateTitle(obj) {
-	var title = document.getElementById('titleDiv');
+	var title = document.getElementById('pagesTitleDiv');
 	title.innerHTML = obj.children[0].getAttribute("title");
   }
