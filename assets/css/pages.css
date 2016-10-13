@@ -116,11 +116,9 @@ body.is-ie #wrapper1 {
 
 #main2 {
   position: relative;
-  max-width: 100%;
-  --max-height: 15em;
-  padding: 1em 2em 0em 2em;
+  max-width: 90%;
+  margin-bottom: 1em;
   background: #ffffff;
-  --border-radius: 4px;
   border-radius: .5in;
   cursor: default;
   opacity: 1;
@@ -346,6 +344,18 @@ ul.icons3 li a:hover {
 
 .right {
   float: right;
+}
+
+@media max-width < 480px {
+	.left {
+	  font-size: 1em;
+	  float: left;
+	}
+
+	.right {
+	  font-size: 1em;
+	  float: right;
+	}
 }
 
 .darkButton {
