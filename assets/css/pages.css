@@ -199,6 +199,14 @@ body.is-loading .mainBody {
     max-width: 100%;
     min-width: 90%;
   }
+  
+  .right{
+	  float: none;
+  }
+  
+  .left{
+	  float: none;
+  }
 }
 
 ul.icons3 {
@@ -344,18 +352,6 @@ ul.icons3 li a:hover {
 
 .right {
   float: right;
-}
-
-@media max-width < 480px {
-	.left {
-	  font-size: 1em;
-	  float: left;
-	}
-
-	.right {
-	  font-size: 1em;
-	  float: right;
-	}
 }
 
 .darkButton {
