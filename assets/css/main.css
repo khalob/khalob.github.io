@@ -998,6 +998,7 @@ div #main3:hover {
   -webkit-align-self: -webkit-flex-end;
   -ms-align-self: -ms-flex-end;
   align-self: flex-end;
+  z-index: -3;
   opacity: 1;
   left: 50%;
   transform: translate(-50%, 0%);
