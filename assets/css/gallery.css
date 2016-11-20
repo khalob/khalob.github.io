@@ -1,0 +1,21 @@
+  #image {
+	position: relative;
+	margin: 0 auto;
+	width: 600px;
+	height: 600px;
+  }
+  
+  .thumbnail {
+	display: inline-block;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	padding: 2px;
+  }
+  
+  #imageHolder {
+	position: relative;
+	margin: 0 auto;
+	width: 600px;
+  }
