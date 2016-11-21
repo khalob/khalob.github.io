@@ -360,8 +360,8 @@ hr {
 }
 
 th{
-	padding-left: 80px;
-    padding-right: 80px;
+	padding-left: 1em;
+    padding-right: 1em;
 }
 
 /* Form */
