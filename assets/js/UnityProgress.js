@@ -1,7 +1,3 @@
-function moveWindow (){
-	window.location.hash="loadAnchor";
-}
-
 function UnityProgress (dom) {
 	this.progress = 0.0;
 	this.message = "";

@@ -2,5 +2,17 @@
 	height: 38px;
     width: 38px;
     position: absolute;
-    right: 168px;
+    right: 13%;
+}
+
+.emscripten{
+	position: relative;
+    min-width: 10em;
+    max-width: 100%;
+}
+
+#customHr{
+	position: relative;
+    min-width: 10em;
+    max-width: 50%;
 }
