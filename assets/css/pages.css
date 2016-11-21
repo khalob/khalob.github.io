@@ -139,8 +139,7 @@ body.is-ie #wrapper1 {
 
 @media screen and (max-width: 480px) {
   #main2 {
-    min-width: 80%;
-    width: 90%;
+    min-width: 90%;
 	margin-bottom: 2em;
     padding: 4em 2em 2.5em 2em;
   }
