@@ -173,7 +173,7 @@ body.is-loading *:after {
 }
 
 html {
-  overflow: hidden;
+  --overflow: hidden;
   height: 100%;
 }
 
