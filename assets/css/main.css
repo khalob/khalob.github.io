@@ -155,7 +155,6 @@ body {
 @media screen and (max-width: 480px) {
   html,
   body {
-	overflow: hidden;
     min-width: 320px;
   }
 }
@@ -174,6 +173,7 @@ body.is-loading *:after {
 }
 
 html {
+  overflow: hidden;
   height: 100%;
 }
 
