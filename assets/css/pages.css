@@ -87,6 +87,10 @@ a:visited {
   }
 }
 
+body{
+  overflow-y: scroll !important;
+}
+
 body.is-ie #wrapper1 {
   height: 100%;
 }
