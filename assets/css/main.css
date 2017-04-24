@@ -1031,7 +1031,8 @@ div #main3:hover {
   -ms-align-self: -ms-flex-end;
   align-self: flex-end;
   padding: 1.5em 0 0 0;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
   cursor: default;
   text-align: center;
   position: absolute;
