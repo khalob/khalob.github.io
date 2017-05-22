@@ -47,7 +47,7 @@
   }
   
   function fetchRepoLastUpdated() {
-        var repoLastUpdated = "";
+        var repoLastUpdated = "May 20, 2017";
         $.ajax({
             type: "GET",
             url: "https://api.github.com/repos/khalob/khalob.github.io",
@@ -62,7 +62,7 @@
             //On complete fail return err and set to sometime today
             failure: function(errMsg) {
                 console.log(err);
-                repoLastUpdated = "May 20, 2017"
+                repoLastUpdated = "May 20, 2017";
             }
         });
   }
