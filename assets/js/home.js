@@ -47,7 +47,7 @@
   }
   
   function fetchRepoLastUpdated() {
-        var repoLastUpdated = "May 20, 2017";
+        var repoLastUpdated = "Last updated: May 20, 2017";
         $.ajax({
             type: "GET",
             url: "https://api.github.com/repos/khalob/khalob.github.io",
@@ -57,12 +57,12 @@
 			  var wordsOfDate = repoLastUpdated.split(" ");
 			  var formmatedDate = wordsOfDate[1] + " " + wordsOfDate[2] + ", " + wordsOfDate[3]
 			  var curDateDiv = document.getElementById('curDate');
-			  curDateDiv.innerHTML = formmatedDate;
+			  curDateDiv.innerHTML = "Last updated: " + formmatedDate;
             },
             //On complete fail return err and set to sometime today
             failure: function(errMsg) {
                 console.log(err);
-                repoLastUpdated = "May 20, 2017";
+                repoLastUpdated = "Last updated: May 20, 2017";
             }
         });
   }
