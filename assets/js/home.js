@@ -45,3 +45,26 @@
 	var title = document.getElementById('titleDiv');
 	title.innerHTML = obj.children[0].getAttribute("title");
   }
+  
+  function fetchRepoLastUpdated() {
+        var repoLastUpdated = "";
+        $.ajax({
+            type: "GET",
+            url: "https://api.github.com/repos/khalob/khalob.github.io",
+            success: function(data){
+              //Retrieve the last push time to the repo for update time
+              repoLastUpdated = new Date(Date.parse(data.pushed_at)).toString();
+			  var wordsOfDate = repoLastUpdated.split(" ");
+			  var formmatedDate = wordsOfDate[1] + " " + wordsOfDate[2] + ", " + wordsOfDate[3]
+			  var curDateDiv = document.getElementById('curDate');
+			  curDateDiv.innerHTML = formmatedDate;
+            },
+            //On complete fail return err and set to sometime today
+            failure: function(errMsg) {
+                console.log(err);
+                repoLastUpdated = "May 20, 2017"
+            }
+        });
+  }
+  
+fetchRepoLastUpdated();

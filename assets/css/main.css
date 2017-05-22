@@ -179,7 +179,7 @@ html {
 
 body {
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
   background-color: #ffffff;
   background-image: -moz-linear-gradient(60deg, rgba(255, 165, 150, 0.3) 0%, rgba(228, 228, 255, 0.2)), url("../../images/bg.png");
@@ -1062,6 +1062,17 @@ div #main3:hover {
 
 
 /* Footer */
+#curDate{
+	
+	
+}
+
+#copyLeft{
+  display: inline-block;
+  transform: rotate(180deg);
+  padding-bottom: .08em;
+  padding-left: .5em;
+}
 
 #footer {
   -moz-align-self: -moz-flex-end;
@@ -1075,14 +1086,15 @@ div #main3:hover {
   text-align: center;
 }
 
-#footer .copyright {
+#footer .footerList {
+  border-left: 0;
   margin: 0;
   padding: 0;
   font-size: 0.9em;
   list-style: none;
 }
 
-#footer .copyright li {
+#footer .footerList li {
   display: inline-block;
   margin: 0 0 0 0.45em;
   padding: 0 0 0 0.85em;
@@ -1090,7 +1102,7 @@ div #main3:hover {
   line-height: 1;
 }
 
-#footer .copyright li:first-child {
+#footer .footerList li:first-child {
   border-left: 0;
 }
 
@@ -1311,6 +1323,7 @@ body.is-ie #wrapper {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 #navWrapper {
   display: -moz-flex;
