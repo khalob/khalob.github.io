@@ -1063,9 +1063,11 @@ div #main3:hover {
 #copyLeft{
   display: inline-block;
   transform: rotate(180deg);
-  padding-bottom: .08em;
-  padding-left: .5em;
+  padding-bottom: .13em;
+  font-size: 25px;
+  font-weight: 900;
 }
+
 
 #footer {
   -moz-align-self: -moz-flex-end;
