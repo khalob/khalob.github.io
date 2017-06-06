@@ -1,0 +1,56 @@
+  .myDiv {
+	position: absolute;
+	margin: 0 auto;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center;
+  }
+  
+  #scoreBoard {
+	position: relative;
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+	border: 0px;
+  }
+  
+  #crib {
+	position: relative;
+	background-color: tan;
+	background-image: url(http://khalob.github.io/images/arsho/playpen.png);
+	/* Source: http://ecx.images-amazon.com/images/I/71E9%2BVYwobL._SL1004_.jpg */
+	width: 540px;
+	height: 540px;
+	border: 20px solid #4d1a00;
+  }
+  
+  #marshmallow {
+	background-color: black;
+	background-image: url(http://khalob.github.io/images/arsho/marshmallow.jpg);
+	background-size: cover;
+	background-position: center;
+	width: 25px;
+	height: 25px;
+  }
+  
+  #cheerio {
+	background-image: url(http://khalob.github.io/images/arsho/cheerio.jpg);
+	width: 25px;
+	height: 25px;
+  }
+  
+  #arsho {
+	background-color: blue;
+	background-image: url(http://khalob.github.io/images/arsho/arsho.png);
+	width: 25px;
+	height: 25px;
+	top: 0px;
+	left: 0px;
+  }
+  
+  h1 {
+	text-align: center;
+	width: 400px;
+	position: relative;
+	margin: 0 auto;
+  }
