@@ -15,7 +15,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
 /* visited link */
 
 a:visited {
@@ -268,7 +267,7 @@ ul.icons3 li a:before {
 }
 
 ul.icons3 li a:hover {
-  border-color: #7f0000;
+  border-color: #ffffff;
   box-shadow: 2px 3px 5px white;
   top: .05em;
   left: .05em;
@@ -297,14 +296,15 @@ ul.icons3 li a:hover {
   margin-top: 2em;
 }
 
-#footer1 .copyright {
+#footer1 .footerList {
+  border-left: 0;
   margin: 0;
   padding: 0;
   font-size: 0.9em;
   list-style: none;
 }
 
-#footer1 .copyright li {
+#footer1 .footerList li {
   display: inline-block;
   margin: 0 0 0 0.45em;
   padding: 0 0 0 0.85em;
@@ -312,7 +312,7 @@ ul.icons3 li a:hover {
   line-height: 1;
 }
 
-#footer1 .copyright li:first-child {
+#footer1 .footerList li:first-child {
   border-left: 0;
 }
 
@@ -364,4 +364,68 @@ ul.icons3 li a:hover {
 #medium.input[type="radio"],
 #big.input[type="radio"] {
   z-index: -1;
+}
+
+.collapsingDiv640{
+ display: inline-flex; 
+ margin-bottom:1.5em;
+}
+
+@media screen and (max-width: 640px) {
+  .collapsingDiv640 {
+    display: block; 
+  }
+}
+
+.collapsingDiv1200{
+ display: inline-flex; 
+}
+
+
+@media screen and (max-width: 1200px) {
+  .collapsingDiv1200 {
+    display: block; 
+  }
+}
+
+.smallMarg{
+	margin-right: 2em;
+}
+
+.header{
+	font-weight: 500;
+}
+
+.textPic{
+	margin-left: 2em;
+	margin-right: 2.5em;
+	margin-top: .75em;
+	margin-bottom: 1em;
+}
+
+@media screen and (max-width: 640px) {
+  .textPic {
+    margin: 0 0 0 0;
+  }
+}
+
+.gif{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width:15em; 
+	height:15em; 
+	margin-left: 0em;
+}
+
+ .overlapImages {
+    position:relative;
+	margin: 1em 1em 1em 1em;
+ }
+
+@media screen and (max-width: 1200px) {
+  .overlapImages {
+	position:relative;
+    margin: auto !important;
+  }
 }

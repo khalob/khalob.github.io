@@ -8,6 +8,8 @@
     <!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/css/pages.css" />
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+	<!-- Google Analytics -->
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -40,25 +42,25 @@
 
           <ul class="icons3">
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon2.png);" href="http://khalob.github.io/projects/FleshFlood.html" title="Flesh Flood"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/mobiledev.png);" href="http://khalob.github.io/projects/mobiledev.html" title="Mobile Development"></a>
             </li>
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/icon1.png);" href="http://khalob.github.io/projects/SuperAsteroid.html" title="SuperAsteroid"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/alexa.png);" href="http://khalob.github.io/projects/alexa.html" title="Alexa Skill Development"></a>
             </li>
             <li onmouseover="updateTitle(this);">
               <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/javascript.png);" href="http://khalob.github.io/projects/webdev.html" title="Web Development"></a>
             </li>
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/unity.png);" href="http://khalob.github.io/projects/Unity.html" title="Unity Projects"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/unity.png);" href="http://khalob.github.io/projects/unity.html" title="Unity Projects"></a>
             </li>
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 5"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/comingsoon.png);" href="http://github.com/Khalob" title="Project 5 Coming Soon"></a>
             </li>
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 6"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/comingsoon.png);" href="http://github.com/Khalob" title="Project 6 Coming Soon"></a>
             </li>
             <li onmouseover="updateTitle(this);">
-              <a class="projectIcon" style="background-image: url(images/icon1.png);" href="http://github.com/Khalob" class="fa fa-envelope" title="Project 7"></a>
+              <a class="projectIcon" style="background-image: url(http://khalob.github.io/images/comingsoon.png);" href="http://github.com/Khalob" title="Project 7 Coming Soon"></a>
             </li>
           </ul>
 
@@ -76,67 +78,95 @@
       <!-- End of navWrapper -->
 
       <div class="mainBody">
-        <!-- <h2>Miscellaneous Free Time Projects</h2>
-		<h2><a href=""> Change </a></h2>
-		<p>
-		Info here
-		</p>
-		<br>-->
         <h2>Assignments From Computer Game Programming (COSC 439)</h2>
-		<h2><a href="http://khalob.github.io/projects/Unity/Roll-A-Ball.html">Roll-A-Ball</a></h2>
-		<p>
-		This is the first assignment we were given. 
-		It is a simple and short game that was built from following a tutorial. 
-		The main purpose of this assignment was to familiarize our class with the basic elements of Unity's game engine. 
-		The objective of the game is to collect all the spinning cubes.
-		The tutorial I followed is located <a href="https://unity3d.com/learn/tutorials/projects/roll-ball-tutorial/introduction-roll-ball">here</a>.
-		</p>
+		<h1>Mission Demolition</a></h1>
+		<div class="collapsingDiv1200">
+			<div class="overlapImages" style="width:16em; margin-top: 3.5em; margin-right: 2em;">
+				<div>
+					<img class ="" title="" style="position:relative;z-index:2;width:16em;" src="../images/phoneleft.png">
+					<img class ="gif" title="" style="margin-left: .5em;margin-top: .45em;height: 7.75em;width:13em;" src="../images/mission.gif">
+				</div>
+			</div>
+			<p>
+				The second prototype that I built and modded from Jeremy Bond's book <i>Introduction to Game Design, Prototyping, and Development: From Concept to Playable Game with Unity and C#</i>. 
+				The game has a similar playstyle to Angry Birds.
+				The player can send shots from the slingshot into the castles to eventually reach the green goal.
+				When the goal is met, a new castle spawns.
+				The player's objective is to obtain a highscore or aim to finish each castle.
+				Modifications added: each shot subtracts points, yellow floating squares give extra points, some walls are more dense than others, and unique castles.
+			</p>
+		</div>
+		<div class="collapsingDiv640">
+			<h2 class="smallMarg">
+				<div class="fa fa-gamepad"></div>
+				<a id="projectLink" href="http://khalob.github.io/projects/Unity/MissionDemolition.html">Link to Game</a>
+			</h2>
+		</div>
+		<br>
+		<hr width="50%">
+		<br>
 		
-		<h2><a href="http://khalob.github.io/projects/Unity/ApplePicker.html">Apple Picker</a></h2>
-		<p>
-		The first prototype that I built and modded from Jeremy Bond's book <i>Introduction to Game Design, Prototyping, and Development: From Concept to Playable Game with Unity and C#</i>. 
-		An apple tree drops apples worth 100 points and oranges worth 200 points. 
-		If the player doesn't catch a piece of fruit, they will lose a basket. 
-		After three baskets, the player loses.
-		The objective of the game is to get the highest score.
-		Modifications added: title screen, gameover screen, and oranges.
-		</p>
+		<h1>Space SHMUP</h1>
+		<div class="collapsingDiv1200">
+			<div class="overlapImages" style="width:16em; margin-top: 3.5em; margin-right: 2em;">
+				<div>
+					<img class ="" title="" style="position:relative;z-index:2;width:16em;" src="../images/phoneleft.png">
+					<img class ="gif" title="" style="margin-left: .5em;margin-top: .45em;height: 7.75em;width:13em;" src="../images/shmup.gif">
+				</div>
+			</div>
+			<p>
+				This is the final prototype that I built and modded from Jeremy Bond's book <i>Introduction to Game Design, Prototyping, and Development: From Concept to Playable Game with Unity and C#</i>. 
+				It is a game set in space, where the player attempts to surive for as long as possible.
+				The player can shoot the ships to obtain power-ups and use his jet to speed through enemies.
+				Modifications added: Jet speed boost, jet fuel indicator, sound effects, space ship designs, and enemies explode when they die.
+			</p>
+		</div>
+		<div class="collapsingDiv640">
+		<h2 class="smallMarg">
+			<div class="fa fa-gamepad"></div>
+			<a id="projectLink" href="http://khalob.github.io/projects/Unity/SpaceSHMUP.html">Link to Game</a>
+		</h2>
+		</div>
+		<br>
+		<hr width="50%">
+		<br>
 		
-		<h2><a href="http://khalob.github.io/projects/Unity/MissionDemolition.html">Mission Demolition</a></h2>
-		<p>
-		The second prototype that I built and modded from Jeremy Bond's book <i>Introduction to Game Design, Prototyping, and Development: From Concept to Playable Game with Unity and C#</i>. 
-		The game has a similar playstyle to Angry Birds.
-		The player can send shots from the slingshot into the castles to eventually reach the green goal.
-		When the goal is met, a new castle spawns.
-		The player's objective is to obtain a highscore or aim to finish each castle.
-		Modifications added: each shot subtracts points, yellow floating squares give extra points, some walls are more dense than others, and unique castles.
-		</p>
-		
-		<h2><a href="http://khalob.github.io/projects/Unity/SpaceSHMUP.html">Space SHMUP</a></h2>
-		<p>
-		This is the final prototype that I built and modded from Jeremy Bond's book <i>Introduction to Game Design, Prototyping, and Development: From Concept to Playable Game with Unity and C#</i>. 
-		It is a game set in space, where the player attempts to surive for as long as possible.
-		The player can shoot the ships to obtain power-ups and use his jet to speed through enemies.
-		Modifications added: Jet speed boost, jet fuel indicator, sound effects, space ship designs, and enemies explode when they die.
-		</p>
-		
-		<h2><a href="http://khalob.github.io/projects/Unity/Platformer.html">Platformer</a></h2>
-		<p>
-		The final project for this course. 
-		We had free reign over the complete design of the game.
-		Unfortunately, we only had a week to work on it, but it came to be a great game.
-		It is a platformer similar to Mario Bros.
-		The player must travel through the moving terrain and dodge enemies to ultimately get the pizza at the end of each level.
-		When the goal is met, the player proceeds to the next level.
-		The player's main objective is to obtain a all of the yellow collectables on each level, while reaching the end.
-		</p>
+		<h1>Platformer</h1>
+		<div class="collapsingDiv1200">
+			<div class="overlapImages" style="width:16em; margin-top: 3.5em; margin-right: 2em;">
+				<div>
+					<img class ="" title="" style="position:relative;z-index:2;width:16em;" src="../images/phoneleft.png">
+					<img class ="gif" title="" style="margin-left: .5em;margin-top: .55em;height: 7.75em;width:13em;" src="../images/platformer.gif">
+				</div>
+			</div>
+			<p>
+				The final project for this course. 
+				We had free reign over the complete design of the game.
+				Unfortunately, we only had a week to work on it, but it came to be a great game.
+				It is a platformer similar to Mario Bros.
+				The player must travel through the moving terrain and dodge enemies to ultimately get the pizza at the end of each level.
+				When the goal is met, the player proceeds to the next level.
+				The player's main objective is to obtain a all of the yellow collectables on each level, while reaching the end.
+			</p>
+		</div>
+		<div class="collapsingDiv640">
+		<h2 class="smallMarg">
+			<div class="fa fa-gamepad"></div>
+			<a id="projectLink" href="http://khalob.github.io/projects/Unity/Platformer.html">Link to Game</a>
+		</h2>
+		</div>
+
       </div>
 
       <!-- Footer -->
       <footer id="footer1">
-        <ul class="copyright">
-          <li>Khalob Cognata</li>
-          <li>&copy; 2016</li>
+        <ul class="footerList">
+          <li>
+			<div id="copyLeft">&copy;</div>
+		  </li>
+		  <li>
+			<div id="curDate">May 21, 2017</div>
+		  </li>
         </ul>
       </footer>
     </div>
