@@ -687,7 +687,6 @@ ul.icons2 {
   padding: 0;
   position: relative;
   min-width: 460px;
-  --min-width: 350px;
 }
 
 ul.icons2 li {
@@ -753,7 +752,6 @@ ul.icons2 li a:hover {
 
 @media screen and (max-width: 1680px) {
   ul.icons2 {
-    --min-width: 460px;
     min-width: 350px;
   }
 }
@@ -1125,7 +1123,6 @@ div #main3:hover {
   -ms-perspective: 1000px;
   perspective: 1000px;
   position: relative;
-  --max-height: 100%;
   min-height: 100%;
   max-width: 100%;
   padding: 1.5em;
@@ -1179,10 +1176,7 @@ body.is-ie #wrapper {
   top: -10em;
 }
 
-
-/* ============================================================================================================================
-	== PINCHED SPEECH BUBBLE (more CSS3) from http://nicolasgallagher.com/pure-css-speech-bubbles/demo/default.css
-	** ============================================================================================================================ */
+/* Pinched classes for speech bubble on home page */
 
 .pinched {
   position: relative;
@@ -1198,7 +1192,6 @@ body.is-ie #wrapper {
   border-radius: 10px;
 }
 
-
 /* creates a rectangle of the colour wanted for the pointy bit */
 
 .pinched:before {
@@ -1211,7 +1204,6 @@ body.is-ie #wrapper {
   margin: 0 0 0 -50px;
   background: #333;
 }
-
 
 /* creates a rounded rectangle to cover part of the rectangle generated above */
 
@@ -1228,7 +1220,6 @@ body.is-ie #wrapper {
   -moz-border-radius-bottomright: 15px;
   border-bottom-right-radius: 15px;
 }
-
 
 /* creates the other rounded rectangle */
 
@@ -1260,7 +1251,6 @@ body.is-ie #wrapper {
     right: 90px;
   }
 }
-
 
 /* Holds the whole speech bubble */
 
@@ -1309,7 +1299,6 @@ body.is-ie #wrapper {
 }
 
 .projectIcon {
-  --background-image: url("../../images/icon2.png");
   margin: 0 auto;
   overflow: hidden;
   background-size: contain;
@@ -1317,7 +1306,6 @@ body.is-ie #wrapper {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 
 #navWrapper {
   display: -moz-flex;
@@ -1341,7 +1329,6 @@ body.is-ie #wrapper {
   -ms-perspective: 1000px;
   perspective: 1000px;
   position: relative;
-  --min-height: 500px;
   min-width: 100%;
   z-index: 2;
   left: 50%;
@@ -1350,8 +1337,6 @@ body.is-ie #wrapper {
 
 #navWrapper2 {
   position: relative;
-  --max-height: 100%;
-  --min-height: 100%;
   max-width: 100%;
   padding: 6em 0 6em 0;
   z-index: 2;
