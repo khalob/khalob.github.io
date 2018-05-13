@@ -673,7 +673,7 @@ ul.icons li a:before {
 }
 
 ul.icons li a:hover {
-  border-color: #7f0000;
+  border: solid 1px #7f0000;
 }
 
 @media screen and (max-width: 480px) {
