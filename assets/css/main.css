@@ -626,6 +626,7 @@ ul.icons li {
 }
 
 ul.icons li a {
+  padding: 1px;
   text-decoration: none;
   position: relative;
   display: block;
