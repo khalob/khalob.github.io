@@ -962,7 +962,7 @@ body.is-loading #main {
   max-width: 100%;
   min-width: .25em;
   padding: .25em .25em .25em .25em;
-  margin: .25em;
+  margin: .25em .75em;
   background: #ffffff;
   border-radius: .25in;
   cursor: default;
@@ -973,7 +973,6 @@ body.is-loading #main {
   #main3 {
     min-width: .25em;
     max-width: 100%;
-    margin: 0;
   }
 }
 
