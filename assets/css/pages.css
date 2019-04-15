@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url(font-awesome.min.css);
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
 @import url("main.css");
 
 /* unvisited link */
@@ -197,11 +197,11 @@ body.is-loading .mainBody {
     max-width: 100%;
     min-width: 90%;
   }
-  
+
   .right{
 	  float: none !important;
   }
-  
+
   .left{
 	  float: none !important;
   }
@@ -365,24 +365,24 @@ ul.icons3 li a:hover {
 }
 
 .collapsingDiv640{
- display: inline-flex; 
+ display: inline-flex;
  margin-bottom:1.5em;
 }
 
 @media screen and (max-width: 640px) {
   .collapsingDiv640 {
-    display: block; 
+    display: block;
   }
 }
 
 .collapsingDiv1200{
- display: inline-flex; 
+ display: inline-flex;
 }
 
 
 @media screen and (max-width: 1200px) {
   .collapsingDiv1200 {
-    display: block; 
+    display: block;
   }
 }
 
@@ -411,8 +411,8 @@ ul.icons3 li a:hover {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width:15em; 
-	height:15em; 
+	width:15em;
+	height:15em;
 	margin-left: 0em;
 }
 
