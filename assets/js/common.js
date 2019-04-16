@@ -29,5 +29,11 @@ function fetchRepoLastUpdated() {
 		}
 	});
 }
-  
+
 fetchRepoLastUpdated();
+
+//events
+$('.page-link a').on('mouseover', function(){
+  var $title = $('#titleDiv, #pagesTitleDiv');
+  $title.text(this.getAttribute("title"));
+});

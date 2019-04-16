@@ -9,7 +9,7 @@
 	var foodTimer;
 	var food;
 	var foodDelay;
-	
+
 	//Initialize Game
 	init();
 	
@@ -27,37 +27,37 @@
 		foodDelay = 80;
 		spawnFood();
 	}
-	
+
 	function gameOver(winnerName){
 		//Stop game mechanics
-		clearInterval(mainTimer); 
-		
+		clearInterval(mainTimer);
+
 		//Clear game screen
 		setTimeout(clearScreen, 10);
-		
+
 		//Display Winner
 		setTimeout(function(){
 			displayWinner(winnerName);
 		}, 15);
-		
+
 		//Clear remaining variables
 		setTimeout(clearVariables, 2900);
-		
+
 		//Restart Game
 		setTimeout(init, 3000);
 	}
-	
+
 	function displayWinner(winnerName){
 		ctx.font="70px Georgia";
 		ctx.fillStyle = "#ffffff";
 		var textWidth = winnerName.length * 5;
 		ctx.fillText(winnerName + " wins!", 110 - textWidth, 200);
 	}
-	
+
 	function clearScreen(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
-	
+
 	function clearVariables(){
 		mainTimer = null;
 		cellSize = null;
@@ -67,11 +67,11 @@
 		canvas = null;
 		ctx = null;
 	}
-	
+
 	function pause(){
 		paused = !paused;
 	}
-	
+
 	function Cell(posX, posY) {
 	  this.x = posX;
 	  this.y = posY;
@@ -83,13 +83,13 @@
 	  this.color = color;
 	  this.name = name;
 	  var nextPos;
-		
+
 	  this.Grow = function() {
 		nextPos = getNextPos(this);
 		//push a new cell at tail.x + direction and tail.y + direction
 		this.cells.push(new Cell( (nextPos[0] * -1), (nextPos[1] * -1)));
 	  }
-	  
+
 	  //Initialize player based on size
 	  for (i = 0; i < size - 1; i++) {
 	    this.Grow();
@@ -166,7 +166,7 @@
 	    p.curDir = "UP";
 	  }
 	}
-	
+
 		function whatKeyWASD(p) {
 	  if (keys[65] && p.curDir != "RIGHT") {
 	    p.curDir = "LEFT";
@@ -188,15 +188,15 @@
 	  var curY = p.cells[0].y;
 	  var tempX;
 	  var tempY;
-		//     Self Collision                                                                          
+		//     Self Collision
 		if(collision(p.cells, nextPos[0], nextPos[1], 1)){
 			gameOver(otherP.name);
 		}
-		//      Food Collision    
+		//      Food Collision
 		if(collision(food, nextPos[0], nextPos[1], 0)){
 			eatFood(p, nextPos[0], nextPos[1]);
 		}
-		//     Other Player Collision                                                                          
+		//     Other Player Collision
 		if(collision(otherP.cells, nextPos[0], nextPos[1], 0)){
 			gameOver(otherP.name);
 			return -1;
@@ -216,7 +216,7 @@
 	      curY = tempY;
 	    }
 	}
-	
+
 	function collision(array, checkX, checkY, startNum){
 		for (i = startNum; i < array.length; i++) {
 			if(array[i].x == checkX && array[i].y == checkY ){
@@ -248,7 +248,7 @@
 	  }else if(nextCellX < 0){
 		  nextCellX = canvas.width;
 	  }
-	  
+
 	  if(nextCellY >= canvas.height){
 		  nextCellY = 0;
 	  }else if(nextCellY < 0){
@@ -256,24 +256,24 @@
 	  }
 	  return [nextCellX, nextCellY];
 	}
-	
+
 	function spawnFood(){
 		var x = Math.floor((Math.random() * (canvas.width/cellSize[0]))) * cellSize[0];
 		var y = Math.floor((Math.random() * (canvas.width/cellSize[1]))) * cellSize[1];
 		food.push(new Cell(x, y));
 	}
-	
+
 	function eatFood(p, x, y){
 		for(i=0; i<food.length; i++){
 			if(food[i].x == x && food[i].y == y){
 				//remove one item at food[i]
-				
+
 				food.splice(i,1);
 			}
 		}
 		p.Grow();
 	}
-	
+
 	function addFoodTimer(){
 		if(foodTimer<foodDelay){
 			foodTimer++;
