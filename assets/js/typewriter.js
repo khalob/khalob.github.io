@@ -98,10 +98,12 @@ var nouns = [
 var textToAnimation = generateTextToAnimate("Hello I'm...", nouns, 3, " Khalob.");
 var animatedElement = $("#homepage-title");
 var opt = {
-  startingDelay: 300,
+  startingDelay: 1500,
   tickAmount: 90,
   ticketTolerance: 15,
   pauseAmount: 2000
 };
 
-animateTyping(animatedElement, textToAnimation, opt);
+$( window ).on( "load", function() {
+  animateTyping(animatedElement, textToAnimation, opt);
+});
