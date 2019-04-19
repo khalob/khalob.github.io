@@ -884,10 +884,13 @@ button:disabled,
 /* Main */
 
 #main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   position: relative;
-  max-width: 100%;
-  min-width: 400px;
-  padding: 4.5em 3em 3em 3em;
+  width: 500px;
+  height: 320px;
+  padding: 1em 2em 2em 2em;
   background: #ffffff;
   border-radius: .5in;
   cursor: default;
@@ -934,6 +937,7 @@ button:disabled,
 
 @media screen and (max-width: 480px) {
   #main {
+    height: 230px;
     min-width: 300px;
     max-width: 80%;
     padding: 2em 1em 1.5em 1em;
@@ -974,6 +978,9 @@ body.is-loading #main {
     min-width: .25em;
     max-width: 100%;
   }
+  #main #homepage-title {
+    font-size: 24px;
+  }
 }
 
 div.closed #main3 {
@@ -991,6 +998,9 @@ div #main3:hover {
 
 
 /* Header */
+#title-wrapper {
+  font-size: 32px;
+}
 
 #projWrapper {
   -moz-align-self: -moz-flex-end;
@@ -1011,16 +1021,8 @@ div #main3:hover {
 
 #projWrapper.closed {
 	opacity: 1;
-	top: -90px;
+	top: -28%;
 	transition: top 1s ease;
-}
-
-@media screen and (max-width: 480px) {
-  #projWrapper {
-    top: 0%;
-    margin-top: -5%;
-    top: -47px;
-  }
 }
 
 #titleDiv {
@@ -1034,19 +1036,16 @@ div #main3:hover {
   cursor: default;
   text-align: center;
   position: absolute;
-  top: -200px;
-}
-
-#homepage-title {
-  font-size: 24px;
-  max-width: 400px;
-  margin-bottom: 8%;
+  top: -10.5em;
 }
 
 #homepage-title {
   font-size: 32px;
+  max-width: 400px;
+  margin: 0;
   position: relative;
 }
+
 #homepage-title::after {
   content: '|';
   transform: translate3d(0, -5%, 0);
@@ -1054,8 +1053,7 @@ div #main3:hover {
   animation: blink .75s 0s infinite;
 }
 
-.typing::after {
-  content: '';
+#homepage-title.typing::after {
   animation: none;
 }
 
@@ -1072,6 +1070,17 @@ div #main3:hover {
         opacity: 0;
     }
 }
+
+.homepage .icons {
+  vertical-align: bottom;
+  margin: 0;
+  margin-top: auto;
+}
+
+.homepage header {
+  margin-top: auto;
+}
+
 
 /* Title */
 
@@ -1096,9 +1105,8 @@ div #main3:hover {
 #copyLeft{
   display: inline-block;
   transform: rotate(180deg);
-  padding-bottom: .13em;
-  font-size: 25px;
-  font-weight: 900;
+  font-size: 24px;
+  vertical-align: middle;
 }
 
 
@@ -1128,6 +1136,7 @@ div #main3:hover {
   padding: 0 0 0 0.85em;
   border-left: solid 1px rgba(255, 255, 255, 0.5);
   line-height: 1;
+  vertical-align: middle;
 }
 
 #footer .footerList li:first-child {
@@ -1292,8 +1301,8 @@ body.is-ie #wrapper {
 
 .bubbleWrapper {
   position: absolute;
-  top: 12em;
-  left: 10.2em;
+  top: 14.5em;
+  left: 10.4em;
   max-height: 1000px;
   overflow: hidden;
   max-width: 400px;
@@ -1305,15 +1314,22 @@ body.is-ie #wrapper {
 
 @media screen and (max-width: 1680px) {
   .bubbleWrapper {
-    top: 12em;
-    left: 7.8em;
+    top: 19.2em;
+    left: 11.2em;
+  }
+
+  #projWrapper.closed {
+    top: -22%;
   }
 }
 
 @media screen and (max-width: 480px) {
   .bubbleWrapper {
-    top: 11.2em;
-    left: -3.5em;
+    top: 15.5em;
+    left: -3.8em;
+  }
+  #projWrapper.closed {
+    top: -28%;
   }
 }
 
