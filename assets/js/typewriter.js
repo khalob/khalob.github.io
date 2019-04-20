@@ -32,7 +32,9 @@ function animateTyping(element, sentence, options) {
       letters = sentence.split("");
 
   //Prevent text curor's flashing animation
-  element.addClass("typing");
+  setTimeout(function() {
+    element.addClass("typing");
+  }, delay);
 
   while (count < sentence.length) {
     //Get Letter
