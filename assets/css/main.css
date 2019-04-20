@@ -1104,11 +1104,15 @@ div #main3:hover {
 
 #copyLeft{
   display: inline-block;
+  margin: 0 .25em 0 0;
   transform: rotate(180deg);
   font-size: 24px;
   vertical-align: middle;
 }
 
+#curDate{
+  margin: 0 0 0 .45em;
+}
 
 #footer {
   -moz-align-self: -moz-flex-end;
@@ -1132,8 +1136,6 @@ div #main3:hover {
 
 #footer .footerList li {
   display: inline-block;
-  margin: 0 0 0 0.45em;
-  padding: 0 0 0 0.85em;
   border-left: solid 1px rgba(255, 255, 255, 0.5);
   line-height: 1;
   vertical-align: middle;
