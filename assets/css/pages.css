@@ -428,3 +428,35 @@ ul.icons3 li a:hover {
     margin: auto !important;
   }
 }
+
+.resume-wrapper {
+  background: #525659;
+  border-radius: 20px;
+  padding: 60px 0;
+  margin-top: 1em;
+}
+
+.resume {
+  height: 1100px;
+  width: 850px;
+}
+
+.below-desktop {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .resume-wrapper {
+    display: none;
+  }
+  p.below-desktop {
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+    text-indent: 0;
+  }
+}
+
+.center-dl {
+  margin-top: 20px;
+}
