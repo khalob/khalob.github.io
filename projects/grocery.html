@@ -19,13 +19,27 @@
 	  ga('create', 'UA-88900400-1', 'auto');
 	  ga('send', 'pageview');
 	</script>
-	
+
 	<!-- Firebase UI -->
 	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   </head>
 
   <body class="is-loading">
+
+	<div class="account-wrapper">
+		<div id="account-info">
+			<img class="account-image" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+
+			<div class="account-flyout">
+				<div class="account-name"></div>
+				<div class="account-email"></div>
+				<button type="button" id="sign-out">Sign Out</button>
+			</div>
+		</div>
+		<button type="button" id="sign-in">Sign In</button>
+	</div>
+
     <!-- Wrapper -->
     <div id="wrapper1">
       <!-- navWrapper -->
@@ -44,7 +58,6 @@
 
           <ul class="icons3">
             <li class="page-link">
-              <div id="firebaseui-auth-container"></div>
             </li>
           </ul>
 
@@ -86,14 +99,14 @@
     <!-- Scripts -->
     <script type="text/javascript" src="../assets/js/jquery-3.4.0.min.js"></script>
     <script async defer type="text/javascript" src="../assets/js/common.min.js"></script>
-	
+
 	<!-- Firebase start -->
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 
 		<!-- Add Firebase products that you want to use -->
 		<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-		
+
 		<script>
 		  // Your web app's Firebase configuration
 		  var firebaseConfig = {
@@ -108,7 +121,7 @@
 		  // Initialize Firebase
 		  firebase.initializeApp(firebaseConfig);
 		</script>
-		
+
 		<script type="text/javascript" src="../assets/js/firebase-login.js"></script>
 	<!-- Firebase end -->
   </body>
