@@ -44,10 +44,14 @@ $('body').on('click', '#sign-in', function () {
 });
 
 $('body').on('user-sign-in', function () {
-	$('body').addClass('.logged-in');
+	$('body').addClass('logged-in');
 
 	firebase.database().ref('/lists').once('value').then(function(snapshot) {
 		var lists = snapshot.val();
 		generateListHTML(lists['grocery']);
 	});
+});
+
+$('body').on('click', '#show-add-form', function () {
+	$('#add-item-modal').modal('show');
 });
