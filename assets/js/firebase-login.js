@@ -37,10 +37,10 @@ $('body').on('click', '#sign-in', function () {
 });
 
 $('body').on('user-sign-in', function () {
-	$('.guests-only').hide();
-	$('.users-only').show();
-	
+	$('body').addClass('.logged-in');
+
 	return firebase.database().ref('/lists').once('value').then(function(snapshot) {
+		var test = 1;
 	  // var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
 	  // ...
 	});

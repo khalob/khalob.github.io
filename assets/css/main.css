@@ -1403,3 +1403,11 @@ body.is-ie #wrapper {
 .users-only {
   display: none;
 }
+
+.logged-in .users-only {
+  display: block;
+}
+
+.logged-in .guests-only {
+  display: none;
+}
