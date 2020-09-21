@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(font-awesome.min.css);
+@import url(bootstrap.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
 @import url("main.min.css");
 
@@ -515,5 +516,36 @@ ul.icons3 li a:hover {
 }
 
 .account-email {
+  margin-bottom: 10px;
+}
+
+a.btn {
+  color: lightseagreen;
+}
+
+.ft-sz-60 {
+  font-size: 60px;
+}
+
+#show-add-form {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  width: 2em;
+  height: 2em;
+}
+
+#show-add-form i {
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+}
+
+#show-add-form .fa-plus-circle {
+  color: lightseagreen;
+}
+
+#add-item input {
   margin-bottom: 10px;
 }

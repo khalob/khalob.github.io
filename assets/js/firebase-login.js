@@ -10,6 +10,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		// User is signed in.
 		showAccount(user.providerData[0]);
+		$('body').trigger('user-sign-in');
 	} else {
 		// User is signed out.
 		$('#account-info').hide();
@@ -26,10 +27,21 @@ $('body').on('click', '#sign-in', function () {
 	firebase.auth().signInWithPopup(provider).then(function(result) {
 	  var user = result.user;
 	  showAccount(user.providerData[0]);
+	  $('body').trigger('user-sign-in');
 	}).catch(function(error) {
 	  // Handle Errors here.
 	  var errorCode = error.code;
 	  var errorMessage = error.message;
 		alert(errorMessage);
+	});
+});
+
+$('body').on('user-sign-in', function () {
+	$('.guests-only').hide();
+	$('.users-only').show();
+	
+	return firebase.database().ref('/lists').once('value').then(function(snapshot) {
+	  // var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+	  // ...
 	});
 });
