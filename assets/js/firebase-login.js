@@ -69,12 +69,12 @@ $('body').on('submit', 'form#add-item', function () {
 			itemName += ' (DF)';
 		}
 
-	  firebase.database().ref('/lists/grocery/' + itemName).setValue({
+	  firebase.database().ref('/lists/grocery/' + itemName).set({
 			quantity: $(this).find('#quantity').val(),
 			enabled: "true"
 	  });
 
-		firebase.database().ref('/foods/' + itemName).setValue({
+		firebase.database().ref('/foods/' + itemName).set({
 			type: parseUserData($(this).find('#category').val()),
 			brand: parseUserData($(this).find('#brand').val())
 	  });
