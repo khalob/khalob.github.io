@@ -16,7 +16,7 @@ function generateListHTML(list) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
-		var $closeButton = '<button type="button" class="remove-item"><span>×</span></button>';
+		var $closeButton = '<button type="button" class="remove-item">×</button>';
 		var $toggleButton = '<label class="toggle-item"></label>';
 		var $itemName = '';
 		var $quantity = '';
