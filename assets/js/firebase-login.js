@@ -35,14 +35,14 @@ function generateListHTML(list) {
 	}
 }
 
-function prepareEditModal(item) {
-	var isDF = item.name.contains('(DF)');
-	var itemName = item.name.replace(' (DF)', '');
-	$('form#add-item .modal-title').text('Edit ' + item.name);
+function prepareEditModal(item, itemName, itemQuantity) {
+	var isDF = itemName.contains('(DF)');
+	var itemName = itemName.replace(' (DF)', '');
+	$('form#add-item .modal-title').text('Edit ' + itemName);
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
 	$form.find('#brand').val(item.brand ? item.brand : '');
-	$form.find('#quantity').val(item.quantity);
+	$form.find('#quantity').val(itemQuantity);
 	$form.find('#category').val(item.type);
 	$form.find('#df').val(isDF);
 }
@@ -83,6 +83,7 @@ $('body').on('user-sign-in', function () {
 });
 
 $('body').on('click', '#show-add-form', function () {
+	$('form#add-item .modal-title').text('Add Item');
 	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
@@ -129,10 +130,11 @@ $('body').on('click', '.toggle-item', function (e) {
 // Trigger edit item modal
 $('body').on('click', '.list-item', function () {
 	var itemName = $(this).data('name');
+	var itemQuantity = $(this).find('.quantity').text();
 	firebase.database().ref('/foods/' + itemName).once('value', function(snapshot) {
 		$('form#add-item').trigger('reset');
 		var itemData = snapshot.val();
-		prepareEditModal(itemData);
+		prepareEditModal(itemData, itemName, itemQuantity);
 		$('#add-item-modal').modal('show');
 	});
 
