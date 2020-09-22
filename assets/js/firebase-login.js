@@ -91,8 +91,8 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 $('body').on('click', '.remove-item', function (e) {
 	var itemName = $(this).parent().data('name');
-	firebase.database().ref('/lists/grocery/' + itemName).set();
-	firebase.database().ref('/foods/' + itemName).set();
+	firebase.database().ref('/lists/grocery/' + itemName).set(null);
+	firebase.database().ref('/foods/' + itemName).set(null);
 	e.stopPropagation();
 });
 
