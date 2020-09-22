@@ -14,10 +14,11 @@ function parseUserData(userData) {
 
 function generateListHTML(list) {
 	if (list) {
+		$('.list-wrapper').empty();
 		var HTML = '';
-		var closeButton = '<button type="button" class="close"><span>×</span></button>';
+		var closeButton = '<button type="button" class="remove-item"><span>×</span></button>';
 		for (var item in list) {
-			HTML += '<div data-enabled="' + item.enabled + '">' + item + closeButton +'</div>';
+			HTML += '<div class="list-item" data-enabled="' + item.enabled + '" data-name="'+ item + '">' + item + closeButton +'</div>';
 		}
 
 		$('.list-wrapper').prepend(HTML);
@@ -53,7 +54,7 @@ $('body').on('click', '#sign-in', function () {
 $('body').on('user-sign-in', function () {
 	$('body').addClass('logged-in');
 
-	firebase.database().ref('/lists').once('value').then(function(snapshot) {
+	firebase.database().ref('/lists').on('value', function(snapshot) {
 		var lists = snapshot.val();
 		generateListHTML(lists['grocery']);
 	});
@@ -81,4 +82,18 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 		$('#add-item-modal').modal('hide');
 		e.preventDefault();
+});
+
+$('body').on('click', '.remove-item', function () {
+	var itemName = $(this).parent().data('name');
+	firebase.database().ref('/lists/grocery/' + itemName).set(null);
+	return;
+});
+
+$('body').on('click', '.list-item', function () {
+	var itemName = $(this).data('name');
+	var currentStatus = $(this).data('enabled');
+	firebase.database().ref('/lists/grocery/' + itemName).update({
+		"/enabled": (!currentStatus).toString()
+	});
 });
