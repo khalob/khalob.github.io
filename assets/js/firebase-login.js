@@ -89,14 +89,11 @@ $('body').on('submit', 'form#add-item', function (e) {
 		e.preventDefault();
 });
 
-$('body').on('click', '.remove-item', function () {
+$('body').on('click', '.remove-item', function (e) {
 	var itemName = $(this).parent().data('name');
-	var groceryItem = firebase.database().ref('/lists/grocery/' + itemName);
-	var foodItem = firebase.database().ref('/foods/' + itemName);
-
-	groceryItem.remove();
-	foodItem.remove();
-	return;
+	firebase.database().ref('/lists/grocery/' + itemName).set();
+	firebase.database().ref('/foods/' + itemName).set();
+	e.stopPropagation();
 });
 
 $('body').on('click', '.list-item', function () {
