@@ -23,12 +23,12 @@ function generateListHTML(list) {
 		for (var item in list) {
 			$itemName = '<span class="item-name">' + item + '</span>';
 			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
-			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-item="'+ JSON.stringify(list[item]) + '">' +
-			 					$toggleButton +
-								$itemName +
-								$quantity +
-								$closeButton +
-							'</div>';
+			HTML += `<div class="list-item" data-enabled="${list[item].enabled}" data-name="${item}" >
+			 					${$toggleButton}
+								${$itemName}
+								${$quantity}
+								${$closeButton}
+							</div>`;
 		}
 
 		$('.list-wrapper').prepend(HTML);
@@ -119,7 +119,7 @@ $('body').on('click', '.remove-item', function (e) {
 $('body').on('click', '.toggle-item', function (e) {
 	e.stopPropagation();
 	var $item = $(this).parent();
-	var itemName = $item.data('item').name;
+	var itemName = $item.data('name');
 	var currentStatus = $item.data('enabled');
 	firebase.database().ref('/lists/grocery/' + itemName).update({
 		"/enabled": (!currentStatus).toString()
@@ -128,8 +128,12 @@ $('body').on('click', '.toggle-item', function (e) {
 
 // Trigger edit item modal
 $('body').on('click', '.list-item', function () {
-	$('form#add-item').trigger('reset');
-	var itemData = $(this).data('item');
-	prepareEditModal(itemData);
-	$('#add-item-modal').modal('show');
+	var itemName = $(this).data('name');
+	firebase.database().ref('/foods/' + itemName).once('value', function(snapshot) {
+		$('form#add-item').trigger('reset');
+		var itemData = snapshot.val();
+		prepareEditModal(itemData);
+		$('#add-item-modal').modal('show');
+	});
+
 });
