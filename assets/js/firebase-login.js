@@ -63,7 +63,7 @@ $('body').on('click', '#show-add-form', function () {
 	$('#add-item-modal').modal('show');
 });
 
-$('body').on('submit', 'form#add-item', function () {
+$('body').on('submit', 'form#add-item', function (e) {
 		var itemName = parseUserData($(this).find('#item-name').val());
 		if ($('#df').is(':checked')) {
 			itemName += ' (DF)';
@@ -80,4 +80,5 @@ $('body').on('submit', 'form#add-item', function () {
 	  });
 
 		$('#add-item-modal').modal('hide');
+		e.preventDefault();
 });
