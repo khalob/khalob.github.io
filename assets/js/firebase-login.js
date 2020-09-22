@@ -17,16 +17,34 @@ function generateListHTML(list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
 		var $closeButton = '<button type="button" class="remove-item"><span>×</span></button>';
+		var $toggleButton = '<label class="toggle-item"></label>';
 		var $itemName = '';
 		var $quantity = '';
 		for (var item in list) {
 			$itemName = '<span class="item-name">' + item + '</span>';
 			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
-			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-name="'+ item + '">' + $itemName  + $quantity + $closeButton +'</div>';
+			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-item="'+ list[item] + '">' +
+			 					$toggleButton +
+								$itemName +
+								$quantity +
+								$closeButton +
+							'</div>';
 		}
 
 		$('.list-wrapper').prepend(HTML);
 	}
+}
+
+function prepareEditModal(item) {
+	var isDF = item.name.contains('(DF)');
+	var itemName = item.name.replace(' (DF)', '');
+	$('form#add-item .modal-title').text('Edit ' + item.name);
+	var $form = $('form#add-item');
+	$form.find('#item-name').val(itemName);
+	$form.find('#brand').val(item.brand ? item.brand : '');
+	$form.find('#quantity').val(item.quantity);
+	$form.find('#category').val(item.type);
+	$form.find('#df').val(isDF);
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -65,6 +83,7 @@ $('body').on('user-sign-in', function () {
 });
 
 $('body').on('click', '#show-add-form', function () {
+	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
 
@@ -85,21 +104,32 @@ $('body').on('submit', 'form#add-item', function (e) {
 	  });
 
 		$('#add-item-modal').modal('hide');
-		$('form#add-item').trigger("reset");
 		e.preventDefault();
 });
 
+// Remove item from list
 $('body').on('click', '.remove-item', function (e) {
+	e.stopPropagation();
 	var itemName = $(this).parent().data('name');
 	firebase.database().ref('/lists/grocery/' + itemName).set(null);
 	firebase.database().ref('/foods/' + itemName).set(null);
-	e.stopPropagation();
 });
 
-$('body').on('click', '.list-item', function () {
-	var itemName = $(this).data('name');
-	var currentStatus = $(this).data('enabled');
+// Update enabled/disabled status
+$('body').on('click', '.toggle-item', function (e) {
+	e.stopPropagation();
+	var $item = $(this).parent();
+	var itemName = $item.data('item').name;
+	var currentStatus = $item.data('enabled');
 	firebase.database().ref('/lists/grocery/' + itemName).update({
 		"/enabled": (!currentStatus).toString()
 	});
+});
+
+// Trigger edit item modal
+$('body').on('click', '.list-item', function () {
+	$('form#add-item').trigger('reset');
+	var itemData = $(this).data('item');
+	prepareEditModal(itemData);
+	$('#add-item-modal').modal('show');
 });
