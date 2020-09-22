@@ -85,6 +85,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 	  });
 
 		$('#add-item-modal').modal('hide');
+		$('form#add-item').trigger("reset");
 		e.preventDefault();
 });
 
