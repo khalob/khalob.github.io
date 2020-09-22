@@ -596,6 +596,7 @@ a.btn {
   width: 20px;
   line-height: 1;
   padding: 0;
+  border: none;
 }
 
 .toggle-item {
@@ -605,6 +606,7 @@ a.btn {
   margin-left: 20px;
   margin-right: auto;
   position: relative;
+  cursor: pointer;
 }
 
 .quantity {
