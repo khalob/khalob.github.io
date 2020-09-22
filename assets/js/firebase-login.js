@@ -36,7 +36,7 @@ function generateListHTML(list) {
 }
 
 function prepareEditModal(item, itemName, itemQuantity) {
-	var isDF = itemName.contains('(DF)');
+	var isDF = itemName.endsWith(' (DF)');
 	var itemName = itemName.replace(' (DF)', '');
 	$('form#add-item .modal-title').text('Edit ' + itemName);
 	var $form = $('form#add-item');
