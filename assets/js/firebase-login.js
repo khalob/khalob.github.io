@@ -6,11 +6,18 @@ function showAccount(userData) {
 	$('#account-info').show();
 }
 
+function parseUserData(userData) {
+	var str = userData && userData.toString ? userData.toString() : '';
+	var data = str.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+	return data.trim ? data.trim() : data;
+}
+
 function generateListHTML(list) {
 	if (list) {
 		var HTML = '';
+		var closeButton = '<button type="button" class="close"><span>×</span></button>';
 		for (var item in list) {
-			HTML += '<div>' + item + '</div>';
+			HTML += '<div data-enabled="' + item.enabled + '">' + item + closeButton +'</div>';
 		}
 
 		$('.list-wrapper').prepend(HTML);
@@ -54,4 +61,23 @@ $('body').on('user-sign-in', function () {
 
 $('body').on('click', '#show-add-form', function () {
 	$('#add-item-modal').modal('show');
+});
+
+$('body').on('submit', 'form#add-item', function () {
+		var itemName = parseUserData($(this).find('#item-name').val());
+		if ($('#df').is(':checked')) {
+			itemName += ' (DF)';
+		}
+
+	  firebase.database().ref('/lists/grocery/' + itemName).setValue({
+			quantity: $(this).find('#quantity').val(),
+			enabled: "true"
+	  });
+
+		firebase.database().ref('/foods/' + itemName).setValue({
+			type: parseUserData($(this).find('#category').val()),
+			brand: parseUserData($(this).find('#brand').val())
+	  });
+
+		$('#add-item-modal').modal('hide');
 });
