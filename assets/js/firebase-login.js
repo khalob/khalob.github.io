@@ -16,9 +16,13 @@ function generateListHTML(list) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
-		var closeButton = '<button type="button" class="remove-item"><span>×</span></button>';
+		var $closeButton = '<button type="button" class="remove-item"><span>×</span></button>';
+		var $itemName = '';
+		var $quantity = '';
 		for (var item in list) {
-			HTML += '<div class="list-item" data-enabled="' + item.enabled + '" data-name="'+ item + '">' + item + closeButton +'</div>';
+			$itemName = '<span class="item-name">' + item + '</span>';
+			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
+			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-name="'+ item + '">' + $itemName  + $quantity + $closeButton +'</div>';
 		}
 
 		$('.list-wrapper').prepend(HTML);
