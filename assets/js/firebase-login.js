@@ -23,7 +23,7 @@ function generateListHTML(list) {
 		for (var item in list) {
 			$itemName = '<span class="item-name">' + item + '</span>';
 			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
-			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-item="'+ list[item] + '">' +
+			HTML += '<div class="list-item" data-enabled="' + list[item].enabled + '" data-item="'+ JSON.stringify(list[item]) + '">' +
 			 					$toggleButton +
 								$itemName +
 								$quantity +
