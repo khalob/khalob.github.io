@@ -556,6 +556,8 @@ a.btn {
   justify-content: center;
   align-items: center;
   background: lightblue;
+  margin: 5px 0;
+  border-radius: 5px;
 }
 
 .list-item[data-enabled="false"] {
