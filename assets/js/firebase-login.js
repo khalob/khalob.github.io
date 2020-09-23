@@ -38,7 +38,7 @@ function generateListHTML(list) {
 function prepareEditModal(item, itemName, itemQuantity) {
 	var isDF = itemName.endsWith(' (DF)');
 	var itemName = itemName.replace(' (DF)', '');
-	$('form#add-item .modal-title').text('Edit ' + itemName);
+	$('#add-item-modal .modal-title').text('Edit ' + itemName);
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
 	$form.find('#brand').val(item.brand ? item.brand : '');
@@ -83,7 +83,7 @@ $('body').on('user-sign-in', function () {
 });
 
 $('body').on('click', '#show-add-form', function () {
-	$('form#add-item .modal-title').text('Add Item');
+	$('#add-item-modal .modal-title').text('Add Item');
 	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
