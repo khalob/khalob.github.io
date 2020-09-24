@@ -564,6 +564,7 @@ a.btn {
   background: lightblue;
   margin: 5px 0;
   border-radius: 5px;
+  letter-spacing: .1em;
 }
 
 .list-item[data-enabled="false"] {
