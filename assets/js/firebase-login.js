@@ -41,6 +41,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$('#add-item-modal .modal-title').text('Edit ' + itemName);
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
+	$form.find('#item-name').attr('readonly', 'true')
 	$form.find('#brand').val(item.brand ? item.brand : '');
 	$form.find('#quantity').val(itemQuantity);
 	$form.find('#category').val(item.type);
@@ -84,6 +85,7 @@ $('body').on('user-sign-in', function () {
 
 $('body').on('click', '#show-add-form', function () {
 	$('#add-item-modal .modal-title').text('Add Item');
+	$('form#add-item #item-name').removeAttr('readonly');
 	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
@@ -137,5 +139,13 @@ $('body').on('click', '.list-item', function () {
 		prepareEditModal(itemData, itemName, itemQuantity);
 		$('#add-item-modal').modal('show');
 	});
+});
 
+$('.search-field').on('change', function () {\
+	var searchValue = $(this).val();
+	if (searchValue && searchValue !== '') {
+		var $searchResults = $('.list-item:icontains(' + searchValue + ')');
+		$('.list-item').hide();
+		$searchResults.show();
+	}
 });

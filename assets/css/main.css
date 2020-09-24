@@ -1411,3 +1411,8 @@ body.is-ie #wrapper {
 .logged-in .guests-only {
   display: none;
 }
+
+input[readonly] {
+  background: $gainsboro;
+  cursor: not-allowed;
+}

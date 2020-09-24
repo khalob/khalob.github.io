@@ -36,3 +36,8 @@ $('.page-link a').on('mouseover', function(){
   var $title = $('#titleDiv, #pagesTitleDiv');
   $title.text(this.getAttribute('title'));
 });
+
+jQuery.expr[':'].icontains = function(a, i, m) {
+  return jQuery(a).text().toUpperCase()
+      .indexOf(m[3].toUpperCase()) >= 0;
+};
