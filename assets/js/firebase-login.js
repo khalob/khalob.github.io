@@ -141,11 +141,13 @@ $('body').on('click', '.list-item', function () {
 	});
 });
 
-$('.search-field').on('change', function () {
+$('.search-field').on('input', function () {
 	var searchValue = $(this).val();
 	if (searchValue && searchValue !== '') {
 		var $searchResults = $('.list-item:icontains(' + searchValue + ')');
 		$('.list-item').hide();
 		$searchResults.show();
+	} else {
+		$('.list-item').show();
 	}
 });
