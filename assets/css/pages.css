@@ -565,6 +565,7 @@ a.btn {
   margin: 5px 0;
   border-radius: 5px;
   letter-spacing: .1em;
+  height: 40px;
 }
 
 .list-item[data-enabled="false"] {
@@ -606,7 +607,7 @@ a.btn {
 
 .remove-item {
   margin-left: auto;
-  margin-right: 1%;
+  margin-right: min(3%, 20px);
   height: 20px;
   width: 20px;
   line-height: 1;
@@ -620,7 +621,7 @@ a.btn {
   height: 20px;
   width: 20px;
   background: white;
-  margin-left: 1%;
+  margin-left: min(3%, 20px);
   margin-right: auto;
   position: relative;
   cursor: pointer;
@@ -635,4 +636,5 @@ a.btn {
 .search-field {
   height: 30px;
   margin-bottom: 20px;
+  font-size: 16px;
 }
