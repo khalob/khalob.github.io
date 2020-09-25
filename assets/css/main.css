@@ -151,6 +151,10 @@ body {
 
 
 /* Basic */
+html,
+body {
+  height: 100%;
+}
 
 @media screen and (max-width: 480px) {
   html,
