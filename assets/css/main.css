@@ -174,12 +174,12 @@ body.is-loading *:after {
 
 html {
   overflow: hidden;
-  height: 100%;
+  height: 100vh;
 }
 
 body {
-  height: 100%;
-  /* overflow-y: scroll; */
+  height: 100vh;
+  overflow-y: scroll;
   overflow-x: hidden;
   overscroll-behavior: none;
   background-color: #ffffff;
