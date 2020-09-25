@@ -173,14 +173,12 @@ body.is-loading *:after {
 }
 
 html {
-  overflow: hidden;
   height: 100vh;
+  overscroll-behavior: none;
 }
 
 body {
   height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
   overscroll-behavior: none;
   background-color: #ffffff;
   background-image: -moz-linear-gradient(60deg, rgba(255, 165, 150, 0.3) 0%, rgba(228, 228, 255, 0.2)), url("../../images/bg.png");
