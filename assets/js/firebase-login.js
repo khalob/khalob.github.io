@@ -31,8 +31,35 @@ function generateListHTML(list) {
 							</div>`;
 		}
 
-		$('.list-wrapper').prepend(HTML);
+		$('.list-wrapper').html(HTML);
 	}
+}
+
+function generateTagFilterHTML(tags) {
+	if (tags) {
+		$('.tag-filters').empty();
+		var HTML = '';
+		var quantity = 0;
+		for (var tagName in tags) {
+			quantity = Object.keys(tags[tagName]).length;
+			HTML += `<span class="tag-filter" style="background-color: #${strToRGB(tagName)};" data-value="${tagName}">${tagName} (${quantity})</span>`;
+		}
+
+		$('.tag-filters').html(HTML);
+	}
+}
+
+function strToRGB(str) {
+		var hash = 0;
+		for (var i = 0; i < str.length; i++) {
+			 hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+
+    var c = (hash & 0x00FFFFFF)
+        .toString(16)
+        .toUpperCase();
+
+    return "00000".substring(0, 6 - c.length) + c;
 }
 
 function prepareEditModal(item, itemName, itemQuantity) {
@@ -80,6 +107,11 @@ $('body').on('user-sign-in', function () {
 	firebase.database().ref('/lists').on('value', function(snapshot) {
 		var lists = snapshot.val();
 		generateListHTML(lists['grocery']);
+	});
+
+	firebase.database().ref('/tags').on('value', function(snapshot) {
+		var tags = snapshot.val();
+		generateTagFilterHTML(tags);
 	});
 });
 
@@ -165,7 +197,7 @@ $('body').on('click', '.list-item', function () {
 $('.search-field').on('input', function () {
 	var searchValue = $(this).val();
 	if (searchValue && searchValue !== '') {
-		var $searchResults = $('.list-item:icontains(' + searchValue + ')');
+		var $searchResults = $('.list-item:visible:icontains(' + searchValue + ')');
 		$('.list-item').hide();
 		$searchResults.show();
 	} else {
@@ -187,4 +219,22 @@ $('body').on('click', '.tag-remove', function () {
 
 $('body').on('reset', 'form#add-item', function () {
 	$('.item-tags').html('');
+});
+
+$('.tag-filter-toggle').on('click', function () {
+	$('.tag-filters').slideToggle();
+	$(this).toggleClass('open');
+});
+
+$('body').on('click', '.tag-filter', function () {
+	$(this).toggleClass('active');
+	var tagValue = $(this).data('value');
+
+	if (tagValue && tagValue !== '') {
+		//var $searchResults = $('.list-item:visible TODO tags');
+		//$('.list-item').hide();
+		//$searchResults.show();
+	} else {
+		$('.list-item').show();
+	}
 });

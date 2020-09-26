@@ -681,3 +681,18 @@ a.btn {
   font-weight: bold;
   font-size: 17px;
 }
+
+.tag-filter-toggle::after {
+  content: '\f107';
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: normal;
+  margin-left: 10px;
+}
+
+.tag-filter-toggle.open::after {
+  transform: rotate(180deg);
+}
