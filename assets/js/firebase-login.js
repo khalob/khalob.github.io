@@ -103,7 +103,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 		    tags.push(tagValue);
 
 				firebase.database().ref('/tags/' + tagValue).set({
-					isOnline: true
+					[itemName]: true
 				});
 		});
 
@@ -128,6 +128,13 @@ $('body').on('click', '.remove-item', function (e) {
 	var itemName = $(this).parent().data('name');
 	firebase.database().ref('/lists/grocery/' + itemName).set(null);
 	firebase.database().ref('/foods/' + itemName).set(null);
+
+	// delete itemName from each attached tag
+	firebase.database().ref('/tags/').on('value', function(snapshot) {
+		snapshot.forEach(function(child) {
+	    child.ref('/' + itemName).set(null);
+	  });
+	});
 });
 
 // Update enabled/disabled status
