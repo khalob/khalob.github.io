@@ -467,6 +467,9 @@ textarea {
 input[type="checkbox"],
 input[type="radio"] {
   z-index: -1;
+  height: 18px;
+  width: 18px;
+  vertical-align: middle;
 }
 
 input[type="checkbox"] + label,

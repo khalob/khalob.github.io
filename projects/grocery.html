@@ -110,20 +110,38 @@
           </div>
           <div class="modal-body">
             <form id="add-item">
-              <label for="name">Name *</label>
-              <input id="item-name" type="text" placeholder="Sour Cream (DF)" required />
+              <div class="f-row">
+                <label for="name">Name *</label>
+                <input id="item-name" type="text" placeholder="Sour Cream (DF)" required />
+              </div>
 
-              <label for="brand">Brand</label>
-              <input id="brand" type="text" placeholder="Tofutti" />
+              <div class="f-row">
+                <label for="brand">Brand</label>
+                <input id="brand" type="text" placeholder="Tofutti" />
+              </div>
 
-              <label for="quantity">Quantity *</label>
-              <input id="quantity" type="text" value="1" required />
+              <div class="f-row">
+                <label for="quantity">Quantity *</label>
+                <input id="quantity" type="text" value="1" required />
+              </div>
 
-              <label for="category">Category *</label>
-              <input id="category" type="text" placeholder="Dairy" required />
+              <div class="f-row">
+                <label for="category">Category *</label>
+                <input id="category" type="text" placeholder="Dairy" required />
+              </div>
 
-              <label for="df">Dairy Free?</label>
-              <input id="df" type="checkbox" />
+              <div class="f-row">
+                <label for="df">Dairy Free?</label>
+                <input id="df" type="checkbox" />
+              </div>
+
+              <label for="item-tags">Tags</label>
+              <div class="add-tag-row f-row">
+                <input id="item-tags" type="text" placeholder="Fresh Thyme" />
+                <button type="button" class="btn btn-primary add-tag-btn">Add Tag</button>
+              </div>
+
+              <div class="item-tags"></div>
 
               <button type="submit" class="btn btn-primary d-block w-100 mt-4">Add Item</button>
             </form>

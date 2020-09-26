@@ -96,6 +96,17 @@ $('body').on('submit', 'form#add-item', function (e) {
 			itemName += ' (DF)';
 		}
 
+		var tags = [];
+		var tagValue = '';
+		$('.item-tags .tag').each(function (index, $tag) {
+				tagValue = $tag.data('value');
+		    tags.push(tagValue);
+
+				firebase.database().ref('/tags/' + tagValue).set({
+					isOnline: true
+				});
+		});
+
 	  firebase.database().ref('/lists/grocery/' + itemName).set({
 			quantity: $(this).find('#quantity').val(),
 			enabled: "true"
@@ -103,7 +114,8 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 		firebase.database().ref('/foods/' + itemName).set({
 			type: parseUserData($(this).find('#category').val()),
-			brand: parseUserData($(this).find('#brand').val())
+			brand: parseUserData($(this).find('#brand').val()),
+			tags: tags
 	  });
 
 		$('#add-item-modal').modal('hide');
@@ -150,4 +162,20 @@ $('.search-field').on('input', function () {
 	} else {
 		$('.list-item').show();
 	}
+});
+
+$('.add-tag-btn').on('click', function () {
+	var curInput = $('#item-tags').val();
+	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
+		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
+		$('#item-tags').val('');
+	}
+});
+
+$('body').on('click', '.tag-remove', function () {
+	$(this).parent().remove();
+});
+
+$('body').on('reset', 'form#add-item', function () {
+	$('.item-tags').html('');
 });
