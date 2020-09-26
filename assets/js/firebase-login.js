@@ -132,9 +132,10 @@ $('body').on('click', '.remove-item', function (e) {
 
 	// delete itemName from each attached tag
 	firebase.database().ref('/tags').on('value', function(snapshot) {
-		snapshot.forEach(function(child) {
-	    child.ref('/' + itemName).set(null);
-	  });
+		var tags = snapshot.val();
+		for (var tagName in tags) {
+			firebase.database().ref('/tags/' + tagName + '/' + itemName).set(null);
+		}
 	});
 });
 
