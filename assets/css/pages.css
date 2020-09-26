@@ -160,7 +160,7 @@ body.is-loading #main2 {
   max-width: 100%;
   min-width: 40em;
   width: 70%;
-  padding: 1em 2em 1em 2em;
+  padding: 2em 2em 1em 2em;
   margin: 0 auto;
   background: #ffffff;
   border-radius: .25in;
@@ -197,7 +197,6 @@ body.is-loading .mainBody {
   .mainBody {
     max-width: 100%;
     min-width: 100%;
-    padding: 2em 1em 3em 1em;
   }
 
   .right{
