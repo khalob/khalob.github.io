@@ -83,7 +83,8 @@ $('body').on('user-sign-in', function () {
 	});
 });
 
-$('body').on('click', '#show-add-form', function () {
+$('body').on('click', '#show-add-form', function (e) {
+	e.preventDefault();
 	$('#add-item-modal .modal-title').text('Add Item');
 	$('form#add-item #item-name').removeAttr('readonly');
 	$('form#add-item').trigger('reset');
@@ -130,7 +131,7 @@ $('body').on('click', '.remove-item', function (e) {
 	firebase.database().ref('/foods/' + itemName).set(null);
 
 	// delete itemName from each attached tag
-	firebase.database().ref('/tags/').on('value', function(snapshot) {
+	firebase.database().ref('/tags').on('value', function(snapshot) {
 		snapshot.forEach(function(child) {
 	    child.ref('/' + itemName).set(null);
 	  });
