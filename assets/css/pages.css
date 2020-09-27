@@ -550,6 +550,12 @@ a.btn {
   margin-bottom: 10px;
 }
 
+.clear-all-filters {
+  margin-bottom: 20px;
+  margin-left: auto;
+  display: block;
+}
+
 /* List item css */
 .list-wrapper {
   display: flex;
@@ -634,6 +640,7 @@ a.btn {
 .quantity {
   font-size: 80%;
   letter-spacing: 0.6px;
+  padding: 2px 0;
 }
 
 .item-details {
@@ -644,6 +651,7 @@ a.btn {
   font-weight: bold;
   text-align: left;
   margin: 0px 10px;
+  margin-right: auto;
 }
 
 .list-item-tags {

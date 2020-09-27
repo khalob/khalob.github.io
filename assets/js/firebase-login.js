@@ -33,17 +33,15 @@ function generateListHTML(list, tags) {
 				}
 			}
 
-			if (tagsHTML) {
-				tagsHTML = '<div class="list-item-tags">' + tagsHTML + '</div>';
-			}
-
 			HTML += `<div class="list-item" data-enabled="${list[itemName].enabled}" data-name="${itemName}" >
 			 					${$toggleButton}
 								<div class="item-details">
 									${$itemName}
 									${$quantity}
 								</div>
-								${tagsHTML}
+								<div class="list-item-tags">
+									${tagsHTML}
+								</div>
 								${$closeButton}
 							</div>`;
 		}
@@ -82,6 +80,25 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	}
 
 	$form.find('#df').val(isDF);
+}
+
+function filterResults() {
+	var searchValue = $('.search-field').val();
+	var $activeTags = $('.tag-filters .tag-filter.active');
+	if (searchValue && searchValue !== '') {
+		var $searchResults = $('.list-item:icontains(' + searchValue + ')');
+
+		// Filter the results to the ones that contain all active tags
+		$activeTags.each(function () {
+			var tagName = $(this).data('value');
+			$searchResults = $searchResults.filter('.list-item-tag[data-value=[' + tagName + ']')
+		});
+
+		$('.list-item').hide();
+		$searchResults.show();
+	} else {
+		$('.list-item').show();
+	}
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -208,14 +225,7 @@ $('body').on('click', '.list-item', function (e) {
 });
 
 $('.search-field').on('input', function () {
-	var searchValue = $(this).val();
-	if (searchValue && searchValue !== '') {
-		var $searchResults = $('.list-item:visible:icontains(' + searchValue + ')');
-		$('.list-item').hide();
-		$searchResults.show();
-	} else {
-		$('.list-item').show();
-	}
+	filterResults();
 });
 
 $('.add-tag-btn').on('click', function () {
@@ -239,17 +249,15 @@ $('.tag-filter-toggle').on('click', function () {
 	$(this).toggleClass('open');
 });
 
+$('.clear-all-filters').on('click', function () {
+	$('.tag-filters .tag-filter.active').removeClass('active');
+	$('.search-field').val('');
+	$('.list-item').show();
+});
+
 $('body').on('click', '.tag-filter', function () {
 	$(this).toggleClass('active');
-	var tagValue = $(this).data('value');
-
-	if (tagValue && tagValue !== '') {
-		//var $searchResults = $('.list-item:visible TODO tags');
-		//$('.list-item').hide();
-		//$searchResults.show();
-	} else {
-		$('.list-item').show();
-	}
+	filterResults();
 });
 
 $('body').on('show.bs.modal', '#confirmation-modal', function (e) {
