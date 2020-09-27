@@ -95,7 +95,9 @@ function filterResults() {
 	// Filter the results to the ones that contain all active tags
 	$activeTags.each(function () {
 		var tagName = $(this).data('value');
-		$searchResults = $searchResults.filter('.list-item-tag[data-value=[' + tagName + ']')
+		$searchResults.filter(function() {
+		    return $(this).find(`.list-item-tag[data-value="${tagName}"]`).length > 0;
+		});
 	});
 
 	$('.list-item').hide();
