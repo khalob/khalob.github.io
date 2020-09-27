@@ -140,11 +140,6 @@ $('body').on('submit', 'form#add-item', function (e) {
 		e.preventDefault();
 });
 
-$('body').on('click', '.remove-item', function (e) {
-	e.stopPropagation();
-	$('#confirmation-modal').modal('show');
-});
-
 // Remove item from list
 $('body').on('click', '.remove-item-confirm', function (e) {
 	e.stopPropagation();
@@ -173,15 +168,17 @@ $('body').on('click', '.toggle-item', function (e) {
 });
 
 // Trigger edit item modal
-$('body').on('click', '.list-item', function () {
-	var itemName = $(this).data('name');
-	var itemQuantity = $(this).find('.quantity').text();
-	firebase.database().ref('/foods/' + itemName).once('value', function(snapshot) {
-		$('form#add-item').trigger('reset');
-		var itemData = snapshot.val();
-		prepareEditModal(itemData, itemName, itemQuantity);
-		$('#add-item-modal').modal('show');
-	});
+$('body').on('click', '.list-item', function (e) {
+	if ($(e.target).hasClass('list-item')) {
+		var itemName = $(this).data('name');
+		var itemQuantity = $(this).find('.quantity').text();
+		firebase.database().ref('/foods/' + itemName).once('value', function(snapshot) {
+			$('form#add-item').trigger('reset');
+			var itemData = snapshot.val();
+			prepareEditModal(itemData, itemName, itemQuantity);
+			$('#add-item-modal').modal('show');
+		});
+	}
 });
 
 $('.search-field').on('input', function () {
