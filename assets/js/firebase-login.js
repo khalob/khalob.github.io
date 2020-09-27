@@ -142,6 +142,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 $('body').on('click', '.remove-item', function (e) {
 	e.stopPropagation();
+	$('#confirmation-modal').modal('show');
 });
 
 // Remove item from list
