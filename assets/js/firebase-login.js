@@ -140,6 +140,10 @@ $('body').on('submit', 'form#add-item', function (e) {
 		e.preventDefault();
 });
 
+$('body').on('click', '.remove-item', function (e) {
+	e.stopPropagation();
+});
+
 // Remove item from list
 $('body').on('click', '.remove-item-confirm', function (e) {
 	e.stopPropagation();
