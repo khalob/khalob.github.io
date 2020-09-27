@@ -39,8 +39,9 @@ function generateTagFilterHTML(tags) {
 	if (tags) {
 		$('.tag-filters').empty();
 		var HTML = '';
-		var innerElement = `<span class="tag-filter-text" style="color: #${strToRGB(tagName)};" >${tagName}</span>`;
+		var innerElement = '';
 		for (var tagName in tags) {
+			innerElement = `<span class="tag-filter-text" style="color: #${strToRGB(tagName)};" >${tagName}</span>`;
 			HTML += `<span class="tag-filter" style="background-color: #${strToRGB(tagName)};" data-value="${tagName}">${innerElement}</span>`;
 		}
 
