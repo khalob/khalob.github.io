@@ -12,7 +12,7 @@ function parseUserData(userData) {
 	return data.trim ? data.trim() : data;
 }
 
-function generateListHTML(list) {
+function generateListHTML(list, tags) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
@@ -25,9 +25,12 @@ function generateListHTML(list) {
 			$itemName = '<span class="item-name">' + itemName + '</span>';
 			$quantity = '<span class="quantity">' + list[itemName].quantity + '</span>';
 			tagsHTML = '';
-			
-			for (var tagIndex in list[itemName].tags) {
-				tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
+
+			for (var tagName in tags) {
+				var taggedItem = tags[tagName];
+				if (taggedItem == itemName) {
+						tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
+				}
 			}
 
 			HTML += `<div class="list-item" data-enabled="${list[itemName].enabled}" data-name="${itemName}" >
@@ -108,14 +111,15 @@ $('body').on('click', '#sign-in', function () {
 $('body').on('user-sign-in', function () {
 	$('body').addClass('logged-in');
 
-	firebase.database().ref('/lists').on('value', function(snapshot) {
-		var lists = snapshot.val();
-		generateListHTML(lists['grocery']);
-	});
-
 	firebase.database().ref('/tags').on('value', function(snapshot) {
 		var tags = snapshot.val();
 		generateTagFilterHTML(tags);
+
+		firebase.database().ref('/lists').on('value', function(snapshot) {
+			var lists = snapshot.val();
+			generateListHTML(lists['grocery'], tags);
+		});
+
 	});
 });
 
