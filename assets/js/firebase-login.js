@@ -32,6 +32,10 @@ function generateListHTML(list, tags) {
 						tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
 				}
 			}
+			
+			if (tagsHTML) {
+				tagsHTML = '<div class="list-item-tags">' + tagsHTML + '</div>';
+			}
 
 			HTML += `<div class="list-item" data-enabled="${list[itemName].enabled}" data-name="${itemName}" >
 			 					${$toggleButton}
@@ -39,9 +43,7 @@ function generateListHTML(list, tags) {
 									${$itemName}
 									${$quantity}
 								</div>
-								<div class="list-item-tags">
-									${tagsHTML}
-								</div>
+								${tagsHTML}
 								${$closeButton}
 							</div>`;
 		}
