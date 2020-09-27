@@ -20,9 +20,16 @@ function generateListHTML(list) {
 		var $toggleButton = '<label class="toggle-item"></label>';
 		var $itemName = '';
 		var $quantity = '';
+		var tagsHTML = '';
 		for (var item in list) {
 			$itemName = '<span class="item-name">' + item + '</span>';
 			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
+			tagsHTML = '';
+			
+			for (var tagIndex in item.tags) {
+				tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
+			}
+
 			HTML += `<div class="list-item" data-enabled="${list[item].enabled}" data-name="${item}" >
 			 					${$toggleButton}
 								<div class="item-details">
@@ -30,7 +37,7 @@ function generateListHTML(list) {
 									${$quantity}
 								</div>
 								<div class="list-item-tags">
-									<span class="list-item-tag" data-value="Fresh Thyme">Fresh Thyme</span><span class="list-item-tag" data-value="asdfasdfasdf">asdfasdfasdf</span><span class="list-item-tag" data-value="dairy">dairy</span><span class="list-item-tag" data-value="test">test</span>
+									${tagsHTML}
 								</div>
 								${$closeButton}
 							</div>`;
