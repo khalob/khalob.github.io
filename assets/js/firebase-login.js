@@ -16,7 +16,7 @@ function generateListHTML(list) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
-		var $closeButton = '<button type="button" class="remove-item">×</button>';
+		var $closeButton = '<button type="button" class="remove-item" data-toggle="modal" data-target="#confirmation-modal">×</button>';
 		var $toggleButton = '<label class="toggle-item"></label>';
 		var $itemName = '';
 		var $quantity = '';
@@ -141,9 +141,9 @@ $('body').on('submit', 'form#add-item', function (e) {
 });
 
 // Remove item from list
-$('body').on('click', '.remove-item', function (e) {
+$('body').on('click', '.remove-item-confirm', function (e) {
 	e.stopPropagation();
-	var itemName = $(this).parent().data('name');
+	var itemName = $(this).data('item-name');
 	firebase.database().ref('/lists/grocery/' + itemName).set(null);
 	firebase.database().ref('/foods/' + itemName).set(null);
 
@@ -223,3 +223,12 @@ $('body').on('click', '.tag-filter', function () {
 		$('.list-item').show();
 	}
 });
+
+$('body').on('show.bs.modal', '#confirmation-modal', function (e) {
+  var $button = $(e.relatedTarget); // Button that triggered the modal
+	var itemName = $button.parent().data('name');
+
+  var $modal = $(this);
+  $modal.find('.modal-body p').text('Are you sure you want to remove ' + itemName + ' from the list?');
+	$modal.find('.btn-primary').data('item-name', itemName);
+})

@@ -744,3 +744,7 @@ a.btn {
   font-family: FontAwesome;
   color: green;
 }
+
+#confirmation-modal {
+  letter-spacing: 0.05em;
+}
