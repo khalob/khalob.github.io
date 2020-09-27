@@ -56,7 +56,14 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$form.find('#item-name').attr('readonly', 'true')
 	$form.find('#brand').val(item.brand ? item.brand : '');
 	$form.find('#quantity').val(itemQuantity);
-	$form.find('#category').val(item.type);
+
+	for (var tagIndex in item.tags) {
+		var tagName = item.tags[tagIndex];
+		if (tagName && $form.find('.item-tags span[data-value="' + tagName + '"]').length === 0) {
+			$form.find('.item-tags').append('<span class="tag" data-value="' + tagName + '">' + tagName + '<span class="tag-remove">×</span></span>');
+		}
+	}
+	
 	$form.find('#df').val(isDF);
 }
 
@@ -131,7 +138,6 @@ $('body').on('submit', 'form#add-item', function (e) {
 	  });
 
 		firebase.database().ref('/foods/' + itemName).set({
-			type: parseUserData($(this).find('#category').val()),
 			brand: parseUserData($(this).find('#brand').val()),
 			tags: tags
 	  });
@@ -154,6 +160,8 @@ $('body').on('click', '.remove-item-confirm', function (e) {
 			firebase.database().ref('/tags/' + tagName + '/' + itemName).set(null);
 		}
 	});
+
+	$('#confirmation-modal').modal('hide');
 });
 
 // Update enabled/disabled status
