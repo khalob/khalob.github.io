@@ -154,7 +154,7 @@ $('body').on('click', '#show-add-form', function (e) {
 });
 
 $('body').on('submit', 'form#add-item', function (e) {
-		var itemName = parseUserData($(this).find('#item-name').val());
+		var itemName = parseUserData($('#item-name').val());
 		if ($('#df').is(':checked')) {
 			itemName += ' (DF)';
 		}
@@ -162,7 +162,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 		var tags = [];
 		var tagValue;
 		$('.item-tags .tag').each(function () {
-				tagValue = '' + $(this).data('value');
+				tagValue = "" + $(this).data('value');
 		    tags.push(tagValue);
 
 				firebase.database().ref('/tags/' + tagValue).set({
