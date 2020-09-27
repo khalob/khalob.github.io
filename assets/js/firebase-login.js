@@ -25,8 +25,13 @@ function generateListHTML(list) {
 			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
 			HTML += `<div class="list-item" data-enabled="${list[item].enabled}" data-name="${item}" >
 			 					${$toggleButton}
-								${$itemName}
-								${$quantity}
+								<div class="item-details">
+									${$itemName}
+									${$quantity}
+								</div>
+								<div class="list-item-tags">
+									<span class="list-item-tag" data-value="Fresh Thyme">Fresh Thyme</span><span class="list-item-tag" data-value="asdfasdfasdf">asdfasdfasdf</span><span class="list-item-tag" data-value="dairy">dairy</span><span class="list-item-tag" data-value="test">test</span>
+								</div>
 								${$closeButton}
 							</div>`;
 		}
@@ -63,7 +68,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 			$form.find('.item-tags').append('<span class="tag" data-value="' + tagName + '">' + tagName + '<span class="tag-remove">×</span></span>');
 		}
 	}
-	
+
 	$form.find('#df').val(isDF);
 }
 

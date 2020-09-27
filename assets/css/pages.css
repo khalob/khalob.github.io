@@ -559,13 +559,19 @@ a.btn {
 
 .list-item {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: lightblue;
   margin: 5px 0;
   border-radius: 5px;
   letter-spacing: .1em;
   height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .list-item {
+    height: 60px;
+  }
 }
 
 .list-item[data-enabled="false"] {
@@ -606,7 +612,6 @@ a.btn {
 }
 
 .remove-item {
-  margin-left: auto;
   margin-right: min(3%, 20px);
   height: 20px;
   width: 20px;
@@ -622,15 +627,42 @@ a.btn {
   width: 20px;
   background: white;
   margin-left: min(3%, 20px);
-  margin-right: auto;
   position: relative;
   cursor: pointer;
 }
 
 .quantity {
-  margin-left: 20px;
   font-size: 80%;
   letter-spacing: 0.6px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  letter-spacing: normal;
+  font-weight: bold;
+  text-align: left;
+  margin: 0px 10px;
+}
+
+.list-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+  margin: 0 10px;
+  justify-content: flex-end;
+  max-width: 60%;
+}
+
+.list-item-tag {
+  padding: 4px;
+  border-radius: .25em;
+  margin: 2px 4px 2px 0;
+  font-weight: 900;
+  letter-spacing: normal;
+  background-color: #ebeeb3;
+  color: #5b2f31;
 }
 
 .search-field {
