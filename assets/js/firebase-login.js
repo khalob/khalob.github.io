@@ -85,20 +85,21 @@ function prepareEditModal(item, itemName, itemQuantity) {
 function filterResults() {
 	var searchValue = $('.search-field').val();
 	var $activeTags = $('.tag-filters .tag-filter.active');
+	var $searchResults = $('.list-item');
+
+	// Filter the results to the ones containing the search term
 	if (searchValue && searchValue !== '') {
-		var $searchResults = $('.list-item:icontains(' + searchValue + ')');
+		$searchResults = $searchResults.filter(':icontains(' + searchValue + ')');
+ 	}
 
-		// Filter the results to the ones that contain all active tags
-		$activeTags.each(function () {
-			var tagName = $(this).data('value');
-			$searchResults = $searchResults.filter('.list-item-tag[data-value=[' + tagName + ']')
-		});
+	// Filter the results to the ones that contain all active tags
+	$activeTags.each(function () {
+		var tagName = $(this).data('value');
+		$searchResults = $searchResults.filter('.list-item-tag[data-value=[' + tagName + ']')
+	});
 
-		$('.list-item').hide();
-		$searchResults.show();
-	} else {
-		$('.list-item').show();
-	}
+	$('.list-item').hide();
+	$searchResults.show();
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
