@@ -190,6 +190,14 @@ $('body').on('submit', 'form#add-item', function (e) {
 		e.preventDefault();
 });
 
+// Don't submit form, if enter key press is coming from tag adding input
+$('body').on('keypress', 'form#add-item', function (e) {
+    if (e.which == 13 && $(e.target).is('#item-tags-input')) {
+			insertNewTag();
+      return false;
+    }
+});
+
 // Remove item from list
 $('body').on('click', '.remove-item-confirm', function (e) {
 	e.stopPropagation();
@@ -235,12 +243,6 @@ $('body').on('click', '.list-item', function (e) {
 
 $('.search-field').on('input', function () {
 	filterResults();
-});
-
-$('#item-tags-input').on('keyup', function (e) {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-        insertNewTag();
-    }
 });
 
 $('.add-tag-btn').on('click', function () {
