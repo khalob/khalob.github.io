@@ -21,16 +21,16 @@ function generateListHTML(list) {
 		var $itemName = '';
 		var $quantity = '';
 		var tagsHTML = '';
-		for (var item in list) {
-			$itemName = '<span class="item-name">' + item + '</span>';
-			$quantity = '<span class="quantity">' + list[item].quantity + '</span>';
+		for (var itemName in list) {
+			$itemName = '<span class="item-name">' + itemName + '</span>';
+			$quantity = '<span class="quantity">' + list[itemName].quantity + '</span>';
 			tagsHTML = '';
 			
-			for (var tagIndex in item.tags) {
+			for (var tagIndex in list[itemName].tags) {
 				tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
 			}
 
-			HTML += `<div class="list-item" data-enabled="${list[item].enabled}" data-name="${item}" >
+			HTML += `<div class="list-item" data-enabled="${list[itemName].enabled}" data-name="${itemName}" >
 			 					${$toggleButton}
 								<div class="item-details">
 									${$itemName}
