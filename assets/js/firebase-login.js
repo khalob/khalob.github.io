@@ -104,6 +104,14 @@ function filterResults() {
 	$searchResults.show();
 }
 
+function insertNewTag() {
+	var curInput = $('#item-tags-input').val();
+	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
+		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
+		$('#item-tags-input').val('').focus();
+	}
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		// User is signed in.
@@ -229,12 +237,14 @@ $('.search-field').on('input', function () {
 	filterResults();
 });
 
+$('#item-tags-input').on('keyup', function (e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        insertNewTag();
+    }
+});
+
 $('.add-tag-btn').on('click', function () {
-	var curInput = $('#item-tags').val();
-	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
-		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
-		$('#item-tags').val('');
-	}
+	insertNewTag();
 });
 
 $('body').on('click', '.tag-remove', function () {
