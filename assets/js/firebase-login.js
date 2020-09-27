@@ -39,10 +39,9 @@ function generateTagFilterHTML(tags) {
 	if (tags) {
 		$('.tag-filters').empty();
 		var HTML = '';
-		var quantity = 0;
+		var innerElement = `<span class="tag-filter-text" style="color: #${strToRGB(tagName)};" >${tagName}</span>`;
 		for (var tagName in tags) {
-			quantity = Object.keys(tags[tagName]).length;
-			HTML += `<span class="tag-filter" style="background-color: #${strToRGB(tagName)};" data-value="${tagName}">${tagName} (${quantity})</span>`;
+			HTML += `<span class="tag-filter" style="background-color: #${strToRGB(tagName)};" data-value="${tagName}">${innerElement}</span>`;
 		}
 
 		$('.tag-filters').html(HTML);

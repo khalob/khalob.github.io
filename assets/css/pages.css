@@ -634,7 +634,7 @@ a.btn {
 
 .search-field {
   height: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 16px;
 }
 
@@ -682,7 +682,19 @@ a.btn {
   font-size: 17px;
 }
 
-.tag-filter-toggle::after {
+.top-hr {
+  border-bottom: 2px groove threedface;
+}
+
+.tag-filter-toggle {
+  text-align: left;
+  bottom: -.5em;
+  position: relative;
+  padding-left: 1em;
+  line-height: 1em;
+}
+
+.tag-filter-toggle .tags-toggle-text::after {
   content: '\f107';
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -693,6 +705,34 @@ a.btn {
   margin-left: 10px;
 }
 
-.tag-filter-toggle.open::after {
+.tag-filter-toggle.open .tags-toggle-text::after {
   transform: rotate(180deg);
+}
+
+.tags-toggle-text {
+  background: white;
+  padding: 0 5px;
+}
+
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+  padding: 1em;
+  border-right: 2px groove threedface;
+  border-bottom: 2px groove threedface;
+  border-left: 2px groove threedface;
+}
+
+.tag-filter {
+  padding: 5px;
+  border-radius: .25em;
+  margin: 0 10px 10px 0;
+}
+
+.tag-filter-text {
+  font-weight: 900;
+  letter-spacing: normal;
+  font-family: monospace;
+  filter: invert(1);
 }
