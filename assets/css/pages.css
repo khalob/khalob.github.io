@@ -741,5 +741,6 @@ a.btn {
 .tag-filter.active::after {
   content: '\f058';
   margin-left: 5px;
-  font-family: FontAwesome;`
+  font-family: FontAwesome;
+  color: green;
 }
