@@ -693,6 +693,7 @@ a.btn {
   position: relative;
   padding-left: 1em;
   line-height: 1em;
+  cursor: pointer;
 }
 
 .tag-filter-toggle .tags-toggle-text::after {
@@ -729,11 +730,16 @@ a.btn {
   padding: 5px;
   border-radius: .25em;
   margin: 0 10px 10px 0;
-}
-
-.tag-filter-text {
   font-weight: 900;
   letter-spacing: normal;
   font-family: monospace;
-  filter: invert(1);
+  background-color: #ebeeb3;
+  color: #5b2f31;
+  cursor: pointer;
+}
+
+.tag-filter.active::after {
+  content: '\f058';
+  margin-left: 5px;
+  font-family: FontAwesome;`
 }

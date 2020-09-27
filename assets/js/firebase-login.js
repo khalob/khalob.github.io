@@ -39,27 +39,12 @@ function generateTagFilterHTML(tags) {
 	if (tags) {
 		$('.tag-filters').empty();
 		var HTML = '';
-		var innerElement = '';
 		for (var tagName in tags) {
-			innerElement = `<span class="tag-filter-text" style="color: #${strToRGB(tagName)};" >${tagName}</span>`;
-			HTML += `<span class="tag-filter" style="background-color: #${strToRGB(tagName)};" data-value="${tagName}">${innerElement}</span>`;
+			HTML += `<span class="tag-filter" data-value="${tagName}">${tagName}</span>`;
 		}
 
 		$('.tag-filters').html(HTML);
 	}
-}
-
-function strToRGB(str) {
-		var hash = 0;
-		for (var i = 0; i < str.length; i++) {
-			 hash = str.charCodeAt(i) + ((hash << 5) - hash);
-		}
-
-    var c = (hash & 0x00FFFFFF)
-        .toString(16)
-        .toUpperCase();
-
-    return "00000".substring(0, 6 - c.length) + c;
 }
 
 function prepareEditModal(item, itemName, itemQuantity) {
