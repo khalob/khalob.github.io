@@ -782,7 +782,7 @@ a.btn {
   content: '\f058';
   margin-left: 5px;
   font-family: FontAwesome;
-  color: green;
+  color: #78ab93;
 }
 
 #confirmation-modal {
