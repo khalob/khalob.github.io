@@ -554,6 +554,7 @@ a.btn {
 .list-wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .list-item {
