@@ -28,11 +28,11 @@ function generateListHTML(list, tags) {
 
 			for (var tagName in tags) {
 				var taggedItem = tags[tagName];
-				if (taggedItem == itemName) {
+				if (taggedItem[itemName]) {
 						tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
 				}
 			}
-			
+
 			if (tagsHTML) {
 				tagsHTML = '<div class="list-item-tags">' + tagsHTML + '</div>';
 			}
