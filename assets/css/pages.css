@@ -703,17 +703,18 @@ a.btn {
 }
 
 .item-tags .tag {
-  background-color: #a3e498;
+  background-color: #bdf7c4;
   border-radius: .25rem;
   padding: 5px;
   margin: 0 10px 10px 0;
   letter-spacing: normal;
+  font-family: monospace;
 }
 
 .tag-remove {
   height: 17px;
   width: 17px;
-  background-color: #9e9b9b;
+  background-color: #d4d4d4;
   border-radius: 100%;
   margin-left: 5px;
   display: inline-flex;
@@ -723,6 +724,7 @@ a.btn {
   cursor: pointer;
   font-weight: bold;
   font-size: 17px;
+  border: 1px solid #757575;
 }
 
 .top-hr {
