@@ -819,7 +819,7 @@ input[type="button"]:hover,
 button:hover,
 .button:hover {
   border-color: #ff6666;
-  color: #ff6666 !important;
+  color: #ff6666;
 }
 
 input[type="submit"].icon,

@@ -668,6 +668,7 @@ a.btn {
   border-radius: .25em;
   margin: 2px 4px 2px 0;
   font-weight: 900;
+  font-family: monospace;
   letter-spacing: normal;
   background-color: #ebeeb3;
   color: #5b2f31;
@@ -702,7 +703,7 @@ a.btn {
 }
 
 .item-tags .tag {
-  background-color: #e8e2e2;
+  background-color: #a3e498;
   border-radius: .25rem;
   padding: 5px;
   margin: 0 10px 10px 0;
@@ -710,8 +711,8 @@ a.btn {
 }
 
 .tag-remove {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   background-color: #9e9b9b;
   border-radius: 100%;
   margin-left: 5px;
