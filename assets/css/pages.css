@@ -693,6 +693,7 @@ a.btn {
   border-radius: 0 .25rem .25rem 0;
 }
 
+.appendable-tags,
 .item-tags {
   display: flex;
   flex-wrap: wrap;
@@ -766,6 +767,7 @@ a.btn {
   border-left: 2px groove threedface;
 }
 
+.appendable-tags .append-tag,
 .tag-filter {
   padding: 5px;
   border-radius: .25em;

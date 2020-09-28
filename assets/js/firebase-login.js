@@ -62,6 +62,18 @@ function generateTagFilterHTML(tags) {
 	}
 }
 
+ function generateAppendableTagHTML(tags) {
+	 if (tags) {
+		 $('.appendable-tags').empty();
+		 var HTML = '';
+		 for (var tagName in tags) {
+			 HTML += `<span class="append-tag" data-value="${tagName}">${tagName}</span>`;
+		 }
+
+		 $('.appendable-tags').html(HTML);
+	 }
+ }
+
 function prepareEditModal(item, itemName, itemQuantity) {
 	var isDF = itemName.endsWith(' (DF)');
 	var itemName = itemName.replace(' (DF)', '');
@@ -77,6 +89,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 		if (tagName && $form.find('.item-tags span[data-value="' + tagName + '"]').length === 0) {
 			$form.find('.item-tags').append('<span class="tag" data-value="' + tagName + '">' + tagName + '<span class="tag-remove">×</span></span>');
 		}
+		$('.appendable-tags .append-tag[data-value="' + tagName + '"]').hide();
 	}
 
 	$form.find('#df').val(isDF);
@@ -104,8 +117,8 @@ function filterResults() {
 	$searchResults.show();
 }
 
-function insertNewTag() {
-	var curInput = $('#item-tags-input').val();
+function insertNewTag (tagName) {
+	var curInput = tagName ? tagName : $('#item-tags-input').val();
 	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
 		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
 		$('#item-tags-input').val('').focus();
@@ -144,6 +157,7 @@ $('body').on('user-sign-in', function () {
 	firebase.database().ref('/tags').on('value', function(snapshot) {
 		var tags = snapshot.val();
 		generateTagFilterHTML(tags);
+		generateAppendableTagHTML(tags);
 
 		firebase.database().ref('/lists').on('value', function(snapshot) {
 			var lists = snapshot.val();
@@ -157,6 +171,7 @@ $('body').on('click', '#show-add-form', function (e) {
 	e.preventDefault();
 	$('#add-item-modal .modal-title').text('Add Item');
 	$('form#add-item #item-name').removeAttr('readonly');
+	$('form#add-item .appendable-tags .append-tag').show();
 	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
@@ -250,7 +265,15 @@ $('.add-tag-btn').on('click', function () {
 });
 
 $('body').on('click', '.tag-remove', function () {
+	var $parent = $(this).parent();
+	var itemName = $parent.data('value');
+	$(`.append-tag[data="${itemName}"]`).show();
 	$(this).parent().remove();
+});
+
+$('body').on('click', '.append-tag', function () {
+	insertNewTag($(this).data('value'));
+	$(this).hide();
 });
 
 $('body').on('reset', 'form#add-item', function () {
