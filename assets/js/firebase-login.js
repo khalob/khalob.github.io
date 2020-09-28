@@ -267,7 +267,7 @@ $('.add-tag-btn').on('click', function () {
 $('body').on('click', '.tag-remove', function () {
 	var $parent = $(this).parent();
 	var itemName = $parent.data('value');
-	$(`.append-tag[data="${itemName}"]`).show();
+	$(`.append-tag[data-value="${itemName}"]`).show();
 	$(this).parent().remove();
 });
 

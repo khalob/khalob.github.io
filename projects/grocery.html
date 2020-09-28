@@ -135,14 +135,19 @@
                 <input id="df" type="checkbox" />
               </div>
 
-              <label for="item-tags-input">Tags</label>
-              <div class="add-tag-row f-row">
-                <div class="appendable-tags"></div>
-                <input id="item-tags-input" type="text" placeholder="Dairy" />
-                <button type="button" class="btn btn-primary add-tag-btn">Add Tag</button>
-              </div>
 
-              <div class="item-tags"></div>
+              <fieldset class="fieldset">
+                <legend class="w-auto">Tags</legend>
+                <label>Existing Quick Tags</label>
+                <div class="appendable-tags mt-0 mb-2"></div>
+                
+                <div class="add-tag-row f-row">
+                  <input id="item-tags-input" type="text" placeholder="Dairy" />
+                  <button type="button" class="btn btn-primary add-tag-btn">Add Tag</button>
+                </div>
+
+                <div class="item-tags"></div>
+              </fieldset>
 
               <button type="submit" class="btn btn-primary d-block w-100 mt-4">Add Item</button>
             </form>
