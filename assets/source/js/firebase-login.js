@@ -29,7 +29,7 @@ function generateListHTML(list, tags) {
 			for (var tagName in tags) {
 				var taggedItem = tags[tagName];
 				if (taggedItem[itemName]) {
-						tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
+					tagsHTML += `<span class="list-item-tag" data-value="${tagName}">${tagName}</span>`;
 				}
 			}
 
@@ -62,17 +62,17 @@ function generateTagFilterHTML(tags) {
 	}
 }
 
- function generateAppendableTagHTML(tags) {
-	 if (tags) {
-		 $('.appendable-tags').empty();
-		 var HTML = '';
-		 for (var tagName in tags) {
-			 HTML += `<span class="append-tag" data-value="${tagName}">${tagName}</span>`;
-		 }
+function generateAppendableTagHTML(tags) {
+	if (tags) {
+		$('.appendable-tags').empty();
+		var HTML = '';
+		for (var tagName in tags) {
+			HTML += `<span class="append-tag" data-value="${tagName}">${tagName}</span>`;
+		}
 
-		 $('.appendable-tags').html(HTML);
-	 }
- }
+		$('.appendable-tags').html(HTML);
+	}
+}
 
 function prepareEditModal(item, itemName, itemQuantity) {
 	var isDF = itemName.endsWith(' (DF)');
@@ -80,7 +80,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$('#add-item-modal .modal-title').text('Edit ' + itemName);
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
-	$form.find('#item-name').attr('readonly', 'true')
+	$form.find('#item-name').attr('readonly', 'true');
 	$form.find('#brand').val(item.brand ? item.brand : '');
 	$form.find('#quantity').val(itemQuantity);
 
@@ -103,13 +103,13 @@ function filterResults() {
 	// Filter the results to the ones containing the search term
 	if (searchValue && searchValue !== '') {
 		$searchResults = $searchResults.filter(':icontains(' + searchValue + ')');
- 	}
+	}
 
 	// Filter the results to the ones that contain all active tags
 	$activeTags.each(function () {
 		var tagName = $(this).data('value');
-		$searchResults = $searchResults.filter(function() {
-		    return $(this).find(`.list-item-tag[data-value="${tagName}"]`).length > 0;
+		$searchResults = $searchResults.filter(function () {
+			return $(this).find(`.list-item-tag[data-value="${tagName}"]`).length > 0;
 		});
 	});
 
@@ -117,7 +117,7 @@ function filterResults() {
 	$searchResults.show();
 }
 
-function insertNewTag (tagName) {
+function insertNewTag(tagName) {
 	var curInput = tagName ? tagName : $('#item-tags-input').val();
 	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
 		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
@@ -125,7 +125,7 @@ function insertNewTag (tagName) {
 	}
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
 	if (user) {
 		// User is signed in.
 		showAccount(user.providerData[0]);
@@ -143,10 +143,10 @@ $('body').on('click', '#sign-out', function () {
 
 $('body').on('click', '#sign-in', function () {
 	var provider = new firebase.auth.GoogleAuthProvider();
-	firebase.auth().signInWithPopup(provider).catch(function(error) {
-	  // Handle Errors here.
-	  var errorCode = error.code;
-	  var errorMessage = error.message;
+	firebase.auth().signInWithPopup(provider).catch(function (error) {
+		// Handle Errors here.
+		var errorCode = error.code;
+		var errorMessage = error.message;
 		alert(errorMessage);
 	});
 });
@@ -154,12 +154,12 @@ $('body').on('click', '#sign-in', function () {
 $('body').on('user-sign-in', function () {
 	$('body').addClass('logged-in');
 
-	firebase.database().ref('/tags').on('value', function(snapshot) {
+	firebase.database().ref('/tags').on('value', function (snapshot) {
 		var tags = snapshot.val();
 		generateTagFilterHTML(tags);
 		generateAppendableTagHTML(tags);
 
-		firebase.database().ref('/lists').on('value', function(snapshot) {
+		firebase.database().ref('/lists').on('value', function (snapshot) {
 			var lists = snapshot.val();
 			generateListHTML(lists['grocery'], tags);
 		});
@@ -177,40 +177,40 @@ $('body').on('click', '#show-add-form', function (e) {
 });
 
 $('body').on('submit', 'form#add-item', function (e) {
-		var itemName = parseUserData($(this).find('#item-name').val());
-		if ($('#df').is(':checked')) {
-			itemName += ' (DF)';
-		}
+	var itemName = parseUserData($(this).find('#item-name').val());
+	if ($('#df').is(':checked')) {
+		itemName += ' (DF)';
+	}
 
-		var tags = [];
-		var tagValue;
-		$('.item-tags .tag').each(function () {
-				tagValue = "" + $(this).data('value');
-		    tags.push(tagValue);
+	var tags = [];
+	var tagValue;
+	$('.item-tags .tag').each(function () {
+		tagValue = "" + $(this).data('value');
+		tags.push(tagValue);
 
-				firebase.database().ref('/tags/' + tagValue + '/' + itemName).set(true);
-		});
+		firebase.database().ref('/tags/' + tagValue + '/' + itemName).set(true);
+	});
 
-	  firebase.database().ref('/lists/grocery/' + itemName).set({
-			quantity: $(this).find('#quantity').val(),
-			enabled: "true"
-	  });
+	firebase.database().ref('/lists/grocery/' + itemName).set({
+		quantity: $(this).find('#quantity').val(),
+		enabled: "true"
+	});
 
-		firebase.database().ref('/foods/' + itemName).set({
-			brand: parseUserData($(this).find('#brand').val()),
-			tags: tags
-	  });
+	firebase.database().ref('/foods/' + itemName).set({
+		brand: parseUserData($(this).find('#brand').val()),
+		tags: tags
+	});
 
-		$('#add-item-modal').modal('hide');
-		e.preventDefault();
+	$('#add-item-modal').modal('hide');
+	e.preventDefault();
 });
 
 // Don't submit form, if enter key press is coming from tag adding input
 $('body').on('keypress', 'form#add-item', function (e) {
-    if (e.which == 13 && $(e.target).is('#item-tags-input')) {
-			insertNewTag();
-      return false;
-    }
+	if (e.which == 13 && $(e.target).is('#item-tags-input')) {
+		insertNewTag();
+		return false;
+	}
 });
 
 // Remove item from list
@@ -221,7 +221,7 @@ $('body').on('click', '.remove-item-confirm', function (e) {
 	firebase.database().ref('/foods/' + itemName).set(null);
 
 	// delete itemName from each attached tag
-	firebase.database().ref('/tags').on('value', function(snapshot) {
+	firebase.database().ref('/tags').on('value', function (snapshot) {
 		var tags = snapshot.val();
 		for (var tagName in tags) {
 			firebase.database().ref('/tags/' + tagName + '/' + itemName).set(null);
@@ -247,7 +247,7 @@ $('body').on('click', '.list-item', function (e) {
 	if ($(e.target).hasClass('list-item')) {
 		var itemName = $(this).data('name');
 		var itemQuantity = $(this).find('.quantity').text();
-		firebase.database().ref('/foods/' + itemName).once('value', function(snapshot) {
+		firebase.database().ref('/foods/' + itemName).once('value', function (snapshot) {
 			$('form#add-item').trigger('reset');
 			var itemData = snapshot.val();
 			prepareEditModal(itemData, itemName, itemQuantity);
@@ -297,10 +297,10 @@ $('body').on('click', '.tag-filter', function () {
 });
 
 $('body').on('show.bs.modal', '#confirmation-modal', function (e) {
-  var $button = $(e.relatedTarget); // Button that triggered the modal
+	var $button = $(e.relatedTarget); // Button that triggered the modal
 	var itemName = $button.parent().data('name');
 
-  var $modal = $(this);
-  $modal.find('.modal-body p').text('Are you sure you want to remove ' + itemName + ' from the list?');
+	var $modal = $(this);
+	$modal.find('.modal-body p').text('Are you sure you want to remove ' + itemName + ' from the list?');
 	$modal.find('.btn-primary').data('item-name', itemName);
-})
+});

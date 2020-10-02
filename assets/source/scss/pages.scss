@@ -1,11 +1,10 @@
 @charset "UTF-8";
-@import url(font-awesome.min.css);
-@import url(bootstrap.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
-@import url("main.min.css");
+@import "font-awesome";
+@import "../../css/bootstrap.min.css";
+@import "fonts";
+@import "main";
 
 /* unvisited link */
-
 a:link {
   color: orange;
   text-decoration: underline;
@@ -17,7 +16,6 @@ a:hover {
 }
 
 /* visited link */
-
 a:visited {
   color: #b27300;
   text-decoration: underline;
@@ -72,12 +70,12 @@ a:visited {
   z-index: 2;
 }
 
-#wrapper1 > * {
+#wrapper1>* {
   z-index: 1;
 }
 
 #wrapper1:before {
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -97,7 +95,7 @@ body.is-ie #wrapper1 {
   -ms-align-self: -ms-flex-end;
   align-self: flex-end;
   padding: 1.5em 0 0 0;
-  color: rgba(255, 255, 255, 1);
+  color: white;
   font-weight: 600;
   cursor: default;
   text-align: center;
@@ -111,15 +109,13 @@ body.is-ie #wrapper1 {
   }
 }
 
-
 /* Main */
-
 #main2 {
   position: relative;
   max-width: 100%;
   padding: 1em 2em 0em 2em;
   background: #ffffff;
-  border-radius: .5in;
+  border-radius: 0.5in;
   cursor: default;
   opacity: 1;
   text-align: center;
@@ -140,7 +136,7 @@ body.is-ie #wrapper1 {
 @media screen and (max-width: 480px) {
   #main2 {
     min-width: 90%;
-	margin-bottom: 2em;
+    margin-bottom: 2em;
     padding: 4em 2em 2.5em 2em;
   }
 }
@@ -163,7 +159,7 @@ body.is-loading #main2 {
   padding: 2em 2em 1em 2em;
   margin: 0 auto;
   background: #ffffff;
-  border-radius: .25in;
+  border-radius: 0.25in;
   cursor: default;
   text-align: center;
   opacity: 0.95;
@@ -199,12 +195,12 @@ body.is-loading .mainBody {
     min-width: 100%;
   }
 
-  .right{
-	  float: none !important;
+  .right {
+    float: none !important;
   }
 
-  .left{
-	  float: none !important;
+  .left {
+    float: none !important;
   }
 }
 
@@ -218,7 +214,7 @@ ul.icons3 {
 ul.icons3 li {
   display: inline-block;
   padding: 0;
-  margin: 0 .25em;
+  margin: 0 0.25em;
 }
 
 ul.icons3 li a {
@@ -258,7 +254,7 @@ ul.icons3 li a:hover:before {
 ul.icons3 li a:before {
   position: absolute;
   top: 0;
-  left: .05em;
+  left: 0.05em;
   width: inherit;
   height: inherit;
   font-size: 1.75rem;
@@ -269,8 +265,8 @@ ul.icons3 li a:before {
 ul.icons3 li a:hover {
   border-color: #ffffff;
   box-shadow: 2px 3px 5px white;
-  top: .05em;
-  left: .05em;
+  top: 0.05em;
+  left: 0.05em;
   transition: all 1s ease;
 }
 
@@ -280,9 +276,7 @@ ul.icons3 li a:hover {
   }
 }
 
-
 /* Footer */
-
 #footer1 {
   -moz-align-self: -moz-flex-end;
   -webkit-align-self: -webkit-flex-end;
@@ -360,15 +354,15 @@ ul.icons3 li a:hover {
   border: solid 1px #667179;
 }
 
-#small.input[type="radio"],
-#medium.input[type="radio"],
-#big.input[type="radio"] {
+#small.input[type=radio],
+#medium.input[type=radio],
+#big.input[type=radio] {
   z-index: -1;
 }
 
-.collapsingDiv640{
- display: inline-flex;
- margin-bottom:1.5em;
+.collapsingDiv640 {
+  display: inline-flex;
+  margin-bottom: 1.5em;
 }
 
 @media screen and (max-width: 640px) {
@@ -377,10 +371,9 @@ ul.icons3 li a:hover {
   }
 }
 
-.collapsingDiv1200{
- display: inline-flex;
+.collapsingDiv1200 {
+  display: inline-flex;
 }
-
 
 @media screen and (max-width: 1200px) {
   .collapsingDiv1200 {
@@ -388,19 +381,19 @@ ul.icons3 li a:hover {
   }
 }
 
-.smallMarg{
-	margin-right: 2em;
+.smallMarg {
+  margin-right: 2em;
 }
 
-.header{
-	font-weight: 500;
+.header {
+  font-weight: 500;
 }
 
-.textPic{
-	margin-left: 2em;
-	margin-right: 2.5em;
-	margin-top: .75em;
-	margin-bottom: 1em;
+.textPic {
+  margin-left: 2em;
+  margin-right: 2.5em;
+  margin-top: 0.75em;
+  margin-bottom: 1em;
 }
 
 @media screen and (max-width: 640px) {
@@ -409,23 +402,23 @@ ul.icons3 li a:hover {
   }
 }
 
-.gif{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width:15em;
-	height:15em;
-	margin-left: 0em;
+.gif {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 15em;
+  height: 15em;
+  margin-left: 0em;
 }
 
- .overlapImages {
-    position:relative;
-	margin: 1em 1em 1em 1em;
- }
+.overlapImages {
+  position: relative;
+  margin: 1em 1em 1em 1em;
+}
 
 @media screen and (max-width: 1200px) {
   .overlapImages {
-	position:relative;
+    position: relative;
     margin: auto !important;
   }
 }
@@ -450,6 +443,7 @@ ul.icons3 li a:hover {
   .resume-wrapper {
     display: none;
   }
+
   p.below-desktop {
     display: block;
     margin-top: 2em;
@@ -570,7 +564,7 @@ a.btn {
   background: lightblue;
   margin: 5px 0;
   border-radius: 5px;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   height: 45px;
 }
 
@@ -580,19 +574,19 @@ a.btn {
   }
 }
 
-.list-item[data-enabled="false"] {
+.list-item[data-enabled=false] {
   background: gainsboro;
-  opacity: .5;
+  opacity: 0.5;
   order: 1;
 }
 
-.list-item[data-enabled="false"] .item-name,
-.list-item[data-enabled="false"] .quantity {
+.list-item[data-enabled=false] .item-name,
+.list-item[data-enabled=false] .quantity {
   text-decoration: line-through;
 }
 
 .list-item .toggle-item::before {
-  content: '';
+  content: "";
   display: block;
   width: 20px;
   height: 20px;
@@ -600,12 +594,12 @@ a.btn {
   position: absolute;
   left: 0;
   top: 0;
-  opacity: .6;
-  -webkit-transition: all .12s, border-color .08s;
-  transition: all .12s, border-color .08s;
+  opacity: 0.6;
+  -webkit-transition: all 0.12s, border-color 0.08s;
+  transition: all 0.12s, border-color 0.08s;
 }
 
-.list-item[data-enabled="false"] .toggle-item::before {
+.list-item[data-enabled=false] .toggle-item::before {
   width: 10px;
   top: -5px;
   left: 5px;
@@ -618,7 +612,7 @@ a.btn {
 }
 
 .remove-item {
-  margin-right: min(3%, 20px);
+  margin-right: 20px;
   height: 20px;
   width: 20px;
   line-height: 1;
@@ -632,7 +626,7 @@ a.btn {
   height: 20px;
   width: 20px;
   background: white;
-  margin-left: min(3%, 20px);
+  margin-left: 20px;
   position: relative;
   cursor: pointer;
 }
@@ -665,7 +659,7 @@ a.btn {
 
 .list-item-tag {
   padding: 4px;
-  border-radius: .25em;
+  border-radius: 0.25em;
   margin: 2px 4px 2px 0;
   font-weight: 900;
   font-family: monospace;
@@ -686,12 +680,12 @@ a.btn {
 
 #add-item #item-tags-input {
   margin: 0;
-  border-radius: .25rem 0 0 .25rem;
+  border-radius: 0.25rem 0 0 0.25rem;
 }
 
 .add-tag-btn {
   height: auto;
-  border-radius: 0 .25rem .25rem 0;
+  border-radius: 0 0.25rem 0.25rem 0;
 }
 
 .appendable-tags,
@@ -704,7 +698,7 @@ a.btn {
 
 .item-tags .tag {
   background-color: #bdf7c4;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   padding: 5px;
   margin: 0 10px 10px 0;
   letter-spacing: normal;
@@ -733,7 +727,7 @@ a.btn {
 
 .tag-filter-toggle {
   text-align: left;
-  bottom: -.5em;
+  bottom: -0.5em;
   position: relative;
   padding-left: 1em;
   line-height: 1em;
@@ -741,7 +735,7 @@ a.btn {
 }
 
 .tag-filter-toggle .tags-toggle-text::after {
-  content: '\f107';
+  content: "";
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -773,7 +767,7 @@ a.btn {
 .appendable-tags .append-tag,
 .tag-filter {
   padding: 5px;
-  border-radius: .25em;
+  border-radius: 0.25em;
   margin: 0 10px 10px 0;
   font-weight: 900;
   letter-spacing: normal;
@@ -784,7 +778,7 @@ a.btn {
 }
 
 .tag-filter.active::after {
-  content: '\f058';
+  content: "";
   margin-left: 5px;
   font-family: FontAwesome;
   color: #78ab93;
