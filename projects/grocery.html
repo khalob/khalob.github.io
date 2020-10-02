@@ -1,35 +1,38 @@
 <!DOCTYPE HTML>
 <html>
 
-  <head>
-    <title>Khalob Cognata - Grocery List</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-    <meta charset="utf-8" />
-    <!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../assets/css/pages.min.css" />
+<head>
+	<title>Khalob Cognata - Grocery List</title>
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+	<meta charset="utf-8" />
+	<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../assets/css/pages.min.css" />
 
 	<!-- Google Analytics -->
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	  ga('create', 'UA-88900400-1', 'auto');
-	  ga('send', 'pageview');
+		ga('create', 'UA-88900400-1', 'auto');
+		ga('send', 'pageview');
 	</script>
 
 	<!-- Firebase UI -->
 	<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  </head>
+</head>
 
-  <body class="is-loading">
+<body class="is-loading">
 
 	<div class="account-wrapper">
 		<div id="account-info">
-			<img class="account-image" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
+			<img class="account-image"
+				src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=">
 
 			<div class="account-flyout">
 				<div class="account-name"></div>
@@ -40,164 +43,165 @@
 		<button type="button" id="sign-in">Sign In</button>
 	</div>
 
-    <!-- Wrapper -->
-    <div id="wrapper1">
-      <!-- navWrapper -->
-      <div id="navWrapper">
+	<!-- Wrapper -->
+	<div id="wrapper1">
+		<!-- navWrapper -->
+		<div id="navWrapper">
 
-        <!-- Display Title -->
-        <div class="outer">
-          <div class="inner" id="pagesTitleDiv"> Grocery List </div>
-        </div>
+			<!-- Display Title -->
+			<div class="outer">
+				<div class="inner" id="pagesTitleDiv"> Grocery List </div>
+			</div>
 
-        <!-- Main -->
-        <section id="main2">
-          <header>
-            <h1>Grocery List</h1>
-          </header>
+			<!-- Main -->
+			<section id="main2">
+				<header>
+					<h1>Grocery List</h1>
+				</header>
 
-          <ul class="icons3">
-            <li class="page-link">
-            </li>
-          </ul>
-
-
-          <!-- Home Button -->
-          <ul class="icons3">
-            <li class="page-link main3">
-              <a href="../" class="fa fa-home" title="Home"></a>
-            </li>
-          </ul>
-
-        </section>
-
-      </div>
-      <!-- End of navWrapper -->
-
-      <div class="mainBody">
-        <p class="guests-only"> Please Sign in to access this page. </p>
-    		<div class="users-only">
-          <button type="button" class="btn btn-primary clear-all-filters">Clear All Filters</button>
-          <input type="text" class="search-field" placeholder="Search..." />
-          <div class="top-hr">
-            <div class="tag-filter-toggle">
-              <span class="tags-toggle-text">Tags</span>
-            </div>
-          </div>
-          <div class="tag-filters" style="display:none;"></div>
-          <div class="list-wrapper"></div>
-    		</div>
-      </div>
-
-      <!-- Footer -->
-      <footer id="footer1">
-        <ul class="footerList">
-          <li>
-			<div id="copyLeft">&copy;</div>
-		  </li>
-		  <li>
-			<div id="curDate">May 21, 2017</div>
-		  </li>
-        </ul>
-      </footer>
-    </div>
-    <!-- End of Wrapper -->
-
-    <!-- Add Item Modal -->
-    <div class="modal fade" id="add-item-modal" tabindex="-1" aria-labelledby="add-item-title" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title font-weight-bold" id="add-item-title">Add Item</h2>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="add-item">
-              <div class="f-row">
-                <label for="name">Name *</label>
-                <input id="item-name" type="text" placeholder="Sour Cream (DF)" required />
-              </div>
-
-              <div class="f-row">
-                <label for="brand">Brand</label>
-                <input id="brand" type="text" placeholder="Tofutti" />
-              </div>
-
-              <div class="f-row">
-                <label for="quantity">Quantity *</label>
-                <input id="quantity" type="text" value="1" required />
-              </div>
-
-              <div class="f-row">
-                <label for="df">Dairy Free?</label>
-                <input id="df" type="checkbox" />
-              </div>
+				<ul class="icons3">
+					<li class="page-link">
+					</li>
+				</ul>
 
 
-              <fieldset class="fieldset">
-                <legend class="w-auto">Tags</legend>
-                <label>Existing Quick Tags</label>
-                <div class="appendable-tags mt-0 mb-2"></div>
-                
-                <div class="add-tag-row f-row">
-                  <input id="item-tags-input" type="text" placeholder="Dairy" />
-                  <button type="button" class="btn btn-primary add-tag-btn">Add Tag</button>
-                </div>
+				<!-- Home Button -->
+				<ul class="icons3">
+					<li class="page-link main3">
+						<a href="../" class="fa fa-home" title="Home"></a>
+					</li>
+				</ul>
 
-                <div class="item-tags"></div>
-              </fieldset>
+			</section>
 
-              <button type="submit" class="btn btn-primary d-block w-100 mt-4">Add Item</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+		</div>
+		<!-- End of navWrapper -->
 
-    <!-- Confirm Removal Modal -->
-    <div class="modal fade" id="confirmation-modal" tabindex="-1" aria-labelledby="remove-item-title" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title font-weight-bold" id="remove-item-title">Delete Item</h2>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary remove-item-confirm">Yes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          </div>
-        </div>
-      </div>
-    </div>
+		<div class="mainBody">
+			<p class="guests-only"> Please Sign in to access this page. </p>
+			<div class="users-only">
+				<button type="button" class="btn btn-primary clear-all-filters">Clear All Filters</button>
+				<input type="text" class="search-field" placeholder="Search..." />
+				<div class="top-hr">
+					<div class="tag-filter-toggle">
+						<span class="tags-toggle-text">Tags</span>
+					</div>
+				</div>
+				<div class="tag-filters" style="display:none;"></div>
+				<div class="list-wrapper"></div>
+			</div>
+		</div>
 
-    <a id="show-add-form" class="users-only a-btn ft-sz-60 fa-stack" href="#">
-      <i class="fa fa-circle fa-inverse"></i>
-      <i class="fa fa-plus-circle"></i>
-    </a>
+		<!-- Footer -->
+		<footer id="footer1">
+			<ul class="footerList">
+				<li>
+					<div id="copyLeft">&copy;</div>
+				</li>
+				<li>
+					<div id="curDate">May 21, 2017</div>
+				</li>
+			</ul>
+		</footer>
+	</div>
+	<!-- End of Wrapper -->
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="../assets/js/jquery-3.4.0.min.js"></script>
-    <script async defer type="text/javascript" src="../assets/js/common.min.js"></script>
-    <script async defer type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+	<!-- Add Item Modal -->
+	<div class="modal fade" id="add-item-modal" tabindex="-1" aria-labelledby="add-item-title" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title font-weight-bold" id="add-item-title">Add Item</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="add-item">
+						<div class="f-row">
+							<label for="name">Name *</label>
+							<input id="item-name" type="text" placeholder="Sour Cream (DF)" required />
+						</div>
+
+						<div class="f-row">
+							<label for="brand">Brand</label>
+							<input id="brand" type="text" placeholder="Tofutti" />
+						</div>
+
+						<div class="f-row">
+							<label for="quantity">Quantity *</label>
+							<input id="quantity" type="text" value="1" required />
+						</div>
+
+						<div class="f-row">
+							<label for="df">Dairy Free?</label>
+							<input id="df" type="checkbox" />
+						</div>
+
+
+						<fieldset class="fieldset">
+							<legend class="w-auto">Tags</legend>
+							<label>Existing Quick Tags</label>
+							<div class="appendable-tags mt-0 mb-2"></div>
+
+							<div class="add-tag-row f-row">
+								<input id="item-tags-input" type="text" placeholder="Dairy" />
+								<button type="button" class="btn btn-primary add-tag-btn">Add Tag</button>
+							</div>
+
+							<div class="item-tags"></div>
+						</fieldset>
+
+						<button type="submit" class="btn btn-primary d-block w-100 mt-4">Add Item</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Confirm Removal Modal -->
+	<div class="modal fade" id="confirmation-modal" tabindex="-1" aria-labelledby="remove-item-title"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title font-weight-bold" id="remove-item-title">Delete Item</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary remove-item-confirm">Yes</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<a id="show-add-form" class="users-only a-btn ft-sz-60 fa-stack" href="#">
+		<i class="fa fa-circle fa-inverse"></i>
+		<i class="fa fa-plus-circle"></i>
+	</a>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="../assets/js/jquery-3.4.0.min.js"></script>
+	<script async defer type="text/javascript" src="../assets/js/common.min.js"></script>
+	<script async defer type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 
 	<!-- Firebase start -->
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 
-		<!-- Add Firebase products that you want to use -->
-		<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 
-		<script>
-		  // Your web app's Firebase configuration
-		  var firebaseConfig = {
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
 			apiKey: "AIzaSyDz73nGi6DvWa_A5_VHflKslcgOSsUuPfc",
 			authDomain: "khalob-cognata.firebaseapp.com",
 			databaseURL: "https://khalob-cognata.firebaseio.com",
@@ -205,13 +209,13 @@
 			storageBucket: "khalob-cognata.appspot.com",
 			messagingSenderId: "842953556802",
 			appId: "1:842953556802:web:e97346cc7c8daba10f3edb"
-		  };
-		  // Initialize Firebase
-		  firebase.initializeApp(firebaseConfig);
-		</script>
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
 
-		<script type="text/javascript" src="../assets/js/firebase-login.js"></script>
+	<script type="text/javascript" src="../assets/js/firebase-login.min.js"></script>
 	<!-- Firebase end -->
-  </body>
+</body>
 
 </html>
