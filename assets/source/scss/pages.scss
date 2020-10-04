@@ -180,6 +180,16 @@ body.is-loading #main2 {
   transition: transform 1s ease, opacity 1s ease;
 }
 
+@media screen and (max-width: 375px) {
+  .mainBody {
+    padding: 1.5em 1em;
+  }
+
+  #wrapper1 {
+    padding: 0.5em;
+  }
+}
+
 body.is-loading .mainBody {
   opacity: 0;
 }
