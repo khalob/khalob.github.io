@@ -161,7 +161,7 @@ body {
   html,
   body {
     min-width: 320px;
-    height: 100vh;
+    height: auto;
     overflow: scroll;
   }
 }
@@ -569,7 +569,6 @@ input[type="radio"]+label:before {
 .icon:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   text-transform: none !important;
@@ -633,7 +632,9 @@ ul.icons li a {
   padding: 1px;
   text-decoration: none;
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3.75em;
   height: 3.75em;
   border-radius: 100%;
@@ -641,39 +642,27 @@ ul.icons li a {
   line-height: 3.75em;
   overflow: hidden;
   text-align: center;
-  text-indent: 3.75em;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-ul.icons li a:before {
+ul.icons li a i:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   text-transform: none !important;
+  transform: translateX(6%);
 }
 
-ul.icons li a:before {
+ul.icons li a i:before {
   color: #ffffff;
   text-shadow: 1.25px 0px 0px #687b86, -1.25px 0px 0px #687b86, 0px 1.25px 0px #687b86, 0px -1.25px 0px #687b86;
 }
 
-ul.icons li a:hover:before {
+ul.icons li a:hover i:before {
   cursor: pointer;
   text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
-}
-
-ul.icons li a:before {
-  position: absolute;
-  top: 0;
-  left: .03em;
-  width: inherit;
-  height: inherit;
-  font-size: 1.85rem;
-  line-height: inherit;
-  text-align: center;
-  text-indent: 0;
 }
 
 ul.icons li a:hover {
@@ -681,7 +670,7 @@ ul.icons li a:hover {
 }
 
 @media screen and (max-width: 480px) {
-  ul.icons li a:before {
+  ul.icons li a i:before {
     font-size: 1.5rem;
   }
 }
@@ -710,36 +699,19 @@ ul.icons2 li a {
   line-height: 1.9em;
   overflow: hidden;
   text-align: center;
-  text-indent: 2.75em;
   white-space: nowrap;
+  cursor: pointer;
 }
 
-ul.icons2 li a:before {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-transform: none !important;
-}
-
-ul.icons2 li a:before {
+ul.icons2 li a i:before {
   color: #ffffff;
   text-shadow: 1.25px 0px 0px #c8cccf, -1.25px 0px 0px #c8cccf, 0px 1.25px 0px #c8cccf, 0px -1.25px 0px #c8cccf;
+  transform: translateX(6%);
 }
 
-ul.icons2 li a:hover:before {
+ul.icons2 li a:hover i:before {
   text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
-}
-
-ul.icons2 li a:before {
-  position: absolute;
-  left: .05em;
-  width: inherit;
-  height: inherit;
-  font-size: 1rem;
-  line-height: inherit;
-  text-indent: 0;
+  border-color: #7f0000;
 }
 
 ul.icons2 li a:hover {
@@ -747,7 +719,7 @@ ul.icons2 li a:hover {
 }
 
 @media screen and (max-width: 480px) {
-  ul.icons2 li a:before {
+  ul.icons2 li a i:before {
     font-size: 1rem;
   }
 

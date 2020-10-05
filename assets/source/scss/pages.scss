@@ -238,38 +238,18 @@ ul.icons3 li a {
   line-height: 1.9em;
   overflow: hidden;
   text-align: center;
-  text-indent: 2.75em;
   white-space: nowrap;
   box-shadow: 2px 3px 5px pink;
+  cursor: pointer;
 }
 
-ul.icons3 li a:before {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-transform: none !important;
-}
-
-ul.icons3 li a:before {
+ul.icons3 li a::before {
   color: #ffffff;
   text-shadow: 1.25px 0px 0px #c8cccf, -1.25px 0px 0px #c8cccf, 0px 1.25px 0px #c8cccf, 0px -1.25px 0px #c8cccf;
 }
 
-ul.icons3 li a:hover:before {
+ul.icons3 li a:hover::before {
   text-shadow: 1.25px 0px 0px #7f0000, -1.25px 0px 0px #7f0000, 0px 1.25px 0px #7f0000, 0px -1.25px 0px #7f0000;
-}
-
-ul.icons3 li a:before {
-  position: absolute;
-  top: 0;
-  left: 0.05em;
-  width: inherit;
-  height: inherit;
-  font-size: 1.75rem;
-  line-height: inherit;
-  text-indent: 0;
 }
 
 ul.icons3 li a:hover {
@@ -281,7 +261,7 @@ ul.icons3 li a:hover {
 }
 
 @media screen and (max-width: 480px) {
-  ul.icons3 li a:before {
+  ul.icons3 li a::before {
     font-size: 1rem;
   }
 }
@@ -747,6 +727,8 @@ a.btn {
   content: "";
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
+  font-family: FontAwesome;
+  font-weight: 900;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
