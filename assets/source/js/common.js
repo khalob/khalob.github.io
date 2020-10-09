@@ -1,6 +1,8 @@
+require('./bootstrap');
+
 if ('addEventListener' in window) {
-	window.addEventListener('load', function() {
-	  document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+	window.addEventListener('load', function () {
+		document.body.className = document.body.className.replace(/\bis-loading\b/, '');
 	});
 }
 
@@ -14,15 +16,15 @@ function fetchRepoLastUpdated() {
 	$.ajax({
 		type: 'GET',
 		url: 'https://api.github.com/repos/khalob/khalob.github.io',
-		success: function(data){
-		  //Retrieve the last push time to the repo for update time
-			var options = {year: 'numeric', month: 'long', day: 'numeric'};
-		  repoLastUpdated = new Date(Date.parse(data.pushed_at)).toLocaleDateString('en-US', options);
+		success: function (data) {
+			//Retrieve the last push time to the repo for update time
+			var options = { year: 'numeric', month: 'long', day: 'numeric' };
+			repoLastUpdated = new Date(Date.parse(data.pushed_at)).toLocaleDateString('en-US', options);
 			var curDateDiv = document.getElementById('curDate');
-		  curDateDiv.innerHTML = 'Last updated: ' + repoLastUpdated;
+			curDateDiv.innerHTML = 'Last updated: ' + repoLastUpdated;
 		},
 		//On complete fail return err and set to sometime today
-		failure: function(errMsg) {
+		failure: function (errMsg) {
 			console.log(err);
 			repoLastUpdated = 'Last updated: May 20, 2017';
 		}
@@ -32,12 +34,12 @@ function fetchRepoLastUpdated() {
 fetchRepoLastUpdated();
 
 //events
-$('.page-link a').on('mouseover', function(){
-  var $title = $('#titleDiv, #pagesTitleDiv');
-  $title.text(this.getAttribute('title'));
+$('.page-link a').on('mouseover', function () {
+	var $title = $('#titleDiv, #pagesTitleDiv');
+	$title.text(this.getAttribute('title'));
 });
 
-jQuery.expr[':'].icontains = function(a, i, m) {
-  return jQuery(a).text().toUpperCase()
-      .indexOf(m[3].toUpperCase()) >= 0;
+jQuery.expr[':'].icontains = function (a, i, m) {
+	return jQuery(a).text().toUpperCase()
+		.indexOf(m[3].toUpperCase()) >= 0;
 };

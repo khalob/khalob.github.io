@@ -1,110 +1,119 @@
 <!DOCTYPE HTML>
 <html>
 
-  <head>
-    <title>Khalob Cognata - Snake</title>
-    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
-    <meta charset="utf-8" />
-    <!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../assets/css/pages.min.css" />
-    <link rel="stylesheet" href="../../assets/css/snake.min.css" />
+<head>
+	<title>Khalob Cognata - Snake</title>
+	<link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
+	<meta charset="utf-8" />
+	<!-- Background source: https://www.dropbox.com/s/bxebw1fqtttmdog/low-poly-texture-19.png?dl=0 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../../assets/css/pages.min.css" />
+	<link rel="stylesheet" href="../../assets/css/snake.min.css" />
 
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	  ga('create', 'UA-88900400-1', 'auto');
-	  ga('send', 'pageview');
+		ga('create', 'UA-88900400-1', 'auto');
+		ga('send', 'pageview');
 	</script>
-  </head>
+</head>
 
-  <body class="is-loading">
+<body class="is-loading">
 
-    <!-- Wrapper -->
-    <div id="wrapper1">
-      <!-- navWrapper -->
-      <div id="navWrapper">
+	<!-- Wrapper -->
+	<div id="wrapper1">
+		<!-- navWrapper -->
+		<div id="navWrapper">
 
-        <!-- Display Title -->
-        <div class="outer">
-          <div class="inner" id="pagesTitleDiv"> Small Class Assignments </div>
-        </div>
+			<!-- Display Title -->
+			<div class="outer">
+				<div class="inner" id="pagesTitleDiv"> Small Class Assignments </div>
+			</div>
 
-        <!-- Main -->
-        <section id="main2">
-          <header>
-            <h1>Snake Game</h1>
-          </header>
+			<!-- Main -->
+			<section id="main2">
+				<header>
+					<h1>Snake Game</h1>
+				</header>
 
-          <ul class="icons3">
-            <li class="page-link">
-              <a class="projectIcon" style="background-image: url(../../images/mobiledev.png);" href="../../projects/mobiledev" title="Mobile Development"></a>
-            </li>
-            <li class="page-link">
-              <a class="projectIcon" style="background-image: url(../../images/alexa.png);" href="../../projects/alexa" title="Alexa Skill Development"></a>
-            </li>
-            <li class="page-link">
-              <a class="projectIcon" style="background-image: url(../../images/webdev.png);" href="../../projects/webdev" title="Web Development"></a>
-            </li>
-            <li class="page-link">
-              <a class="projectIcon" style="background-image: url(../../images/unity.png);" href="../../projects/unity" title="Unity Projects"></a>
-            </li>
-          </ul>
-
-
-
-          <!-- Home Button -->
-          <ul class="icons3">
-            <li class="page-link main3">
-              <a href="../../" class="fa fa-home" title="Home"></a>
-            </li>
-          </ul>
-
-        </section>
-
-      </div>
-      <!-- End of navWrapper -->
-      <div class="mainBody">
-		<br>
-        <canvas width="500" height="500" id="myCanvas"></canvas>
-		<!-- Game Controls -->
-		<div> Player 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Player 2 </div>
-		<hr width="500px">
-		<table class="center" style="margin:auto;">
-			<tr>
-				<th>↑</th>
-				<th>W</th>
-			</tr>
-			<tr>
-				<th>← ↓ →</th>
-				<th>A S D</th>
-			</tr>
-		</table>
-		<br>
-		<div>Date Created: 6/10/2016</div>
-      </div>
+				<ul class="icons3">
+					<li class="page-link">
+						<a class="projectIcon" style="background-image: url(../../images/mobiledev.png);"
+							href="../../projects/mobiledev" title="Mobile Development"></a>
+					</li>
+					<li class="page-link">
+						<a class="projectIcon" style="background-image: url(../../images/alexa.png);"
+							href="../../projects/alexa" title="Alexa Skill Development"></a>
+					</li>
+					<li class="page-link">
+						<a class="projectIcon" style="background-image: url(../../images/webdev.png);"
+							href="../../projects/webdev" title="Web Development"></a>
+					</li>
+					<li class="page-link">
+						<a class="projectIcon" style="background-image: url(../../images/unity.png);"
+							href="../../projects/unity" title="Unity Projects"></a>
+					</li>
+				</ul>
 
 
-      <!-- Footer -->
-      <footer id="footer1">
-        <ul class="footerList">
-          <li>
-			<div id="copyLeft">&copy;</div>
-		  </li>
-		  <li>
-			<div id="curDate">May 21, 2017</div>
-		  </li>
-        </ul>
-      </footer>
-    </div>
-    <!-- End of Wrapper -->
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="../../assets/js/jquery-3.4.0.min.js"></script>
-    <script async defer type="text/javascript" src="../../assets/js/common.min.js"></script>
-	  <script async defer type="text/javascript" src="../../assets/js/snake.min.js"></script>
-  </body>
+				<!-- Home Button -->
+				<ul class="icons3">
+					<li class="page-link main3">
+						<a href="../../" class="fa fa-home" title="Home"></a>
+					</li>
+				</ul>
+
+			</section>
+
+		</div>
+		<!-- End of navWrapper -->
+		<div class="mainBody">
+			<br>
+			<canvas width="500" height="500" id="myCanvas"></canvas>
+			<!-- Game Controls -->
+			<div> Player 1
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Player 2 </div>
+			<hr width="500px">
+			<table class="center" style="margin:auto;">
+				<tr>
+					<th>↑</th>
+					<th>W</th>
+				</tr>
+				<tr>
+					<th>← ↓ →</th>
+					<th>A S D</th>
+				</tr>
+			</table>
+			<br>
+			<div>Date Created: 6/10/2016</div>
+		</div>
+
+
+		<!-- Footer -->
+		<footer id="footer1">
+			<ul class="footerList">
+				<li>
+					<div id="copyLeft">&copy;</div>
+				</li>
+				<li>
+					<div id="curDate">May 21, 2017</div>
+				</li>
+			</ul>
+		</footer>
+	</div>
+	<!-- End of Wrapper -->
+
+	<!-- Scripts -->
+
+	<script async defer type="text/javascript" src="../../assets/js/common.min.js"></script>
+	<script async defer type="text/javascript" src="../../assets/js/snake.min.js"></script>
+</body>
+
 </html>

@@ -16,10 +16,12 @@
     "gulp-sass": "^4.1.0",
     "gulp-uglify-es": "^2.0.0",
     "gulp4-run-sequence": "^1.0.1",
-    "jquery": "^3.5.1",
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
   }
 }

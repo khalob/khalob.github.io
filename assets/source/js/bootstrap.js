@@ -12,6 +12,7 @@
 
 	$ = $ && Object.prototype.hasOwnProperty.call($, 'default') ? $['default'] : $;
 	Popper = Popper && Object.prototype.hasOwnProperty.call(Popper, 'default') ? Popper['default'] : Popper;
+	window.jQuery = window.$ = $;
 
 	function _defineProperties(target, props) {
 		for (var i = 0; i < props.length; i++) {
