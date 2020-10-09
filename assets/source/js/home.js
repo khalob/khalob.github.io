@@ -1,3 +1,5 @@
+require('./typewriter');
+
 var projectButton = document.getElementById('projectButton'); // Assumes element with id='button'
 var projects = document.getElementById('projWrapper');
 projects.style.visibility = 'hidden'; //Default invisible
