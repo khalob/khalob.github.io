@@ -70,6 +70,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	var isDF = itemName.endsWith(' (DF)');
 	var itemName = itemName.replace(' (DF)', '');
 	$('#add-item-modal .modal-title').text('Edit ' + itemName);
+	$('#add-item-modal button[type="submit"]').text('Apply Edits');
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
 	$form.find('#item-name').attr('readonly', 'true');
@@ -135,7 +136,7 @@ $('body').on('user-sign-in', function () {
 
 $('body').on('click', '#show-add-form', function (e) {
 	e.preventDefault();
-	$('#add-item-modal .modal-title').text('Add Item');
+	$('#add-item-modal').find('.modal-title, button[type="submit"]').text('Add Item');
 	$('form#add-item #item-name').removeAttr('readonly');
 	$('form#add-item .appendable-tags .append-tag').show();
 	$('form#add-item').trigger('reset');
