@@ -39,6 +39,7 @@ function generateListHTML(list, tags) {
 		}
 
 		$('.list-wrapper').html(HTML);
+		filterResults();
 	}
 }
 
@@ -211,7 +212,7 @@ $('body').on('click', '.toggle-item', function (e) {
 
 // Trigger edit item modal
 $('body').on('click', '.list-item', function (e) {
-	if ($(e.target).hasClass('list-item')) {
+	if ($(e.target).is('.list-item, .item-details')) {
 		var itemName = $(this).data('name');
 		var itemQuantity = $(this).find('.quantity').text();
 		firebase.database().ref('/foods/' + itemName).once('value', function (snapshot) {
