@@ -95,7 +95,7 @@ $('body').on('user-sign-in', function () {
 // Trigger recipe modal
 $('body').on('click', '.list-item', function (e) {
 	var recipeName = $(this).data('name');
-	var recipeData = JSON.parse($(this).data('value'));
+	var recipeData = $(this).data('value');
 	prepareRecipeModal(recipeData, recipeName);
 	$('#recipe-modal').modal('show');
 });
