@@ -214,6 +214,14 @@ body.is-loading .mainBody {
   }
 }
 
+.project-fa-icon i::before {
+  color: #fff;
+  text-shadow: 1.25px 0 0 #c8cccf, -1.25px 0 0 #c8cccf, 0 1.25px 0 #c8cccf, 0 -1.25px 0 #c8cccf;
+  -webkit-transform: translateX(6%);
+  -ms-transform: translateX(6%);
+  transform: translateX(6%);
+}
+
 ul.icons3 {
   cursor: default;
   list-style: none;
