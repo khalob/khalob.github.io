@@ -1,0 +1,98 @@
+#recipe-modal {
+  padding: 0px 1%;
+  letter-spacing: normal;
+
+  .modal-header {
+    padding: .75rem;
+
+    .modal-title::before {
+      content: '\f805';
+      font-family: FontAwesome;
+      margin-right: 12px;
+    }
+  }
+
+  .modal-dialog {
+    max-width: 100%;
+  }
+
+  .recipe-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .step-image,
+  .empty-step-image {
+    width: 100%;
+    min-width: 333px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lavender;
+    font-size: 60px;
+    object-fit: contain;
+  }
+
+  .ingredients-block {
+    flex-basis: 20%;
+    min-width: 175px;
+    padding: 0 1vw;
+
+    h3 {
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.25vw;
+
+      &::before {
+        content: '\f787';
+        font-family: FontAwesome;
+        font-weight: 900;
+        margin-right: 10px;
+      }
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        padding: 0;
+        line-height: 1.5;
+        font-size: 1.15vw;
+
+        &.basic-ingredient {
+          order: 1;
+
+          &::after {
+            content: '\f2e7';
+            font-family: FontAwesome;
+            font-weight: 900;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  .step-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 80%;
+
+    .step-block {
+      flex-basis: 33%;
+      padding: 10px;
+      flex-grow: 1;
+
+      h3 {
+        margin-top: 15px;
+        font-weight: 600;
+      }
+    }
+  }
+
+}

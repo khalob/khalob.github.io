@@ -1,8 +1,10 @@
 'use strict';
 
 var login = require('./login');
+var search = require('./search');
 
 login.init();
+search.init();
 
 function generateListHTML(list, tags) {
 	if (list) {
@@ -39,19 +41,7 @@ function generateListHTML(list, tags) {
 		}
 
 		$('.list-wrapper').html(HTML);
-		filterResults();
-	}
-}
-
-function generateTagFilterHTML(tags) {
-	if (tags) {
-		$('.tag-filters').empty();
-		var HTML = '';
-		for (var tagName in tags) {
-			HTML += `<span class="tag-filter" data-value="${tagName}">${tagName}</span>`;
-		}
-
-		$('.tag-filters').html(HTML);
+		search.filterResults();
 	}
 }
 
@@ -89,30 +79,14 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$form.find('#df').val(isDF);
 }
 
-function filterResults() {
-	var searchValue = $('.search-field').val();
-	var $activeTags = $('.tag-filters .tag-filter.active');
-	var $searchResults = $('.list-item');
-
-	// Filter the results to the ones containing the search term
-	if (searchValue && searchValue !== '') {
-		$searchResults = $searchResults.filter(':icontains(' + searchValue + ')');
+function insertNewTag(tagName) {
+	var curInput = $('#item-tags-input').val();
+	if (tagName) {
+		curInput = tagName;
+	} else if (curInput) {
+		curInput = curInput.trim();
 	}
 
-	// Filter the results to the ones that contain all active tags
-	$activeTags.each(function () {
-		var tagName = $(this).data('value');
-		$searchResults = $searchResults.filter(function () {
-			return $(this).find(`.list-item-tag[data-value="${tagName}"]`).length > 0;
-		});
-	});
-
-	$('.list-item').hide();
-	$searchResults.show();
-}
-
-function insertNewTag(tagName) {
-	var curInput = tagName ? tagName : $('#item-tags-input').val();
 	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
 		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
 		$('#item-tags-input').val('').focus();
@@ -120,11 +94,9 @@ function insertNewTag(tagName) {
 }
 
 $('body').on('user-sign-in', function () {
-	$('body').addClass('logged-in');
-
 	firebase.database().ref('/tags').on('value', function (snapshot) {
 		var tags = snapshot.val();
-		generateTagFilterHTML(tags);
+		search.generateTagFilterHTML(tags);
 		generateAppendableTagHTML(tags);
 
 		firebase.database().ref('/lists').on('value', function (snapshot) {
@@ -224,10 +196,6 @@ $('body').on('click', '.list-item', function (e) {
 	}
 });
 
-$('.search-field').on('input', function () {
-	filterResults();
-});
-
 $('.add-tag-btn').on('click', function () {
 	insertNewTag();
 });
@@ -246,22 +214,6 @@ $('body').on('click', '.append-tag', function () {
 
 $('body').on('reset', 'form#add-item', function () {
 	$('.item-tags').html('');
-});
-
-$('.tag-filter-toggle').on('click', function () {
-	$('.tag-filters').slideToggle();
-	$(this).toggleClass('open');
-});
-
-$('.clear-all-filters').on('click', function () {
-	$('.tag-filters .tag-filter.active').removeClass('active');
-	$('.search-field').val('');
-	$('.list-item').show();
-});
-
-$('body').on('click', '.tag-filter', function () {
-	$(this).toggleClass('active');
-	filterResults();
 });
 
 $('body').on('show.bs.modal', '#confirmation-modal', function (e) {

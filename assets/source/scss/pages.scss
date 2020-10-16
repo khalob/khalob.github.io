@@ -555,6 +555,7 @@ a.btn {
   border-radius: 5px;
   letter-spacing: 0.1em;
   height: 45px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -644,6 +645,7 @@ a.btn {
   margin: 0 10px;
   justify-content: flex-end;
   max-width: 60%;
+  cursor: default;
 }
 
 .list-item-tag {

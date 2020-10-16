@@ -7,6 +7,7 @@ var login = {
 		$('.account-name').text(userData.displayName);
 		$('.account-email').text(userData.email);
 		$('#account-info').show();
+		$('body').addClass('logged-in');
 	},
 	parseUserData: function (userData) {
 		var str = userData && userData.toString ? userData.toString() : '';
