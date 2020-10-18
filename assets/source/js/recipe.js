@@ -16,7 +16,8 @@ function prepareRecipeModal(recipe, recipeName) {
 
 	for (var ingredientName in recipe.ingredients) {
 		ingedient = recipe.ingredients[ingredientName];
-		ingredientsHTML += `<li class="${ingedient.isBasic ? 'ingredient' : 'basic-ingredient'}" data-value="${ingredientName}" data-quantity="${ingedient.quantity}">
+		ingredientsHTML += `<li class="${ingedient.isBasic ? 'basic' : ''} ingredient" data-value="${ingredientName}" 
+								data-quantity="${ingedient.quantity}" data-addToList="${!ingedient.isBasic}">
 								${ingedient.quantity + ' ' + ingredientName}
 							</li>`;
 	}
@@ -37,6 +38,7 @@ function prepareRecipeModal(recipe, recipeName) {
 					<ul>
 						${ingredientsHTML}
 					</ul>
+					<button class="add-recipe-to-list" type="button">Add <span class="green"></span> to Grocery List</button>
 				</div>
 				<div class="step-blocks">
 					${stepsHTML}
@@ -93,9 +95,83 @@ $('body').on('user-sign-in', function () {
 });
 
 // Trigger recipe modal
-$('body').on('click', '.list-item', function (e) {
+$('body').on('click', '.list-item', function () {
 	var recipeName = $(this).data('name');
 	var recipeData = $(this).data('value');
 	prepareRecipeModal(recipeData, recipeName);
 	$('#recipe-modal').modal('show');
 });
+
+// Click event for ingredient
+$('body').on('click', '.ingredient', function () {
+	var $ingredient = $(this);
+	var shouldAddToList = $ingredient.attr('data-addToList') === 'true';
+	$ingredient.attr('data-addToList', !shouldAddToList);
+});
+
+// var testData = {
+// 	"Cauliflower Tacos": {
+// 		"ingredients": {
+// 			"Cauliflower": {
+// 				"quantity": "1"
+// 			},
+// 			"Chickpeas": {
+// 				"quantity": "1 cup"
+// 			},
+// 			"Chili Powder": {
+// 				"quantity": "1/4 teaspoon",
+// 				"isBasic": true
+// 			},
+// 			"Dried Oregano": {
+// 				"quantity": "1/4 teaspoon",
+// 				"isBasic": true
+// 			},
+// 			"Ground Cumin": {
+// 				"quantity": "1/4 teaspoon",
+// 				"isBasic": true
+// 			},
+// 			"Lime": {
+// 				"quantity": "1"
+// 			},
+// 			"Red Onion": {
+// 				"quantity": "1"
+// 			},
+// 			"Red Wine Vinegar": {
+// 				"quantity": "1/2 cup"
+// 			},
+// 			"Sour Cream (DF)": {
+// 				"quantity": "2 tablespoons"
+// 			},
+// 			"Sugar": {
+// 				"quantity": "1 teaspoon",
+// 				"isBasic": true
+// 			},
+// 			"Tortillas": {
+// 				"quantity": "6"
+// 			}
+// 		},
+// 		"steps": [{
+// 			"image": "",
+// 			"text": "Preheat oven to 450F. Bring a medium pot of water to a boil over high heat.",
+// 			"title": "Prepare ingredients"
+// 		},
+// 		{
+// 			"image": "https://i.imgur.com/illHJ3L.jpg",
+// 			"text": "Preheat oven to 450F. Bring a medium pot of water to a boil over high heat.",
+// 			"title": "Prepare ingredients"
+// 		},
+// 		{
+// 			"image": "",
+// 			"text": "Preheat oven to 450F. Bring a medium pot of water to a boil over high heat.",
+// 			"title": "Prepare ingredients"
+// 		},
+// 		{
+// 			"image": "",
+// 			"text": "<b>Bold</b> <u>underline</u> <i>italics</i>Preheat oven to 450F. Bring a medium pot of water to a boil over high heat.",
+// 			"title": "Prepare ingredients"
+// 		}]
+// 	}
+// };
+// generateListHTML(testData);
+// prepareRecipeModal(testData[Object.keys(testData)[0]], Object.keys(testData)[0]);
+// $('#recipe-modal').modal('show');

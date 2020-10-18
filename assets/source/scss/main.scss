@@ -153,10 +153,18 @@ body {
 /* Basic */
 html {
   height: 100vh;
+  overscroll-behavior: none;
 }
 
 body {
   height: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 @media screen and (max-width: 480px) {
@@ -164,7 +172,12 @@ body {
   html,
   body {
     min-width: 320px;
-    overflow-x: auto;
+    overflow-x: hidden;
+  }
+
+  #wrapper1 {
+    // overflow-x: hidden;
+    overscroll-behavior: none;
   }
 }
 
@@ -185,7 +198,7 @@ body::before {
   content: '';
   display: block;
   position: fixed;
-  top: 0px;
+  top: -10%;
   bottom: 0px;
   left: 0px;
   right: 0px;
