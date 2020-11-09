@@ -79,7 +79,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$form.find('#df').val(isDF);
 }
 
-function insertNewTag(tagName) {
+function insertNewTag(tagName, useFocus) {
 	var curInput = $('#item-tags-input').val();
 	if (tagName) {
 		curInput = tagName;
@@ -89,17 +89,20 @@ function insertNewTag(tagName) {
 
 	if (curInput && $('.item-tags span[data-value="' + curInput + '"]').length === 0) {
 		$('.item-tags').append('<span class="tag" data-value="' + curInput + '">' + curInput + '<span class="tag-remove">×</span></span>');
-		$('#item-tags-input').val('').focus();
+		$('#item-tags-input').val('');
+		if (useFocus) {
+			$('#item-tags-input').focus();
+		}
 	}
 }
 
 $('body').on('user-sign-in', function () {
-	firebase.database().ref('/tags').on('value', function (snapshot) {
+	firebase.database().ref('/tags').once('value', function (snapshot) {
 		var tags = snapshot.val();
 		search.generateTagFilterHTML(tags);
 		generateAppendableTagHTML(tags);
 
-		firebase.database().ref('/lists').on('value', function (snapshot) {
+		firebase.database().ref('/lists').once('value', function (snapshot) {
 			var lists = snapshot.val();
 			generateListHTML(lists['grocery'], tags);
 		});
@@ -148,7 +151,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 // Don't submit form, if enter key press is coming from tag adding input
 $('body').on('keypress', 'form#add-item', function (e) {
 	if (e.which == 13 && $(e.target).is('#item-tags-input')) {
-		insertNewTag();
+		insertNewTag(null, true);
 		return false;
 	}
 });
@@ -161,7 +164,7 @@ $('body').on('click', '.remove-item-confirm', function (e) {
 	firebase.database().ref('/foods/' + itemName).set(null);
 
 	// delete itemName from each attached tag
-	firebase.database().ref('/tags').on('value', function (snapshot) {
+	firebase.database().ref('/tags').once('value', function (snapshot) {
 		var tags = snapshot.val();
 		for (var tagName in tags) {
 			firebase.database().ref('/tags/' + tagName + '/' + itemName).set(null);
@@ -197,7 +200,7 @@ $('body').on('click', '.list-item', function (e) {
 });
 
 $('.add-tag-btn').on('click', function () {
-	insertNewTag();
+	insertNewTag(null, true);
 });
 
 $('body').on('click', '.tag-remove', function () {
@@ -208,7 +211,7 @@ $('body').on('click', '.tag-remove', function () {
 });
 
 $('body').on('click', '.append-tag', function () {
-	insertNewTag($(this).data('value'));
+	insertNewTag($(this).data('value'), false);
 	$(this).hide();
 });
 
