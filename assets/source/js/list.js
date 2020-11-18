@@ -97,7 +97,7 @@ function insertNewTag(tagName, useFocus) {
 }
 
 $('body').on('user-sign-in', function () {
-	firebase.database().ref('/tags').once('value', function (snapshot) {
+	firebase.database().ref('/tags').on('value', function (snapshot) {
 		var tags = snapshot.val();
 		search.generateTagFilterHTML(tags);
 		generateAppendableTagHTML(tags);
