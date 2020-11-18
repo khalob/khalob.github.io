@@ -97,16 +97,31 @@ function insertNewTag(tagName, useFocus) {
 }
 
 $('body').on('user-sign-in', function () {
+	var firstOccurence = true;
+
 	firebase.database().ref('/tags').on('value', function (snapshot) {
-		var tags = snapshot.val();
-		search.generateTagFilterHTML(tags);
-		generateAppendableTagHTML(tags);
+		if (!firstOccurence) {
+			var tags = snapshot.val();
+			search.generateTagFilterHTML(tags);
+			generateAppendableTagHTML(tags);
 
-		firebase.database().ref('/lists').once('value', function (snapshot) {
-			var lists = snapshot.val();
-			generateListHTML(lists['grocery'], tags);
+			firebase.database().ref('/lists/grocery').once('value', function (listSnapshot) {
+				var groceryList = listSnapshot.val();
+				generateListHTML(groceryList, tags);
+			});
+		}
+		firstOccurence = false;
+	});
+
+	firebase.database().ref('/lists/grocery').on('value', function (listSnapshot) {
+		var groceryList = listSnapshot.val();
+
+		firebase.database().ref('/tags').once('value', function (snapshot) {
+			var tags = snapshot.val();
+			search.generateTagFilterHTML(tags);
+			generateAppendableTagHTML(tags);
+			generateListHTML(groceryList, tags);
 		});
-
 	});
 });
 
