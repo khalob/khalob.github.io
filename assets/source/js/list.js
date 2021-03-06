@@ -125,7 +125,7 @@ $('body').on('user-sign-in', function () {
 	});
 });
 
-$('body').on('click', '#show-add-form', function (e) {
+$('body').on('click', '.show-add-form', function (e) {
 	e.preventDefault();
 	$('#add-item-modal').find('.modal-title, button[type="submit"]').text('Add Item');
 	$('form#add-item #item-name').removeAttr('readonly');

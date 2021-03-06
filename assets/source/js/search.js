@@ -55,6 +55,13 @@ var search = {
 		$('.search-field').on('input', function () {
 			filterResults();
 		});
+
+		$('.search-field').on('keydown', function (e) {
+			var code = e.keyCode || e.which;
+			if (code === 13) {
+				$('.search-field').blur();
+			}
+		});
 	},
 	filterResults: filterResults,
 	generateTagFilterHTML: generateTagFilterHTML

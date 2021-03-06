@@ -545,10 +545,20 @@ a.btn {
   font-size: 16px;
 }
 
-.clear-all-filters {
-  margin-bottom: 20px;
-  margin-left: auto;
-  display: block;
+.top-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  button {
+    display: inline-block;
+    width: 48%;
+
+    &.show-add-form {
+      background-color: #20b2aa;
+      border-color: #20b2aa;
+    }
+  }
 }
 
 /* List item css */
@@ -590,8 +600,8 @@ a.btn {
 .list-item .toggle-item::before {
   content: "";
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border: 2px solid black;
   position: absolute;
   left: 0;
@@ -604,7 +614,7 @@ a.btn {
 .list-item[data-enabled=false] .toggle-item::before {
   width: 10px;
   top: -5px;
-  left: 5px;
+  left: 10px;
   border-radius: 0;
   opacity: 1;
   border-top-color: transparent;
@@ -615,9 +625,10 @@ a.btn {
 
 .remove-item {
   margin-right: 20px;
-  height: 20px;
-  width: 20px;
-  line-height: 1;
+  height: 40px;
+  width: 40px;
+  font-size: 50px;
+  line-height: 40px;
   padding: 0;
   border: none;
   font-weight: bold;
@@ -625,8 +636,8 @@ a.btn {
 }
 
 .toggle-item {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   background: white;
   margin-left: 20px;
   position: relative;
@@ -651,7 +662,7 @@ a.btn {
 }
 
 .list-item-tags {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   line-height: 1;
   margin: 0 10px;
