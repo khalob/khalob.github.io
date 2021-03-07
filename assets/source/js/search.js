@@ -23,11 +23,18 @@ function filterResults() {
 }
 
 function generateTagFilterHTML(tags) {
+	// Save active tag names
+	var curActiveTags = [];
+	$('.tag-filters .tag-filter.active').each(function () {
+		curActiveTags.push($(this).data('value'));
+	});
+
+	// Remake HTML using updated tags from database
 	if (tags) {
 		$('.tag-filters').empty();
 		var HTML = '';
 		for (var tagName in tags) {
-			HTML += `<span class="tag-filter" data-value="${tagName}">${tagName}</span>`;
+			HTML += `<span class="tag-filter${curActiveTags.includes(tagName) ? ' active' : ''}" data-value="${tagName}">${tagName}</span>`;
 		}
 
 		$('.tag-filters').html(HTML);
