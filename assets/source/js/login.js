@@ -14,6 +14,11 @@ var login = {
 		var data = str.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
 		return data.trim ? data.trim() : data;
 	},
+	parseSynonyms: function (userData) {
+		return userData.split(',').map(function (synonym) {
+			return login.parseUserData(synonym);
+		}).join(', ');
+	},
 	init: function () {
 		firebase.auth().onAuthStateChanged(function (user) {
 			if (user) {

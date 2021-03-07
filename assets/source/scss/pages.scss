@@ -645,7 +645,7 @@ a.btn {
 }
 
 .quantity {
-  font-size: 80%;
+  font-size: 100%;
   letter-spacing: 0.6px;
   padding: 2px 0;
 }
@@ -782,10 +782,12 @@ a.btn {
 
 .appendable-tags .append-tag,
 .tag-filter {
-  padding: 5px;
+  padding: 8px;
   border-radius: 0.25em;
   margin: 0 10px 10px 0;
   font-weight: 900;
+  font-size: 14px;
+  flex: 1 0 0;
   letter-spacing: normal;
   font-family: monospace;
   background-color: #ebeeb3;

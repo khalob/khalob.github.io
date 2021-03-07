@@ -66,6 +66,7 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$form.find('#item-name').val(itemName);
 	$form.find('#item-name').attr('readonly', 'true');
 	$form.find('#brand').val(item.brand ? item.brand : '');
+	$form.find('#synonyms').val(item.synonyms ? item.synonyms : '');
 	$form.find('#quantity').val(itemQuantity);
 
 	for (var tagIndex in item.tags) {
@@ -156,6 +157,7 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 	firebase.database().ref('/foods/' + itemName).set({
 		brand: login.parseUserData($(this).find('#brand').val()),
+		synonyms: login.parseSynonyms($(this).find('#synonyms').val()),
 		tags: tags
 	});
 
