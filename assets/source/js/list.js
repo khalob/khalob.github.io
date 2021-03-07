@@ -69,10 +69,12 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$('#add-item-modal button[type="submit"]').text('Apply Edits');
 	var $form = $('form#add-item');
 	$form.find('#item-name').val(itemName);
-	$form.find('#item-name').attr('readonly', 'true');
+	$form.find('#item-name').attr('data-editname', itemName);
 	$form.find('#brand').val(item.brand ? item.brand : '');
 	$form.find('#synonyms').val(item.synonyms ? item.synonyms : '');
 	$form.find('#quantity').val(itemQuantity);
+	$form.find('.item-tags').attr('data-edittags', item.tags);
+	$form.find('#df').parent().hide();
 
 	for (var tagIndex in item.tags) {
 		var tagName = item.tags[tagIndex];
@@ -134,16 +136,34 @@ $('body').on('user-sign-in', function () {
 $('body').on('click', '.show-add-form', function (e) {
 	e.preventDefault();
 	$('#add-item-modal').find('.modal-title, button[type="submit"]').text('Add Item');
-	$('form#add-item #item-name').removeAttr('readonly');
+	$('form#add-item #item-name').removeAttr('data-editname');
+	$('form#add-item .item-tags').removeAttr('data-edittags');
 	$('form#add-item .appendable-tags .append-tag').show();
+	$('form#add-item #df').parent().show();
 	$('form#add-item').trigger('reset');
 	$('#add-item-modal').modal('show');
 });
 
 $('body').on('submit', 'form#add-item', function (e) {
+	var editName = $(this).find('#item-name').attr('data-editname');
 	var itemName = login.parseUserData($(this).find('#item-name').val());
+
 	if ($('#df').is(':checked')) {
 		itemName += ' (DF)';
+	}
+
+	if (editName && editName !== itemName) {
+		// Remove old name from databse
+		firebase.database().ref('/lists/grocery/' + editName).set(null);
+		firebase.database().ref('/foods/' + editName).set(null);
+
+		// Remove old name from tags portion of database
+		var prevTagCSV = $('form#add-item .item-tags').attr('data-edittags');
+		var prevTags = prevTagCSV ? prevTagCSV.split(',') : [];
+		for (var tagIndex in prevTags) {
+			var tagName = prevTags[tagIndex];
+			firebase.database().ref('/tags/' + tagName + '/' + editName).set(null);
+		}
 	}
 
 	var tags = [];
