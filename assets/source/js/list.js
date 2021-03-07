@@ -15,9 +15,11 @@ function generateListHTML(list, tags) {
 		var $itemName = '';
 		var $quantity = '';
 		var tagsHTML = '';
+		var synonyms = '';
 		for (var itemName in list) {
 			$itemName = '<span class="item-name">' + itemName + '</span>';
 			$quantity = '<span class="quantity">' + list[itemName].quantity + '</span>';
+			synonyms = list[itemName].synonyms ? list[itemName].synonyms.replaceAll(', ', ' ') : '';
 			tagsHTML = '';
 
 			for (var tagName in tags) {
@@ -35,6 +37,9 @@ function generateListHTML(list, tags) {
 								</div>
 								<div class="list-item-tags">
 									${tagsHTML}
+								</div>
+								<div class="list-item-synonyms">
+									${synonyms}
 								</div>
 								${$closeButton}
 							</div>`;
@@ -152,12 +157,12 @@ $('body').on('submit', 'form#add-item', function (e) {
 
 	firebase.database().ref('/lists/grocery/' + itemName).set({
 		quantity: $(this).find('#quantity').val(),
+		synonyms: login.parseSynonyms($(this).find('#synonyms').val()),
 		enabled: "true"
 	});
 
 	firebase.database().ref('/foods/' + itemName).set({
 		brand: login.parseUserData($(this).find('#brand').val()),
-		synonyms: login.parseSynonyms($(this).find('#synonyms').val()),
 		tags: tags
 	});
 

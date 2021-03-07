@@ -671,6 +671,10 @@ a.btn {
   cursor: default;
 }
 
+.list-item-synonyms {
+  display: none;
+}
+
 .list-item-tag {
   padding: 4px;
   border-radius: 0.25em;
@@ -788,6 +792,7 @@ a.btn {
   font-weight: 900;
   font-size: 14px;
   flex: 1 0 0;
+  text-align: center;
   white-space: nowrap;
   letter-spacing: normal;
   font-family: monospace;
