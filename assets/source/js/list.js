@@ -63,8 +63,6 @@ function generateAppendableTagHTML(tags) {
 }
 
 function prepareEditModal(item, itemName, itemQuantity) {
-	var isDF = itemName.endsWith(' (DF)');
-	var itemName = itemName.replace(' (DF)', '');
 	$('#add-item-modal .modal-title').text('Edit ' + itemName);
 	$('#add-item-modal button[type="submit"]').text('Apply Edits');
 	var $form = $('form#add-item');
@@ -83,8 +81,6 @@ function prepareEditModal(item, itemName, itemQuantity) {
 		}
 		$('.appendable-tags .append-tag[data-value="' + tagName + '"]').hide();
 	}
-
-	$form.find('#df').val(isDF);
 }
 
 function insertNewTag(tagName, useFocus) {
