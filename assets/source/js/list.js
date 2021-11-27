@@ -133,6 +133,7 @@ $('body').on('user-sign-in', function () {
 $('body').on('click', '.show-add-form', function (e) {
 	e.preventDefault();
 	$('#add-item-modal').find('.modal-title, button[type="submit"]').text('Add Item');
+	$('form#add-item #item-name').val($('.search-field').val());
 	$('form#add-item #item-name').removeAttr('data-editname');
 	$('form#add-item .item-tags').removeAttr('data-edittags');
 	$('form#add-item .appendable-tags .append-tag').show();
