@@ -2,6 +2,7 @@
 
 var login = require('./login');
 var search = require('./search');
+var _ = require('underscore');
 
 login.init();
 search.init();
@@ -264,4 +265,35 @@ $('body').on('show.bs.modal', '#confirmation-modal', function (e) {
 	var $modal = $(this);
 	$modal.find('.modal-body p').text('Are you sure you want to remove ' + itemName + ' from the list?');
 	$modal.find('.btn-primary').data('item-name', itemName);
+});
+
+$('body').on('click', '.scroll-to-top', function (e) {
+	e.preventDefault();
+	$('html, body').animate({ scrollTop: 0 }, "slow");
+});
+
+var toggleScrollToBtnDisplay = _.debounce(function () {
+	var MIN_THRESHOLD = 500;
+	var scrollToTopIsVisible = $('.scroll-to-top').is(':visible');
+	var scrollDepthMet = $(window).scrollTop() > $('.list-wrapper').offset().top && $(window).scrollTop() > MIN_THRESHOLD;
+	if (scrollToTopIsVisible && !scrollDepthMet) {
+		$('.scroll-to-top').fadeOut('slow');
+	} else if (!scrollToTopIsVisible && scrollDepthMet) {
+		$('.scroll-to-top').fadeIn('slow');
+	}
+}, 200);
+
+var toggleScrollToBtnDisplayMobile = _.debounce(function () {
+	var scrollToTopIsVisible = $('.scroll-to-top').is(':visible');
+	var scrollDepthMet = $(window).width() <= 480 && $('.list-wrapper').offset().top < 0;;
+	if (scrollToTopIsVisible && !scrollDepthMet) {
+		$('.scroll-to-top').fadeOut('slow');
+	} else if (!scrollToTopIsVisible && scrollDepthMet) {
+		$('.scroll-to-top').fadeIn('slow');
+	}
+}, 200);
+
+$(document).ready(function () {
+	$(window).on('scroll', toggleScrollToBtnDisplay);
+	$('body').on('scroll', toggleScrollToBtnDisplayMobile);
 });
