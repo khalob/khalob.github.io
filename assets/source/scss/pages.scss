@@ -518,23 +518,33 @@ a.btn {
   font-size: 60px;
 }
 
-#show-add-form {
+.scroll-to-top {
+  display: flex;
   position: fixed;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
   z-index: 10;
-  right: 0;
-  bottom: 0;
-  width: 1em;
-  height: 1em;
-}
+  right: 15px;
+  bottom: 15px;
+  opacity: 0.5;
+  border: none;
+  padding: 0;
+  color: black;
 
-#show-add-form i {
-  position: absolute;
-  bottom: 1vw;
-  right: 1vw;
-}
+  &:hover {
+    opacity: 1;
+    color: black;
+  }
 
-#show-add-form .fa-plus-circle {
-  color: lightseagreen;
+  i {
+    font-size: 36px;
+
+    &:before {
+      margin: 0;
+    }
+  }
 }
 
 #add-item .f-row {
