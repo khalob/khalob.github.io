@@ -18,7 +18,7 @@ function boldIngredientsInText(text, ingredientNames) {
 	var result = text;
 	ingredientNames.forEach(function (ingredientName) {
 		var regex = new RegExp('(' + ingredientName + ')', 'ig');
-		result = text.replace(regex, `<b>$1</b>`);
+		result = result.replace(regex, `<b>$1</b>`);
 	});
 	return result;
 }
