@@ -15,10 +15,12 @@ function formatFractions(quantityText) {
 }
 
 function boldIngredientsInText(text, ingredientNames) {
-	var words = text.split(' ');
-	return words.map(function (word) {
-		return ingredientNames.indexOf(word.toLowerCase().trim().replace(/[.,]/g, '')) !== -1 ? ('<b>' + word + '</b>') : word;
-	}).join(' ');
+	var result = text;
+	ingredientNames.forEach(function (ingredientName) {
+		var regex = new RegExp('(' + ingredientName + ')', 'ig');
+		result = text.replace(regex, `<b>$1</b>`);
+	});
+	return result;
 }
 
 function prepareRecipeModal(recipe, recipeName) {
@@ -31,7 +33,7 @@ function prepareRecipeModal(recipe, recipeName) {
 
 	var ingredientNames = [];
 	for (var ingredientName in recipe.ingredients) {
-		ingredientNames.push(ingredientName.toLowerCase());
+		ingredientNames.push(ingredientName);
 		ingedient = recipe.ingredients[ingredientName];
 		ingredientsHTML += `<li class="${ingedient.isBasic ? 'basic' : ''} ingredient" data-value="${ingredientName}" 
 								data-quantity="${ingedient.quantity}" data-addToList="${!ingedient.isBasic}">
