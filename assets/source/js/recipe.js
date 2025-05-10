@@ -17,7 +17,7 @@ function formatFractions(quantityText) {
 function boldIngredientsInText(text, ingredientNames) {
 	var words = text.split(' ');
 	return words.map(function (word) {
-		return ingredientNames.indexOf(word.toLowerCase().trim()) !== -1 ? ('<b>' + word + '</b>') : word;
+		return ingredientNames.indexOf(word.toLowerCase().trim().replace(/[.,]/g, '')) !== -1 ? ('<b>' + word + '</b>') : word;
 	}).join(' ');
 }
 
