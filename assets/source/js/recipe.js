@@ -6,6 +6,21 @@ var search = require('./search');
 login.init();
 search.init();
 
+function formatFractions(quantityText) {
+	var words = quantityText.split(' ');
+	var fractionRegex = /[1-9][0-9]*\/[1-9][0-9]*/g;
+	return words.map(function (word) {
+		return fractionRegex.test(word) ? word.replace('/', '&frasl;') : word;
+	}).join(' ');
+}
+
+function boldIngredientsInText(text, ingredientNames) {
+	var words = text.split(' ');
+	return words.map(function (word) {
+		return ingredientNames.indexOf(word.toLowerCase().trim()) !== -1 ? ('<b>' + word + '</b>') : word;
+	}).join(' ');
+}
+
 function prepareRecipeModal(recipe, recipeName) {
 	var $modalTitle = $('#recipe-modal .modal-title');
 	var $modalBody = $('#recipe-modal .modal-body');
@@ -14,11 +29,13 @@ function prepareRecipeModal(recipe, recipeName) {
 		stepsHTML = '';
 	var step, stepImage, ingedient;
 
+	var ingredientNames = [];
 	for (var ingredientName in recipe.ingredients) {
+		ingredientNames.push(ingredientName.toLowerCase());
 		ingedient = recipe.ingredients[ingredientName];
 		ingredientsHTML += `<li class="${ingedient.isBasic ? 'basic' : ''} ingredient" data-value="${ingredientName}" 
 								data-quantity="${ingedient.quantity}" data-addToList="${!ingedient.isBasic}">
-								${ingedient.quantity + ' ' + ingredientName}
+								${formatFractions(ingedient.quantity) + ' ' + ingredientName}
 							</li>`;
 	}
 
@@ -28,7 +45,7 @@ function prepareRecipeModal(recipe, recipeName) {
 		stepsHTML += `<div class="step-block">
 					${stepImage}
 					<h3>${parseInt(stepIndex) + 1}. ${step.title}</h3>
-					<p>${step.text}</p>
+					<p>${boldIngredientsInText(formatFractions(step.text), ingredientNames)}</p>
 				</div>`;
 	}
 
