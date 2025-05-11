@@ -128,6 +128,44 @@ $('body').on('click', '.ingredient', function () {
 	$ingredient.attr('data-addToList', !shouldAddToList);
 });
 
+// Click event for ingredient
+$('body').on('click', '.add-recipe-to-list', function () {
+	var $btn = $(this);
+	$btn.attr('disabled', 'disabled');
+
+	$('.ingredients-block .ingredient').each(function () {
+		var $item = $(this);
+		var itemName = $item.data('value').toString();
+		var recipeQuantity = $item.data('quantity').toString();
+
+		if (!itemName || !recipeQuantity) {
+			alert('Skipping item, because the name [' + itemName + '] or quantity [' + recipeQuantity + '] is empty');
+			return;
+		}
+
+		firebase.database().ref('/lists/grocery/' + itemName).get().then((snapshot) => {
+			if (snapshot.exists()) {
+				// Item already exists in the list
+				var item = snapshot.val();
+				var quantity = item.quantity;
+				firebase.database().ref('/lists/grocery/' + itemName).update({
+					"/enabled": "true",
+					"/quantity": quantity + recipeQuantity
+				});
+			} else {
+				// Item is net new
+				firebase.database().ref('/lists/grocery/' + itemName).set({
+					"/enabled": "true",
+					"/quantity": recipeQuantity,
+					"/synonyms": ""
+				});
+			}
+		}).catch((error) => {
+			alert(error);
+		});
+	});
+});
+
 // var testData = {
 // 	"Cauliflower Tacos": {
 // 		"ingredients": {
