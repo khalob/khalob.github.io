@@ -133,7 +133,7 @@ $('body').on('click', '.add-recipe-to-list', function () {
 	var $btn = $(this);
 	$btn.attr('disabled', 'disabled');
 
-	$('.ingredients-block .ingredient').each(function () {
+	$('.ingredients-block .ingredient[data-addtolist="true"]').each(function () {
 		var $item = $(this);
 		var itemName = $item.data('value').toString();
 		var recipeQuantity = $item.data('quantity').toString();
