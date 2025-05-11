@@ -634,15 +634,15 @@ a.btn {
 }
 
 .remove-item {
-  margin-right: 20px;
-  height: 40px;
-  width: 40px;
-  font-size: 50px;
-  line-height: 40px;
-  padding: 0;
-  border: none;
-  font-weight: bold;
-  color: black;
+  font-weight: 700;
+  color: red;
+  text-transform: uppercase;
+  border-width: 2px;
+  border-color: red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .toggle-item {

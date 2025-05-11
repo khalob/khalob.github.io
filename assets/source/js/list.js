@@ -13,7 +13,6 @@ function generateListHTML(list, tags) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
-		var $closeButton = '<button type="button" class="remove-item" data-toggle="modal" data-target="#confirmation-modal">×</button>';
 		var $toggleButton = '<label class="toggle-item"></label>';
 		var $itemName = '';
 		var $quantity = '';
@@ -44,7 +43,6 @@ function generateListHTML(list, tags) {
 								<div class="list-item-synonyms">
 									${synonyms}
 								</div>
-								${$closeButton}
 							</div>`;
 		}
 
@@ -76,6 +74,8 @@ function prepareEditModal(item, itemName, itemQuantity) {
 	$form.find('#quantity').val(itemQuantity);
 	$form.find('.item-tags').attr('data-edittags', item.tags);
 	$form.find('#df').parent().hide();
+	$form.find('.remove-item').parent().show();
+	$form.find('.remove-item').data('name', itemName);
 
 	for (var tagIndex in item.tags) {
 		var tagName = item.tags[tagIndex];
@@ -139,6 +139,7 @@ $('body').on('click', '.show-add-form', function (e) {
 	$('form#add-item .item-tags').removeAttr('data-edittags');
 	$('form#add-item .appendable-tags .append-tag').show();
 	$('form#add-item #df').parent().show();
+	$('form#add-item .remove-item').parent().hide();
 	$('form#add-item').trigger('reset');
 	// Prefill item name with current search
 	$('form#add-item #item-name').val($('.search-field').val());
@@ -215,6 +216,7 @@ $('body').on('click', '.remove-item-confirm', function (e) {
 	});
 
 	$('#confirmation-modal').modal('hide');
+	$('#add-item-modal').modal('hide');
 });
 
 // Update enabled/disabled status
@@ -269,7 +271,7 @@ $('body').on('reset', 'form#add-item', function () {
 
 $('body').on('show.bs.modal', '#confirmation-modal', function (e) {
 	var $button = $(e.relatedTarget); // Button that triggered the modal
-	var itemName = $button.parent().data('name');
+	var itemName = $button.data('name');
 
 	var $modal = $(this);
 	$modal.find('.modal-body p').text('Are you sure you want to remove ' + itemName + ' from the list?');
@@ -306,3 +308,129 @@ $(document).ready(function () {
 	$(window).on('scroll', toggleScrollToBtnDisplay);
 	$('body').on('scroll', toggleScrollToBtnDisplayMobile);
 });
+
+// var testData = {
+// 	items: {
+// 		"AA Batteries": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"AA Cucumber Gose": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"All Purpose Flour": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Almond Flour": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Almond Milk (DF)": {
+// 			"enabled": "false",
+// 			"quantity": "1"
+// 		},
+// 		"Almonds (Whole - Unsalted)": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Almonds (sliced)": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Anchovies": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Angel Food Cake": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Angel Hair Pasta": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Apple Cider": {
+// 			"enabled": "false",
+// 			"quantity": "1"
+// 		},
+// 		"Apple Cider Vinegar": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Apples": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		},
+// 		"Apricot Preserves": {
+// 			"enabled": "false",
+// 			"quantity": "1",
+// 			"synonyms": ""
+// 		}
+// 	},
+// 	tags: {
+// 		"Alcohol": {
+// 			"Maraschino Cherries": true,
+// 			"Peach Long Drink": true
+// 		},
+// 		"Aldi": {
+// 			"All Purpose Flour": true,
+// 			"Bagels": true,
+// 			"Bananas": true,
+// 			"Beer": true,
+// 			"Black Beans": true,
+// 			"Bread": true,
+// 			"Burger Buns": true,
+// 			"Butternut Squash (Cubes)": true,
+// 			"Carrots": true,
+// 			"Cauliflower": true,
+// 			"Celery": true,
+// 			"Chicken Patties (Red Bag)": true,
+// 			"Chickpeas": true,
+// 			"Chicky Nugs": true,
+// 			"Cocoa Powder": true,
+// 			"Corn Flakes": true,
+// 			"Dijon Mustard": true,
+// 			"Eggs": true,
+// 			"English Muffins": true,
+// 			"Green Onions (scallions)": true,
+// 			"Hashbrowns": true,
+// 			"Kalamata Olives": true,
+// 			"Ketchup": true,
+// 			"Maple Sausage Patties": true,
+// 			"Naan-Pita": true,
+// 			"NescafÃ©": true,
+// 			"Oil Spray": true,
+// 			"Olive Mix": true,
+// 			"Orange Juice": true,
+// 			"Pickles": true,
+// 			"Salmon": true,
+// 			"Sausage Patties": true,
+// 			"Shredded Cheddar": true,
+// 			"Shredded Mozzarella": true,
+// 			"Skirt Steak": true,
+// 			"Sugar": true,
+// 			"Table Salt": true,
+// 			"Tortillas": true,
+// 			"Vegetable - Canola Oil": true,
+// 			"White Beans": true,
+// 			"White Bread Loaf": true,
+// 			"Yeast": true
+// 		}
+// 	}
+// };
+
+// generateListHTML(testData.items, testData.tags);
+// $('body').addClass('logged-in');
