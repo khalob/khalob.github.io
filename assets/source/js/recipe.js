@@ -148,9 +148,11 @@ $('body').on('click', '.add-recipe-to-list', function () {
 				// Item already exists in the list
 				var item = snapshot.val();
 				var quantity = item.quantity;
+				var enabled = item.enabled === "enabled";
+				var newQuantity = enabled ? (quantity + ' + ' + recipeQuantity) : recipeQuantity;
 				firebase.database().ref('/lists/grocery/' + itemName).update({
 					"/enabled": "true",
-					"/quantity": quantity + ' + ' + recipeQuantity
+					"/quantity": newQuantity
 				});
 			} else {
 				// Item is net new
