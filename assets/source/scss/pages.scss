@@ -613,18 +613,22 @@ a.btn {
   width: 30px;
   height: 30px;
   border: 2px solid black;
-  position: absolute;
-  left: 0;
-  top: 0;
+  background-color: white;
+  margin-left: -10px;
   opacity: 0.6;
   -webkit-transition: all 0.12s, border-color 0.08s;
   transition: all 0.12s, border-color 0.08s;
 }
 
-.list-item[data-enabled=false] .toggle-item::before {
+.list-item[data-enabled=false] .toggle-item::after {
+  content: "";
+  display: block;
+  position: absolute;
   width: 10px;
-  top: -5px;
-  left: 10px;
+  margin-top: -5px;
+  margin-left: -10px;
+  height: 30px;
+  border: 2px solid black;
   border-radius: 0;
   opacity: 1;
   border-top-color: transparent;
@@ -646,12 +650,13 @@ a.btn {
 }
 
 .toggle-item {
-  height: 30px;
-  width: 30px;
-  background: white;
-  margin-left: 20px;
+  height: 100%;
+  width: 90px;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quantity {
@@ -669,6 +674,7 @@ a.btn {
   text-align: left;
   margin: 0px 10px;
   margin-right: auto;
+  margin-left: -10px;
 }
 
 .list-item-tags {

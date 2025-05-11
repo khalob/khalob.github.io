@@ -13,7 +13,7 @@ function generateListHTML(list, tags) {
 	if (list) {
 		$('.list-wrapper').empty();
 		var HTML = '';
-		var $toggleButton = '<label class="toggle-item"></label>';
+		var $toggleButton = '<div class="toggle-item"></div>';
 		var $itemName = '';
 		var $quantity = '';
 		var tagsHTML = '';
