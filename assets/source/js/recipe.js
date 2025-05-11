@@ -143,7 +143,7 @@ $('body').on('click', '.add-recipe-to-list', function () {
 			return;
 		}
 
-		firebase.database().ref('/lists/grocery/' + itemName).get().then((snapshot) => {
+		firebase.database().ref('/lists/grocery/' + itemName).on('value', function (snapshot) {
 			if (snapshot.exists()) {
 				// Item already exists in the list
 				var item = snapshot.val();
