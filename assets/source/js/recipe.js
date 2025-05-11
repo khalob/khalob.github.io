@@ -150,7 +150,7 @@ $('body').on('click', '.add-recipe-to-list', function () {
 				var quantity = item.quantity;
 				firebase.database().ref('/lists/grocery/' + itemName).update({
 					"/enabled": "true",
-					"/quantity": quantity + recipeQuantity
+					"/quantity": quantity + ' + ' + recipeQuantity
 				});
 			} else {
 				// Item is net new
