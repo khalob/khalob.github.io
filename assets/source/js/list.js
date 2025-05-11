@@ -4,6 +4,8 @@ var login = require('./login');
 var search = require('./search');
 var _ = require('underscore');
 
+var RESET_QUANTITY = "1";
+
 login.init();
 search.init();
 
@@ -221,9 +223,14 @@ $('body').on('click', '.toggle-item', function (e) {
 	var $item = $(this).parent();
 	var itemName = $item.data('name');
 	var currentStatus = $item.data('enabled');
-	firebase.database().ref('/lists/grocery/' + itemName).update({
-		"/enabled": (!currentStatus).toString()
-	});
+	var itemData = {
+		"/enabled": (!currentStatus).toString(),
+	};
+	if (currentStatus) {
+		// Reset quantity, when item is marked completed
+		itemData["/quantity"] = RESET_QUANTITY;
+	}
+	firebase.database().ref('/lists/grocery/' + itemName).update(itemData);
 });
 
 // Trigger edit item modal
